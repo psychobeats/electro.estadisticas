@@ -1,0 +1,28 @@
+Nombres de integrantes
+Andres Flores
+Laura de Borbon
+Gonzalo Guzman
+Matias Pavón
+Maité Arrieta
+Agustina Borgoña
+
+Lider Maite Arrieta
+
+Breve descripcion
+Desarrollar una aplicación web que permita visualizar estadísticas en vivo a través de un sistema de votación con preguntas personalizadas
+
+back
+Laura
+Gonza
+Mati
+Front
+Maite 
+Agus
+Andres
+
+1. permitir la realización (usuario puede generar una encuesta nueva y responder otras encuestas ya existentes) de encuestas y plasmar los resultados en estadísticas (con gráficos)
+
+2. viabilidad: buscar info para poder hacer las estadísticas en vivo
+requerimientos: que el usuario pueda registrarse y loggearse
+Que el usuario pueda realizar una encuesta y responder otras (votar)
+Que puedan visualizarse gráficos que representen los resultados de las encuestas
