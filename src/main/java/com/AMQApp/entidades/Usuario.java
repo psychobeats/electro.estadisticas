@@ -1,5 +1,7 @@
 package com.AMQApp.entidades;
 
+import com.AMQApp.enums.Pais;
+import com.AMQApp.enums.Sexo;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
@@ -7,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -19,16 +23,16 @@ public class Usuario {
     @Column(nullable = false, unique = true)
     private String alias;
     @Column(nullable = false)
-    private Enum sexo;
+    private Sexo sexo;
     @Column(nullable = false, unique = true)
     private String email;
     @Column(nullable = false)
-    private Enum pais;
+    private Pais pais;
     @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date nacimiento;
     @Column(nullable = false)
     private String clave;
-    private String claveValidar;
     private Boolean alta;
     
     @OneToMany
@@ -37,7 +41,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String id, String alias, Enum sexo, String email, Enum pais, Date nacimiento, String clave, String claveValidar, Boolean alta, List<Encuesta> encuestasCreadas) {
+    public Usuario(String id, String alias, Sexo sexo, String email, Pais pais, Date nacimiento, String clave, Boolean alta, List<Encuesta> encuestasCreadas) {
         this.id = id;
         this.alias = alias;
         this.sexo = sexo;
@@ -45,7 +49,6 @@ public class Usuario {
         this.pais = pais;
         this.nacimiento = nacimiento;
         this.clave = clave;
-        this.claveValidar = claveValidar;
         this.alta = alta;
         this.encuestasCreadas = encuestasCreadas;
     }
@@ -72,7 +75,7 @@ public class Usuario {
         return sexo;
     }
 
-    public void setSexo(Enum sexo) {
+    public void setSexo(Sexo sexo) {
         this.sexo = sexo;
     }
 
@@ -88,7 +91,7 @@ public class Usuario {
         return pais;
     }
 
-    public void setPais(Enum pais) {
+    public void setPais(Pais pais) {
         this.pais = pais;
     }
 
@@ -106,14 +109,6 @@ public class Usuario {
 
     public void setClave(String clave) {
         this.clave = clave;
-    }
-
-    public String getClaveValidar() {
-        return claveValidar;
-    }
-
-    public void setClaveValidar(String claveValidar) {
-        this.claveValidar = claveValidar;
     }
 
     public Boolean getAlta() {
