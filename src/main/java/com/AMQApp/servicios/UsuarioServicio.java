@@ -22,7 +22,7 @@ public class UsuarioServicio {
     private UsuarioRepositorio usuarioRepositorio;
     
     @Autowired
-    private EncuestaServicio encuestaServcio;
+    private EncuestaServicio encuestaServicio;
     
     @Transactional(propagation = Propagation.NESTED)
     public void crear(String alias, Sexo sexo, String email, Pais pais, Date nacimiento, String clave, String claveValidar) throws ErrorServicio{
@@ -40,13 +40,16 @@ public class UsuarioServicio {
         usuarioRepositorio.save(usuario);
     }
     
-    public void crearEncuesta(String id, String titulo, String[] opciones, 
+    public void crearEncuesta(String idUsuario, String titulo, String[] opciones, 
             Date inicio, Date caducidad, Integer totalVotos, Integer totalMujeres, 
             Integer totalHombres, Integer totalOtros) throws ErrorServicio{
         
-        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
         if(respuesta.isPresent()){
             Usuario usuario = respuesta.get();
+            Encuesta e1 = encuestaServicio.crearEncuesta(titulo, opciones, inicio, caducidad, totalVotos, totalMujeres, totalHombres, totalOtros);
+            usuario.getEncuestasCreadas().add(e1);
+            usuarioRepositorio.save(usuario);
         }else{
             throw new ErrorServicio("No se encontró el usuario");
         }

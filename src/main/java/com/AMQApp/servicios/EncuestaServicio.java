@@ -2,6 +2,7 @@ package com.AMQApp.servicios;
 
 import com.AMQApp.entidades.Encuesta;
 import com.AMQApp.entidades.ResultadosPorcentajes;
+import com.AMQApp.entidades.Usuario;
 import com.AMQApp.entidades.Voto;
 import com.AMQApp.errores.ErrorServicio;
 import com.AMQApp.repositorios.EncuestaRepositorio;
@@ -20,6 +21,9 @@ public class EncuestaServicio {
     
     @Autowired
     private EncuestaRepositorio encuestaRepositorio;
+    
+    @Autowired
+    private VotoServicio votoServicio;
     
     
     
@@ -56,6 +60,19 @@ public class EncuestaServicio {
         }
        encuestaRepositorio.save(e1);
        return e1;
+    }
+    
+    public void votarEncuesta(String idEncuesta, Usuario usuario, String opcion) throws ErrorServicio{
+        Optional<Encuesta> respuesta = encuestaRepositorio.findById(idEncuesta);
+        if(respuesta.isPresent()){
+            Encuesta encuesta = respuesta.get();
+            Voto voto = votoServicio.votar(usuario, opcion);
+            encuesta.getVotos().add(voto);
+            encuestaRepositorio.save(encuesta);
+        }else{
+            throw new ErrorServicio("No existe una encuesta con el id indicado");
+        }
+        
     }
     
     @Transactional
