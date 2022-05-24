@@ -1,10 +1,12 @@
 package com.AMQApp.servicios;
 
+import com.AMQApp.entidades.Encuesta;
 import com.AMQApp.entidades.Usuario;
 import com.AMQApp.enums.Pais;
 import com.AMQApp.enums.Sexo;
 import com.AMQApp.errores.ErrorServicio;
 import com.AMQApp.repositorios.UsuarioRepositorio;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +21,9 @@ public class UsuarioServicio {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
     
+    @Autowired
+    private EncuestaServicio encuestaServcio;
+    
     @Transactional(propagation = Propagation.NESTED)
     public void crear(String alias, Sexo sexo, String email, Pais pais, Date nacimiento, String clave, String claveValidar) throws ErrorServicio{
         validar(alias, email, nacimiento, clave, claveValidar);
@@ -30,7 +35,22 @@ public class UsuarioServicio {
         usuario.setPais(pais);
         usuario.setSexo(sexo);
         usuario.setClave(clave);
+        List<Encuesta> encuestas = new ArrayList();
+        usuario.setEncuestasCreadas(encuestas);
         usuarioRepositorio.save(usuario);
+    }
+    
+    public void crearEncuesta(String id, String titulo, String[] opciones, 
+            Date inicio, Date caducidad, Integer totalVotos, Integer totalMujeres, 
+            Integer totalHombres, Integer totalOtros) throws ErrorServicio{
+        
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+        if(respuesta.isPresent()){
+            Usuario usuario = respuesta.get();
+        }else{
+            throw new ErrorServicio("No se encontró el usuario");
+        }
+        
     }
     
     @Transactional(propagation = Propagation.NESTED)
@@ -76,8 +96,13 @@ public class UsuarioServicio {
     }
     
     @Transactional(readOnly=true)
-    public List<Usuario> listar(){
+    public List<Usuario> listar() throws ErrorServicio{
+        List<Usuario> usuarios = usuarioRepositorio.findAll();
+        if(usuarios.isEmpty()||usuarios==null){
+            throw new ErrorServicio("No se pudo cargar la lista de usuarios del repositorio");
+        }else{
         return usuarioRepositorio.findAll();
+        }
     }
     
     public Usuario buscarPorId(String id) throws ErrorServicio{
