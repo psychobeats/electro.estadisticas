@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
@@ -34,6 +35,7 @@ public class Encuesta {
     @OneToMany
     private List<Voto> votos;
     
+    @OneToOne
     private ResultadosPorcentajes resultados;
     private Boolean alta;
 

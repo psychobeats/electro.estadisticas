@@ -15,8 +15,8 @@ public class ResultadosPorcentajes {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     
-    @OneToOne
-    private Encuesta encuesta;
+    //@OneToOne
+    //private Encuesta encuesta;
     
     private Integer totalVotos;
     private Integer totalHombres;
@@ -28,8 +28,8 @@ public class ResultadosPorcentajes {
     public ResultadosPorcentajes() {
     }
 
-    public ResultadosPorcentajes(Encuesta encuesta, Integer totalVotos, Integer totalHombres, Integer totalMujeres, Integer totalOtros, Boolean alta) {
-        this.encuesta = encuesta;
+    public ResultadosPorcentajes(Integer totalVotos, Integer totalHombres, Integer totalMujeres, Integer totalOtros, Boolean alta) {
+        //this.encuesta = encuesta;
         this.totalVotos = totalVotos;
         this.totalHombres = totalHombres;
         this.totalMujeres = totalMujeres;
@@ -45,13 +45,13 @@ public class ResultadosPorcentajes {
         this.id = id;
     }
 
-    public Encuesta getEncuesta() {
-        return encuesta;
-    }
+   // public Encuesta getEncuesta() {
+     //   return encuesta;
+    //}
 
-    public void setEncuesta(Encuesta encuesta) {
-        this.encuesta = encuesta;
-    }
+    //public void setEncuesta(Encuesta encuesta) {
+      //  this.encuesta = encuesta;
+    //}
 
     public Integer getTotalVotos() {
         return totalVotos;
