@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -20,7 +22,9 @@ public class Encuesta {
     private String titulo;
     @Column(nullable = false)
     private String [] opciones;
+    @Temporal(TemporalType.TIMESTAMP)
     private Date inicio;
+    @Temporal(TemporalType.TIMESTAMP)
     private Date caducidad;
     private Integer totalVotos;
     private Integer totalMujeres;
