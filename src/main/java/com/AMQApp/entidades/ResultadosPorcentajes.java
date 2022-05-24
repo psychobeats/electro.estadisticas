@@ -29,7 +29,7 @@ public class ResultadosPorcentajes {
     }
 
     public ResultadosPorcentajes(Integer totalVotos, Integer totalHombres, Integer totalMujeres, Integer totalOtros, Boolean alta) {
-        //this.encuesta = encuesta;
+        
         this.totalVotos = totalVotos;
         this.totalHombres = totalHombres;
         this.totalMujeres = totalMujeres;
