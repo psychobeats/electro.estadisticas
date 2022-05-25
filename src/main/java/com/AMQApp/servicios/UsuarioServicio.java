@@ -6,6 +6,8 @@ import com.AMQApp.enums.Pais;
 import com.AMQApp.enums.Sexo;
 import com.AMQApp.errores.ErrorServicio;
 import com.AMQApp.repositorios.UsuarioRepositorio;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,13 +27,19 @@ public class UsuarioServicio {
     private EncuestaServicio encuestaServicio;
     
     @Transactional(propagation = Propagation.NESTED)
-    public void crear(String alias, Sexo sexo, String email, Pais pais, Date nacimiento, String clave, String claveValidar) throws ErrorServicio{
-        validar(alias, email, nacimiento, clave, claveValidar);
+    public void crear(String alias, Sexo sexo, String email, Pais pais, String nacimiento, String clave, String claveValidar) throws ErrorServicio, ParseException{
+        //validar(alias, email, nacimiento, clave, claveValidar);
         Usuario usuario = new Usuario();
         usuario.setAlias(alias);
         usuario.setAlta(Boolean.TRUE);
         usuario.setEmail(email);
-        usuario.setNacimiento(nacimiento);
+        
+        System.out.println(nacimiento);
+        
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        Date nacimiento1 = formato.parse(nacimiento);
+        
+        usuario.setNacimiento(nacimiento1);
         usuario.setPais(pais);
         usuario.setSexo(sexo);
         usuario.setClave(clave);

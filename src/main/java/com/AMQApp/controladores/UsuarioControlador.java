@@ -4,6 +4,7 @@ import com.AMQApp.enums.Pais;
 import com.AMQApp.enums.Sexo;
 import com.AMQApp.errores.ErrorServicio;
 import com.AMQApp.servicios.UsuarioServicio;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class UsuarioControlador {
     }
     
     @PostMapping("/registrar")
-    public String registrar(@RequestParam(required=false) String alias,@RequestParam Sexo sexo,@RequestParam(required=false) String email,@RequestParam Pais pais,@RequestParam(required=false) Date nacimiento,@RequestParam(required=false) String clave,@RequestParam(required=false) String claveValidar){
+    public String registrar(@RequestParam(required=false) String alias,@RequestParam Sexo sexo,@RequestParam(required=false) String email,@RequestParam Pais pais,@RequestParam(required=false) String nacimiento,@RequestParam(required=false) String clave,@RequestParam(required=false) String claveValidar) throws ParseException{
         try{
             usuarioServicio.crear(alias, sexo, email, pais, nacimiento, clave, claveValidar);
         }catch(ErrorServicio e){
