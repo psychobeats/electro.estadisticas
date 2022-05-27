@@ -28,17 +28,15 @@ public class UsuarioServicio {
     
     @Transactional(propagation = Propagation.NESTED)
     public void crear(String alias, Sexo sexo, String email, Pais pais, String nacimiento, String clave, String claveValidar) throws ErrorServicio, ParseException{
-        //validar(alias, email, nacimiento, clave, claveValidar);
+        System.out.println(nacimiento);
+        validar(alias, email, nacimiento, clave, claveValidar);
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        Date nacimiento1 = formato.parse(nacimiento);
+        validarNacimientoDate(nacimiento1);
         Usuario usuario = new Usuario();
         usuario.setAlias(alias);
         usuario.setAlta(Boolean.TRUE);
         usuario.setEmail(email);
-        
-        System.out.println(nacimiento);
-        
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-        Date nacimiento1 = formato.parse(nacimiento);
-        
         usuario.setNacimiento(nacimiento1);
         usuario.setPais(pais);
         usuario.setSexo(sexo);
@@ -48,14 +46,12 @@ public class UsuarioServicio {
         usuarioRepositorio.save(usuario);
     }
     
-    public void crearEncuesta(String idUsuario, String titulo, String[] opciones, 
-            Date inicio, Date caducidad, Integer totalVotos, Integer totalMujeres, 
-            Integer totalHombres, Integer totalOtros) throws ErrorServicio{
-        
+    public void crearEncuesta(String idUsuario, String titulo, String opcion1, String opcion2) throws ErrorServicio{
+
         Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
         if(respuesta.isPresent()){
             Usuario usuario = respuesta.get();
-            Encuesta e1 = encuestaServicio.crearEncuesta(titulo, opciones, inicio, caducidad, totalVotos, totalMujeres, totalHombres, totalOtros);
+            Encuesta e1 = encuestaServicio.crearEncuesta(titulo, opcion1, opcion2);
             usuario.getEncuestasCreadas().add(e1);
             usuarioRepositorio.save(usuario);
         }else{
@@ -65,8 +61,12 @@ public class UsuarioServicio {
     }
     
     @Transactional(propagation = Propagation.NESTED)
-    public void modificar(String id, String alias, Sexo sexo, String email, Pais pais, Date nacimiento, String clave, String claveValidar) throws ErrorServicio{
+    public void modificar(String id, String alias, Sexo sexo, String email, Pais pais, String nacimiento, String clave, String claveValidar) throws ErrorServicio, ParseException{
+        System.out.println(nacimiento);
         validar(alias, email, nacimiento, clave, claveValidar);
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        Date nacimiento1 = formato.parse(nacimiento);
+        validarNacimientoDate(nacimiento1);
         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
         if(respuesta.isPresent()){
             Usuario usuario = respuesta.get();
@@ -74,7 +74,7 @@ public class UsuarioServicio {
             usuario.setSexo(sexo);
             usuario.setEmail(email);
             usuario.setPais(pais);
-            usuario.setNacimiento(nacimiento);
+            usuario.setNacimiento(nacimiento1);
             usuario.setClave(clave);
             usuarioRepositorio.save(usuario);
         }else{
@@ -150,24 +150,42 @@ public class UsuarioServicio {
         }
     }
     
-    public void validar(String alias, String email, Date nacimiento, String clave, String claveValidar) throws ErrorServicio{
+    public void validar(String alias, String email,String nacimiento, String clave, String claveValidar) throws ErrorServicio{
         if(alias==null||alias.isEmpty()){
             throw new ErrorServicio("Debe indicar un alias");
         }
-        if(nacimiento==null){
+        System.out.println("LAS VALIDACIONES ALIAS CORRECTAS");
+        if(email==null||email.isEmpty()){
+            throw new ErrorServicio("Debe indicar un alias");
+        }
+        if(nacimiento==null|| nacimiento.isEmpty()){
             throw new ErrorServicio("Debe indicar su fecha de nacimiento");
         }
+        System.out.println("LA VALIDACIÓN DEL NACIMIENTO Fue CORRECTA");
+        
+        System.out.println("LAS VALIDACIONES EMAIL CORRECTAS");
         if(clave==null||clave.isEmpty()){
             throw new ErrorServicio("Debe indicar una clave");
-        }else if (clave.length()<6){
+        }
+        if (clave.length()<6){
             throw new ErrorServicio("La clave debe tener al menos 6 caracteres");
         }
+        System.out.println("LAS VALIDACIONES CLAVE CORRECTAS");
+
         if(claveValidar==null||claveValidar.isEmpty()){
             throw new ErrorServicio("Debe repetir su clave");
-        }else if (!clave.equals(claveValidar)) {
-                throw new ErrorServicio("Las claves no coinciden");
-            
         }
+        if (!clave.equals(claveValidar)) {
+            throw new ErrorServicio("Las claves no coinciden");
+        }
+        System.out.println("LAS VALIDACIONES CLAVE_VALIDAR CORRECTAS");
+    }
+
+    public void validarNacimientoDate(Date nacimiento1) throws ErrorServicio {
+        if(nacimiento1==null){
+            throw new ErrorServicio("Debe indicar su fecha de nacimiento");
+        }
+        System.out.println("LA VALIDACIÓN DEL NACIMIENTO Fue CORRECTA");
     }
     
 }

@@ -6,6 +6,7 @@ import com.AMQApp.entidades.Usuario;
 import com.AMQApp.entidades.Voto;
 import com.AMQApp.errores.ErrorServicio;
 import com.AMQApp.repositorios.EncuestaRepositorio;
+import com.AMQApp.repositorios.ResultadosPorcentajesRepositorio;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +24,9 @@ public class EncuestaServicio {
     private EncuestaRepositorio encuestaRepositorio;
     
     @Autowired
+    private ResultadosPorcentajesRepositorio resultadosPorcentajesRepositorio;
+    
+    @Autowired
     private VotoServicio votoServicio;
     
     
@@ -36,28 +40,35 @@ public class EncuestaServicio {
 //  
     
     @Transactional
-    public Encuesta crearEncuesta(String titulo, String[] opciones, Date inicio, Date caducidad, Integer totalVotos, Integer totalMujeres, Integer totalHombres, Integer totalOtros) throws ErrorServicio {
+    public Encuesta crearEncuesta(String titulo, String opcion1, String opcion2) throws ErrorServicio {
        Encuesta e1 = new Encuesta();
-       if (titulo == null || titulo.isEmpty()) {
-            throw new ErrorServicio("Debe ingresar el titulo de la Encuesta");            
-        } else {
+       validar(titulo, opcion1, opcion2);
             e1.setTitulo(titulo);
-            e1.setOpciones(opciones);
+            e1.setOpcion1(opcion1);
+            e1.setOpcion2(opcion2);
+            Date inicio = new Date();
             e1.setInicio(inicio);
+ 
+            Date caducidad = inicio;
+            caducidad.setDate(inicio.getDate() + 1);
+
             e1.setCaducidad(caducidad);
-            e1.setTotalVotos(totalVotos);
-            e1.setTotalMujeres(totalMujeres);
-            e1.setTotalHombres(totalHombres);
-            e1.setTotalOtros(totalOtros);
+
             List<Voto> votos = new ArrayList();
             e1.setVotos(votos);
             ResultadosPorcentajes resultados = new ResultadosPorcentajes();
-            e1.setResultados(resultados);
- 
-            e1.setAlta(true);
+            resultados.setAlta(true);
             
-            validar(titulo, opciones, inicio, caducidad, totalVotos, totalMujeres, totalHombres, totalOtros, votos, resultados);
-        }
+            resultados.setTotalVotos(0);
+            resultados.setTotalHombres(0);
+            resultados.setTotalMujeres(0);
+            resultados.setTotalOtros(0);
+            
+            resultadosPorcentajesRepositorio.save(resultados);
+            
+            e1.setResultados(resultados);
+            e1.setAlta(true);
+       
        encuestaRepositorio.save(e1);
        return e1;
     }
@@ -72,7 +83,6 @@ public class EncuestaServicio {
         }else{
             throw new ErrorServicio("No existe una encuesta con el id indicado");
         }
-        
     }
     
     @Transactional
@@ -160,36 +170,15 @@ public class EncuestaServicio {
     }
     
     
-    public void validar(String titulo, String[] opciones, Date inicio, Date caducidad, Integer totalVotos, Integer totalMujeres, Integer totalHombres, Integer totalOtros, List<Voto> votos,ResultadosPorcentajes resultados) throws ErrorServicio {
+    public void validar(String titulo, String opcion1, String opcion2) throws ErrorServicio {
         if (titulo.isEmpty() || titulo == null) {
             throw new ErrorServicio("No ingresó ningún TITULO");
         }
-        if (opciones.length == 0 || opciones == null) {
-            throw new ErrorServicio("No se ingresaron todas las OPCIONES");
+        if (opcion1.isEmpty() || opcion1 == null) {
+            throw new ErrorServicio("No se ingreso la OPCION 1");
         }
-        if (inicio.toString().isEmpty() || inicio == null) {
-            throw new ErrorServicio("No ingresó ninguna FECHA DE INICIO");
-        }
-        if (caducidad.toString().isEmpty() || caducidad == null) {
-            throw new ErrorServicio("No ingresó ninguna FECHA DE CADUCIDAD");
-        }
-        if (totalVotos.toString().isEmpty()|| totalVotos == null) {
-            throw new ErrorServicio("No llegó el TOTAL DE VOTOS");
-        }
-        if (totalMujeres.toString().isEmpty()|| totalMujeres == null) {
-            throw new ErrorServicio("No llegó el TOTAL DE MUJERES VOTANTES");
-        }
-        if (totalHombres.toString().isEmpty()|| totalHombres == null) {
-            throw new ErrorServicio("No llegó el TOTAL DE HOMBRES VOTANTES");
-        }
-        if (totalOtros.toString().isEmpty()|| totalOtros == null) {
-            throw new ErrorServicio("No llegó el TOTAL DE OTROS VOTANTES");
-        }
-        if (votos.isEmpty()|| votos == null) {
-            throw new ErrorServicio("No se cargó el LIST DE VOTOS");
-        }
-        if (resultados.toString().isEmpty() || resultados == null) {
-            throw new ErrorServicio("No se cargó la CLASE RESULTADOS");
-        }  
+        if (opcion2.isEmpty() || opcion2 == null) {
+            throw new ErrorServicio("No se ingreso la OPCION 2");
+        } 
     }
 }

@@ -22,7 +22,7 @@
         <option th:each="Sexo : ${T(com.attacomsian.runner.domains.constants.Topic).values()}" th:value="${Sexo}" th:text="${Sexo}">Seleccionar</option>
         </select>-->
         <select class="form-control" name="sexo"> 
-                    <option th:each="sex : ${sexos}" th:text="${sex}"></option> 
+                    <option th:each="sex: ${sexos}" th:text="${sex}"></option> 
                 </select>
       </div>  
       <div>
@@ -35,8 +35,8 @@
         <option th:each="Pais : ${T(com.attacomsian.runner.domains.constants.Topic).values()}" th:value="${Pais}" th:text="${Pais}">Seleccionar</option>
         </select>-->
         <select class="form-control" name="pais"> 
-                    <option th:each="pais1 : ${paises}" th:text="${pais1}"></option> 
-                </select>
+                    <option th:each="pais1: ${paises}" th:text="${pais1}"></option> 
+        </select>
       </div>
       <div>
         <label>Fecha de Nacimiento: </label>
@@ -49,7 +49,7 @@
       </div>
       <div>
         <label>Confirmar Clave: </label>
-        <input type="password" th:value="${claveValidar}">
+        <input name= "claveValidar" type="password" th:value="${claveValidar}">
       </div>
 
       <button class="btn btn-primary" type="submit">Guardar</button>

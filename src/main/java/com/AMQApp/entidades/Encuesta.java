@@ -22,15 +22,17 @@ public class Encuesta {
     @Column(nullable = false, unique = true)
     private String titulo;
     @Column(nullable = false)
-    private String [] opciones;
+    private String opcion1;
+    @Column(nullable = false)
+    private String opcion2;
     @Temporal(TemporalType.TIMESTAMP)
     private Date inicio;
     @Temporal(TemporalType.TIMESTAMP)
     private Date caducidad;
-    private Integer totalVotos;
-    private Integer totalMujeres;
-    private Integer totalHombres;
-    private Integer totalOtros;
+//    private Integer totalVotos;
+//    private Integer totalMujeres;
+//    private Integer totalHombres;
+//    private Integer totalOtros;
     
     @OneToMany
     private List<Voto> votos;
@@ -42,15 +44,13 @@ public class Encuesta {
     public Encuesta() {
     }
 
-    public Encuesta(String titulo, String[] opciones, Date inicio, Date caducidad, Integer totalVotos, Integer totalMujeres, Integer totalHombres, Integer totalOtros, List<Voto> votos, ResultadosPorcentajes resultados, Boolean alta) {
+    public Encuesta(String id, String titulo, String opcion1, String opcion2, Date inicio, Date caducidad, List<Voto> votos, ResultadosPorcentajes resultados, Boolean alta) {
+        this.id = id;
         this.titulo = titulo;
-        this.opciones = opciones;
+        this.opcion1 = opcion1;
+        this.opcion2 = opcion2;
         this.inicio = inicio;
         this.caducidad = caducidad;
-        this.totalVotos = totalVotos;
-        this.totalMujeres = totalMujeres;
-        this.totalHombres = totalHombres;
-        this.totalOtros = totalOtros;
         this.votos = votos;
         this.resultados = resultados;
         this.alta = alta;
@@ -72,12 +72,20 @@ public class Encuesta {
         this.titulo = titulo;
     }
 
-    public String[] getOpciones() {
-        return opciones;
+    public String getOpcion1() {
+        return opcion1;
     }
 
-    public void setOpciones(String[] opciones) {
-        this.opciones = opciones;
+    public void setOpcion1(String opcion1) {
+        this.opcion1 = opcion1;
+    }
+
+    public String getOpcion2() {
+        return opcion2;
+    }
+
+    public void setOpcion2(String opcion2) {
+        this.opcion2 = opcion2;
     }
 
     public Date getInicio() {
@@ -94,38 +102,6 @@ public class Encuesta {
 
     public void setCaducidad(Date caducidad) {
         this.caducidad = caducidad;
-    }
-
-    public Integer getTotalVotos() {
-        return totalVotos;
-    }
-
-    public void setTotalVotos(Integer totalVotos) {
-        this.totalVotos = totalVotos;
-    }
-
-    public Integer getTotalMujeres() {
-        return totalMujeres;
-    }
-
-    public void setTotalMujeres(Integer totalMujeres) {
-        this.totalMujeres = totalMujeres;
-    }
-
-    public Integer getTotalHombres() {
-        return totalHombres;
-    }
-
-    public void setTotalHombres(Integer totalHombres) {
-        this.totalHombres = totalHombres;
-    }
-
-    public Integer getTotalOtros() {
-        return totalOtros;
-    }
-
-    public void setTotalOtros(Integer totalOtros) {
-        this.totalOtros = totalOtros;
     }
 
     public List<Voto> getVotos() {
@@ -151,6 +127,6 @@ public class Encuesta {
     public void setAlta(Boolean alta) {
         this.alta = alta;
     }
-    
-    
+
+       
 }
