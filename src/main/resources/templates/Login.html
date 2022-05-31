@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" href=".css">
+<meta charset="utf-8">
+<title>Login</title>
+</head>
+
+<body>
+
+    <h1>Login: </h1>
+
+    <form action="/logincheck" method="POST" enctype="multipart/form-data">
+        <section class="form-floating mb-3">
+        <label>Email: </label>
+        <input class="form-control" type="email" name = "email">
+        </section>
+        
+        <section class="form-floating mb-3">
+        <label>Clave: </label>
+        <input class="form-control" type="password" name = "clave">
+        </section>
+        
+        <section class="form-check mb-3">
+        <input class="form-check-input" id= "inputRememberPassword" type="checkbox" value="true">
+        <label class="form-check-label" for="inputRememberPassword">
+            Recordar la clave</label>
+        </section>
+        
+        <section>
+            <a class="email" href="password">Recupera tu clave</a>  
+            <button class="btn btn-primary" type="submit">Iniciar sesión</button>
+        </section>
+        
+        <section class="text-center py-3">
+            <a class="email" href="registrate">No tienes una cuenta? Crea una!</a> 
+        </section>
+</body>
+
+</html>

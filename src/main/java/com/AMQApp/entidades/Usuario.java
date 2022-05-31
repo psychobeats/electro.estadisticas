@@ -1,11 +1,14 @@
 package com.AMQApp.entidades;
 
 import com.AMQApp.enums.Pais;
+import com.AMQApp.enums.Rol;
 import com.AMQApp.enums.Sexo;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -34,6 +37,8 @@ public class Usuario {
     @Column(nullable = false)
     private String clave;
     private Boolean alta;
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
     
     @OneToMany
     private List<Encuesta> encuestasCreadas;
@@ -41,7 +46,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String id, String alias, Sexo sexo, String email, Pais pais, Date nacimiento, String clave, Boolean alta, List<Encuesta> encuestasCreadas) {
+    public Usuario(String id, String alias, Sexo sexo, String email, Pais pais, Date nacimiento, String clave, Boolean alta, Rol rol, List<Encuesta> encuestasCreadas) {
         this.id = id;
         this.alias = alias;
         this.sexo = sexo;
@@ -50,6 +55,7 @@ public class Usuario {
         this.nacimiento = nacimiento;
         this.clave = clave;
         this.alta = alta;
+        this.rol=rol;
         this.encuestasCreadas = encuestasCreadas;
     }
 
@@ -119,6 +125,17 @@ public class Usuario {
         this.alta = alta;
     }
 
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+    
+    
+    
+
     public List<Encuesta> getEncuestasCreadas() {
         return encuestasCreadas;
     }
@@ -126,6 +143,8 @@ public class Usuario {
     public void setEncuestasCreadas(List<Encuesta> encuestasCreadas) {
         this.encuestasCreadas = encuestasCreadas;
     }
+    
+    
 
     
 }

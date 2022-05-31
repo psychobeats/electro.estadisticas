@@ -3,6 +3,7 @@ package com.AMQApp.servicios;
 import com.AMQApp.entidades.Encuesta;
 import com.AMQApp.entidades.Usuario;
 import com.AMQApp.enums.Pais;
+import com.AMQApp.enums.Rol;
 import com.AMQApp.enums.Sexo;
 import com.AMQApp.errores.ErrorServicio;
 import com.AMQApp.repositorios.UsuarioRepositorio;
@@ -12,13 +13,23 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Service
-public class UsuarioServicio {
+public class UsuarioServicio implements UserDetailsService{
     
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
@@ -40,7 +51,10 @@ public class UsuarioServicio {
         usuario.setNacimiento(nacimiento1);
         usuario.setPais(pais);
         usuario.setSexo(sexo);
-        usuario.setClave(clave);
+        
+        String claveEncriptada = new BCryptPasswordEncoder().encode(clave);
+        usuario.setClave(claveEncriptada);
+        usuario.setRol(Rol.USUARIO);
         List<Encuesta> encuestas = new ArrayList();
         usuario.setEncuestasCreadas(encuestas);
         usuarioRepositorio.save(usuario);
@@ -187,5 +201,26 @@ public class UsuarioServicio {
         }
         System.out.println("LA VALIDACIÓN DEL NACIMIENTO Fue CORRECTA");
     }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Usuario usuario = usuarioRepositorio.buscarPorEmail(email);
+        if(usuario!= null){
+            List<GrantedAuthority> permisos = new ArrayList();
+            GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_"+usuario.getRol());
+            permisos.add(p1);
+            
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            HttpSession session = attr.getRequest().getSession(true);
+            session.setAttribute("usuariosession", usuario);
+            
+            User user = new User(usuario.getEmail(), usuario.getClave(), permisos);
+            return user;
+        }else{
+            return null;
+        }
+    }
+    
+    
     
 }
