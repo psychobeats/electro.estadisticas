@@ -24,7 +24,7 @@ public class EncuestaServicio {
     private EncuestaRepositorio encuestaRepositorio;
     
     @Autowired
-    private ResultadosPorcentajesRepositorio resultadosPorcentajesRepositorio;
+    private ResultadosPorcentajesServicio resultadosPorcentajesServicio;
     
     @Autowired
     private VotoServicio votoServicio;
@@ -56,15 +56,7 @@ public class EncuestaServicio {
 
             List<Voto> votos = new ArrayList();
             e1.setVotos(votos);
-            ResultadosPorcentajes resultados = new ResultadosPorcentajes();
-            resultados.setAlta(true);
-            
-            resultados.setTotalVotos(0);
-            resultados.setTotalHombres(0);
-            resultados.setTotalMujeres(0);
-            resultados.setTotalOtros(0);
-            
-            resultadosPorcentajesRepositorio.save(resultados);
+            ResultadosPorcentajes resultados = resultadosPorcentajesServicio.crear();
             
             e1.setResultados(resultados);
             e1.setAlta(true);
