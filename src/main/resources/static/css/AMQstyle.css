@@ -1,0 +1,16 @@
+
+
+@font-face {
+    font-family: 'fuente1';
+    src: url('/fonts/Croogla4F.ttf');
+
+}
+@font-face {
+    font-family: 'fuente2';
+    src: url('/fonts/Retrofunk.otf');
+
+}
+
+h1 {
+    color: red;
+}
