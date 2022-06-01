@@ -140,6 +140,7 @@ public class UsuarioServicio implements UserDetailsService{
     }
     
     public Usuario buscarPorEmail(String email) throws ErrorServicio{
+        System.out.println(email);
         if(usuarioRepositorio.buscarPorEmail(email)!=null){
             return usuarioRepositorio.buscarPorEmail(email);
         }else{
