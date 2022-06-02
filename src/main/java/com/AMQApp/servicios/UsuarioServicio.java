@@ -37,7 +37,7 @@ public class UsuarioServicio implements UserDetailsService{
     @Autowired
     private EncuestaServicio encuestaServicio;
     
-    @Transactional(propagation = Propagation.NESTED)
+    @Transactional(propagation = Propagation.REQUIRED)
     public void crear(String alias, Sexo sexo, String email, Pais pais, String nacimiento, String clave, String claveValidar) throws ErrorServicio, ParseException{
         System.out.println(nacimiento);
         validar(alias, email, nacimiento, clave, claveValidar);
@@ -207,7 +207,7 @@ public class UsuarioServicio implements UserDetailsService{
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Usuario usuario = usuarioRepositorio.buscarPorEmail(email);
         if(usuario!= null){
-            List<GrantedAuthority> permisos = new ArrayList();
+            List<GrantedAuthority> permisos = new ArrayList<>();
             GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_"+usuario.getRol());
             permisos.add(p1);
             

@@ -4,7 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">>
     <head>
         <title>\\LOGIN EXITOSO//</title>
         <meta charset="UTF-8">
@@ -12,6 +12,12 @@ and open the template in the editor.
     </head>
     <body>
         <div>//LOGIN EXITOSO\\</div>
+        <h2 th:if="${session.usuariosession != null}" th:text="${'¡BIENVENIDO: ' + session.usuariosession.alias + '!'}"></h2>
+        
+        <a class="btn btn-link" th:href="@{/encuesta/crearEnc(id=${session.usuariosession.id})}"> Crear Encuesta</a>
+        
+        
+        <br><br>
         <form action="/logout" method="post"><button type="submit" class="btn btn-link navbar-btn navbar-link">Cerrar Sesión</button></form>
     </body>
 </html>
