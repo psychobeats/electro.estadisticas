@@ -1,10 +1,14 @@
 package com.AMQApp.controladores;
 
+import com.AMQApp.entidades.Encuesta;
 import com.AMQApp.entidades.Usuario;
+import com.AMQApp.entidades.Voto;
 import com.AMQApp.errores.ErrorServicio;
+import com.AMQApp.repositorios.EncuestaRepositorio;
 import com.AMQApp.servicios.EncuestaServicio;
 import com.AMQApp.servicios.UsuarioServicio;
 import java.text.ParseException;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,8 +25,11 @@ public class EncuestaControlador {
     private EncuestaServicio encuestaServicio;
     
     @Autowired
-    private UsuarioServicio usuarioServicio;
+    private EncuestaRepositorio encuestaRepositorio;
     
+    @Autowired
+    private UsuarioServicio usuarioServicio;
+
     
     @GetMapping("/crearEnc")
     public String crearEnc(ModelMap modelo,@RequestParam String id) throws ErrorServicio{
@@ -52,4 +59,37 @@ public class EncuestaControlador {
         }
         return "index.html";
     }
+    
+     
+    @GetMapping("/listar")
+    public String listar(ModelMap modelo) throws ErrorServicio {
+         List<Encuesta> encuestas = encuestaServicio.listaDeEncuestas();
+         modelo.put("encuestas", encuestas);
+        return "ListaEncuestas.html";
+    }
+    
+    @GetMapping("/votacion")
+    public String votacion(ModelMap modelo, @RequestParam(required=false) String idEncuesta){
+        
+        Encuesta encuesta = encuestaRepositorio.getById(idEncuesta);
+        modelo.addAttribute("encuesta", encuesta);
+        return "queryVotar.html";
+    }
+    
+    @GetMapping("/votar")
+    public String votar(ModelMap modelo, @RequestParam String idEncuesta, @RequestParam String idUsuario, @RequestParam String opcion){
+        try{
+            Usuario usuario = usuarioServicio.buscarPorId(idUsuario);
+            encuestaServicio.votarEncuesta(idEncuesta, usuario, opcion);
+            
+        }catch(ErrorServicio ex){
+            
+            //modelo.put("opcion", opcion);
+            modelo.put("error", ex.getMessage());
+            return "ListaEncuestas.html";
+        }
+        //modelo.put("mensaje", "Se ha votado la encuesta correctamente");
+        return "redirect:/encuesta/listar";
+    }
+    
 }

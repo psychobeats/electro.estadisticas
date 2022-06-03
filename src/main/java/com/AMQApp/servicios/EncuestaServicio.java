@@ -7,6 +7,7 @@ import com.AMQApp.entidades.Voto;
 import com.AMQApp.errores.ErrorServicio;
 import com.AMQApp.repositorios.EncuestaRepositorio;
 import com.AMQApp.repositorios.ResultadosPorcentajesRepositorio;
+import com.AMQApp.repositorios.VotoRepositorio;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,6 +29,9 @@ public class EncuestaServicio {
     
     @Autowired
     private VotoServicio votoServicio;
+    
+    @Autowired
+    private VotoRepositorio votoRepositorio;
     
     
     
@@ -72,6 +76,8 @@ public class EncuestaServicio {
             Voto voto = votoServicio.votar(usuario, opcion);
             encuesta.getVotos().add(voto);
             encuestaRepositorio.save(encuesta);
+            votoRepositorio.save(voto);
+            
         }else{
             throw new ErrorServicio("No existe una encuesta con el id indicado");
         }

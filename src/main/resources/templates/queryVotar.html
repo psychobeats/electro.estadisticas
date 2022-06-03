@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" >
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <title>QUERY A VOTAR</title>
+</head>
+
+<body>
+  
+  <input type="hidden" name="idUsuario" th:value="${session.usuariosession.id}">
+  <br>
+          <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
+  <h1 th:text="${encuesta.titulo}">Titulo</h1>
+  <a class="btn btn-success" name = "opcion1" th:href="@{/encuesta/votar(idEncuesta=${encuesta.id},idUsuario=${session.usuariosession.id},opcion=${encuesta.opcion1})}" th:text="${encuesta.opcion1}"></a>
+  <a class="btn btn-success" name = "opcion2" th:href="@{/encuesta/votar/(idEncuesta=${encuesta.id},idUsuario=${session.usuariosession.id},opcion=${encuesta.opcion2})}" th:text="${encuesta.opcion2}"></a>
+  <!--<button type="radio" name = "opcion1" th:value="${encuesta.opcion1}"> Opción 1 </button> 
+  <input type="radio" name = "opcion2" th:value="${encuesta.opcion2}"> Opción 2-->
+  
+  <br>
+  <!--<button type="button" class="btn btn-link">A MOVER LA QUERY!</button>-->
+<br>
+  
+</body>
+
+</html>
