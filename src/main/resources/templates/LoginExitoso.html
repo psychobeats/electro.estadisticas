@@ -12,12 +12,18 @@ and open the template in the editor.
     </head>
     <body>
         <div>//LOGIN EXITOSO\\</div>
+        
+        
         <h2 th:if="${session.usuariosession != null}" th:text="${'¡BIENVENIDO: ' + session.usuariosession.alias + '!'}"></h2>
         
         <a class="btn btn-link" th:href="@{/encuesta/crearEnc(id=${session.usuariosession.id})}"> Crear Encuesta</a>
         
         
         <br><br>
+        <form action="/usuario/edicion">
+            <input type="hidden" name="id" th:value="${session.usuariosession.id}">
+            <button type="submit" class="btn btn-link navbar-btn navbar-link">Editar Perfil</button>
+        </form>        
         <form action="/logout" method="post"><button type="submit" class="btn btn-link navbar-btn navbar-link">Cerrar Sesión</button></form>
     </body>
 </html>

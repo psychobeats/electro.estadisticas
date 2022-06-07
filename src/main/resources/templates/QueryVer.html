@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" >
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <title>QUERY A VOTAR</title>
+</head>
+
+<body>
+    
+    <table>
+        <tr>
+        <th>
+            Título de la Query
+        </th>
+        <th th:text="${encuesta.opcion1}">
+            Opción1
+        </th>
+        <th th:text="${encuesta.opcion2}">
+            Opción2
+        </th>    
+        <th>
+            PorcentajeMujeres
+        </th>
+        <th>
+            PorcentajeHombres
+        </th>
+        <th>
+            PorcentajeOtros
+        </th>
+        </tr>
+        
+        <tr>
+        <th th:text="${encuesta.titulo}">
+            Título de la Query
+        </th>
+        <th th:text="${resultados.porcentajeOpcion1}">
+            Opción1
+        </th>
+        <th th:text="${resultados.porcentajeOpcion2}">
+            Opción2
+        </th>    
+        <th th:text="${resultados.porcentajeMujeres}">
+            PorcentajeMujeres
+        </th>
+        <th th:text="${resultados.porcentajeHombres}">
+            PorcentajeHombres
+        </th>
+        <th th:text="${resultados.porcentajeOtros}">
+            PorcentajeOtros
+        </th>
+        </tr>
+            
+    </table>
+  
+  
+</body>
+
+</html>

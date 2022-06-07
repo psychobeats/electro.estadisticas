@@ -34,7 +34,8 @@
             <th scope="col">Título de la encuesta</th>
             <th scope="col">Opción 1</th>
             <th scope="col">Opción 2</th>
-            <th scope="col">Votar</th>
+            <th th:if="${session.usuariosession.id != null}" scope="col">Votar</th>
+            <th scope="col">Mirá la Query</th>
         </tr>
     </thead>
     <tbody>
@@ -50,8 +51,14 @@
             <td>
                 <label th:text="${encuesta.opcion2}"></label>  
             </td>
+            
+
+                <td th:if="${session.usuariosession.id != null}">
+                    <a class="btn btn-info" role="button" target="_blank" th:href="@{/encuesta/votacion(idEncuesta=${encuesta.id})}" style="color: white;">Votar</a>
+                </td>
+
             <td>
-                <a class="btn btn-info" role="button" target="_blank" th:href="@{/encuesta/votacion(idEncuesta=${encuesta.id})}" style="color: white;">Votar</a>
+                <a class="btn btn-info" role="button" target="_blank" th:href="@{/resultados/visualizacion(idEncuesta=${encuesta.id})}" style="color: white;">Ver Query</a>
             </td>
         </tr>
         
