@@ -23,7 +23,7 @@ public class ResultadosPorcentajesControlador {
     private ResultadosPorcentajesServicio resultadosPorcentajesServicio;
     
     @GetMapping("/visualizacion")
-    public String votacion(ModelMap modelo, @RequestParam(required=false) String idEncuesta) throws ErrorServicio{
+    public String visualizacion(ModelMap modelo, @RequestParam(required=false) String idEncuesta) throws ErrorServicio{
         resultadosPorcentajesServicio.calcularPorcentajes(idEncuesta);
         Encuesta encuesta = encuestaRepositorio.getById(idEncuesta);
         
