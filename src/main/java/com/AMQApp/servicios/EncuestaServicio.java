@@ -73,10 +73,12 @@ public class EncuestaServicio {
         Optional<Encuesta> respuesta = encuestaRepositorio.findById(idEncuesta);
         if(respuesta.isPresent()){
             Encuesta encuesta = respuesta.get();
+            
             Voto voto = votoServicio.votar(usuario, opcion);
             votoRepositorio.save(voto);
             encuesta.getVotos().add(voto);
             encuestaRepositorio.save(encuesta);
+            
         }else{
             throw new ErrorServicio("No existe una encuesta con el id indicado");
         }

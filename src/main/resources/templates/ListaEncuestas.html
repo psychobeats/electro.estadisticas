@@ -39,8 +39,11 @@
     </thead>
     <tbody>
         
+        
         <p th:if="${error != null}" th:text="${error}" style="color:red;"></p> 
         <tr th:each="encuesta : ${encuestas}">
+            
+             <input type="hidden" name="usuarioId" th:value="${session.usuariosession.id}">
             <td scope="row" th:text="${encuesta.titulo}">   
             </td>
             <td>
@@ -51,7 +54,7 @@
                 <label th:text="${encuesta.opcion2}"></label>  
             </td>
             <td>
-                <a class="btn btn-info" role="button" target="_blank" th:href="@{/encuesta/votacion(idEncuesta=${encuesta.id})}" style="color: white;">Votar</a>
+                <a class="btn btn-info" role="button" target="_blank" th:href="@{/encuesta/votacion(idEncuesta=${encuesta.id}, idUsuario=${session.usuariosession.id})}" style="color: white;">Votar</a>
             </td>
         </tr>
         

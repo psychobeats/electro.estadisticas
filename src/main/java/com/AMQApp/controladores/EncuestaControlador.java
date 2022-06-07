@@ -69,17 +69,31 @@ public class EncuestaControlador {
     }
     
     @GetMapping("/votacion")
-    public String votacion(ModelMap modelo, @RequestParam(required=false) String idEncuesta){
-        
+    public String votacion(ModelMap modelo, @RequestParam(required=false) String idEncuesta, @RequestParam(required=false) String idUsuario) throws ErrorServicio{
         Encuesta encuesta = encuestaRepositorio.getById(idEncuesta);
-        modelo.addAttribute("encuesta", encuesta);
-        return "queryVotar.html";
+        Usuario usuario = usuarioServicio.buscarPorId(idUsuario);
+        Boolean validarUsuario = false;
+            for(Voto aux : encuesta.getVotos()){
+                if(aux.getUsuario()==usuario){
+                    validarUsuario = true;
+                }
+            }
+            if(validarUsuario){
+                modelo.put("error", "Ya moviste esta Query!");
+                List<Encuesta> encuestas = encuestaServicio.listaDeEncuestas();
+                modelo.put("encuestas", encuestas);
+                return "ListaEncuestas.html";
+            }else{
+                modelo.addAttribute("encuesta", encuesta);
+                return "queryVotar.html";
+            }      
     }
     
     @GetMapping("/votar")
     public String votar(ModelMap modelo, @RequestParam String idEncuesta, @RequestParam String idUsuario, @RequestParam String opcion){
         try{
             Usuario usuario = usuarioServicio.buscarPorId(idUsuario);
+            
             encuestaServicio.votarEncuesta(idEncuesta, usuario, opcion);
             
         }catch(ErrorServicio ex){
