@@ -101,7 +101,7 @@ public class ResultadosPorcentajesServicio {
         if (resultado.isPresent()) {
             Double porcentajeMujeres;
             Encuesta e1 = resultado.get();
-            porcentajeMujeres = (double) ((e1.getResultados().getTotalHombres() * 100) / e1.getResultados().getTotalVotos());
+            porcentajeMujeres = (double) ((e1.getResultados().getTotalMujeres()* 100) / e1.getResultados().getTotalVotos());
             return porcentajeMujeres;
         }else {
             throw new ErrorServicio("No se encontró una encuesta con ese ID");
@@ -170,8 +170,9 @@ public class ResultadosPorcentajesServicio {
             e1.setResultados(rp);
             resultadosPorcentajesRepositorio.save(rp);
             encuestaRepositorio.save(e1);
+        } else {
+            throw new ErrorServicio("");
         }
-        
     }
         
 }

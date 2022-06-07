@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" >
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <title>EDITAR USUARIO</title>
+</head>
+
+<body>
+  
+   <h1 th:text="${session.usuariosession.alias + ': Edita tu perfil'}">Edita tu perfil </h1>
+   
+   <input type="hidden" name="idUsuario" th:value="${session.usuariosession.id}">
+
+    <form action="/usuario/registrar" method="POST" enctype="multipart/form-data">
+      <div>
+        <label>Alias: </label>
+        <input type="text" th:placeholder="${usuario.alias}" name = "alias" th:value="${alias}">
+      </div>
+      <div>
+        <label>Sexo: </label>
+        <!--<select class="form-control" th:field="*{Sexo}">
+        <option th:each="Sexo : ${T(com.attacomsian.runner.domains.constants.Topic).values()}" th:value="${Sexo}" th:text="${Sexo}">Seleccionar</option>
+        </select>-->
+        <select class="form-control" name="sexo"> 
+                    <option th:each="sex: ${sexos}" th:text="${sex}"></option> 
+                </select>
+      </div>  
+      <div>
+        <label>E-mail: </label>
+        <input type="email" th:placeholder="${usuario.email}" name = "email" th:value="${email}">
+      </div>
+      <div>
+        <label>País: </label>
+        <!--<select class="form-control" th:field="*{Pais}">
+        <option th:each="Pais : ${T(com.attacomsian.runner.domains.constants.Topic).values()}" th:value="${Pais}" th:text="${Pais}">Seleccionar</option>
+        </select>-->
+        <select class="form-control" name="pais"> 
+                    <option th:each="pais1: ${paises}" th:text="${pais1}"></option> 
+        </select>
+      </div>
+      <div>
+        <label>Fecha de Nacimiento: </label>
+        <input type="date" name = "nacimiento" th:value="${nacimiento}">
+      </div> 
+      <div>
+        <label>Clave: </label>
+        <input type="password" name = "clave" th:value="${clave}">
+        <div class="form-text">Condiciones para la clave.</div>
+      </div>
+      <div>
+        <label>Confirmar Clave: </label>
+        <input name= "claveValidar" type="password" th:value="${claveValidar}">
+      </div>
+
+      <button class="btn btn-primary" type="submit">Guardar</button>
+  
+</body>
+
+</html>

@@ -1,5 +1,6 @@
 package com.AMQApp.controladores;
 
+import com.AMQApp.entidades.Usuario;
 import com.AMQApp.enums.Pais;
 import com.AMQApp.enums.Sexo;
 import com.AMQApp.errores.ErrorServicio;
@@ -33,6 +34,25 @@ public class UsuarioControlador {
     public String registrar(@RequestParam(required=false) String alias,@RequestParam Sexo sexo,@RequestParam(required=false) String email,@RequestParam Pais pais,@RequestParam(required=false) String nacimiento,@RequestParam(required=false) String clave,@RequestParam(required=false) String claveValidar) throws ParseException{
         try{
             usuarioServicio.crear(alias, sexo, email, pais, nacimiento, clave, claveValidar);
+        }catch(ErrorServicio e){
+            e.getMessage();
+        }
+        return "index.html";
+    }
+    
+    @GetMapping("/edicion")
+    public String edicion(ModelMap modelo, String id) throws ErrorServicio{
+        Usuario usuario = usuarioServicio.buscarPorId(id);
+        modelo.addAttribute("usuario", usuario);
+        modelo.addAttribute("sexos", Sexo.values());
+        modelo.addAttribute("paises", Pais.values());
+        return "EditarUsuario.html";
+    }
+    
+    @PostMapping("/editar")
+    public String editar(@RequestParam(required=false) String idUsuario, @RequestParam(required=false) String alias,@RequestParam Sexo sexo,@RequestParam(required=false) String email,@RequestParam Pais pais,@RequestParam(required=false) String nacimiento,@RequestParam(required=false) String clave,@RequestParam(required=false) String claveValidar) throws ParseException{
+        try{
+            usuarioServicio.modificar(idUsuario, alias, sexo, email, pais, nacimiento, clave, claveValidar);
         }catch(ErrorServicio e){
             e.getMessage();
         }
