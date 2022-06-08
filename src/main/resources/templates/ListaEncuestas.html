@@ -34,7 +34,7 @@
             <th scope="col">Título de la encuesta</th>
             <th scope="col">Opción 1</th>
             <th scope="col">Opción 2</th>
-            <th scope="col">Votar</th>
+            <th th:if="${session.usuariosession != null}" scope="col">Votar</th>
         </tr>
     </thead>
     <tbody>
@@ -42,8 +42,7 @@
         
         <p th:if="${error != null}" th:text="${error}" style="color:red;"></p> 
         <tr th:each="encuesta: ${encuestas}">
-            
-            <input type="hidden" name="usuarioId" th:value="${session.usuariosession.id}">
+         
             <td scope="row" th:text="${encuesta.titulo}">   
             </td>
             <td>
@@ -53,7 +52,8 @@
             <td>
                 <label th:text="${encuesta.opcion2}"></label>  
             </td>
-            <td>
+            <td th:if="${session.usuariosession != null}">
+                <input type="hidden" name="usuarioId" th:value="${session.usuariosession.id}">
                 <a class="btn btn-info" role="button" th:href="@{/encuesta/votacion(idEncuesta=${encuesta.id}, idUsuario=${session.usuariosession.id})}" style="color: white;">Votar</a>
             </td>
             <td>
