@@ -18,9 +18,9 @@
   
    <h1 th:text="${session.usuariosession.alias + ': Edita tu perfil'}">Edita tu perfil </h1>
    
-   <input type="hidden" name="idUsuario" th:value="${session.usuariosession.id}">
 
-    <form action="/usuario/registrar" method="POST" enctype="multipart/form-data">
+    <form action="/usuario/editar" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="idUsuario" th:value="${session.usuariosession.id}">
       <div>
         <label>Alias: </label>
         <input type="text" th:placeholder="${usuario.alias}" name = "alias" th:value="${alias}">
@@ -34,10 +34,6 @@
                     <option th:each="sex: ${sexos}" th:text="${sex}"></option> 
                 </select>
       </div>  
-      <div>
-        <label>E-mail: </label>
-        <input type="email" th:placeholder="${usuario.email}" name = "email" th:value="${email}">
-      </div>
       <div>
         <label>País: </label>
         <!--<select class="form-control" th:field="*{Pais}">

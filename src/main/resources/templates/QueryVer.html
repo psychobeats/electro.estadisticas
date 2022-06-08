@@ -15,8 +15,8 @@
 </head>
 
 <body>
-    
-    <table>
+    <p th:if="${mensaje != null}" th:text="${mensaje}" style="color:red;"></p>
+    <table th:if="${mensaje == null}">
         <tr>
         <th>
             Título de la Query

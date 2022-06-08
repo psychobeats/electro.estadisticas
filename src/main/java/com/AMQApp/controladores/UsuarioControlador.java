@@ -52,7 +52,7 @@ public class UsuarioControlador {
     @PostMapping("/editar")
     public String editar(@RequestParam(required=false) String idUsuario, @RequestParam(required=false) String alias,@RequestParam Sexo sexo,@RequestParam(required=false) String email,@RequestParam Pais pais,@RequestParam(required=false) String nacimiento,@RequestParam(required=false) String clave,@RequestParam(required=false) String claveValidar) throws ParseException{
         try{
-            usuarioServicio.modificar(idUsuario, alias, sexo, email, pais, nacimiento, clave, claveValidar);
+            usuarioServicio.modificar(idUsuario, alias, sexo, pais, nacimiento, clave, claveValidar);
         }catch(ErrorServicio e){
             e.getMessage();
         }

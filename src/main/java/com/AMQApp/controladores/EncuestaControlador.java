@@ -62,9 +62,9 @@ public class EncuestaControlador {
     
      
     @GetMapping("/listar")
-    public String listar(ModelMap modelo) throws ErrorServicio {
-         List<Encuesta> encuestas = encuestaServicio.listaDeEncuestas();
-         modelo.put("encuestas", encuestas);
+    public String listar(ModelMap modelo, @RequestParam(required=false) String idUsuario) throws ErrorServicio {
+        List<Encuesta> encuestas = encuestaServicio.listaDeEncuestas();
+        modelo.put("encuestas", encuestas);
         return "ListaEncuestas.html";
     }
     
@@ -73,6 +73,18 @@ public class EncuestaControlador {
         Encuesta encuesta = encuestaRepositorio.getById(idEncuesta);
         Usuario usuario = usuarioServicio.buscarPorId(idUsuario);
         Boolean validarUsuario = false;
+        Boolean validarEncuesta = false;
+        
+        
+        
+        for (Encuesta auxEncuesta: usuario.getEncuestasCreadas()) {
+            if (encuesta.getId() == auxEncuesta.getId()) {
+                validarEncuesta = true;
+            }
+        }
+        
+        
+        
             for(Voto aux : encuesta.getVotos()){
                 if(aux.getUsuario()==usuario){
                     validarUsuario = true;
@@ -83,7 +95,12 @@ public class EncuestaControlador {
                 List<Encuesta> encuestas = encuestaServicio.listaDeEncuestas();
                 modelo.put("encuestas", encuestas);
                 return "ListaEncuestas.html";
-            }else{
+            }else if (validarEncuesta) {
+                modelo.put("error", "No podés votar tu propia encuesta >:(");
+                List<Encuesta> encuestas = encuestaServicio.listaDeEncuestas();
+                modelo.put("encuestas", encuestas);
+                return "ListaEncuestas.html";
+            } else {
                 modelo.addAttribute("encuesta", encuesta);
                 return "queryVotar.html";
             }      

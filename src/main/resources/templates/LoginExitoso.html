@@ -25,5 +25,9 @@ and open the template in the editor.
             <button type="submit" class="btn btn-link navbar-btn navbar-link">Editar Perfil</button>
         </form>        
         <form action="/logout" method="post"><button type="submit" class="btn btn-link navbar-btn navbar-link">Cerrar Sesión</button></form>
+        <form action="/encuesta/listar" >
+            <input type="hidden" name="idUsuario" th:value="${session.usuariosession.id}">
+            <button type="submit" class="btn btn-link navbar-btn navbar-link">Ver Encuestas</button>
+        </form>
     </body>
 </html>

@@ -24,14 +24,17 @@ public class ResultadosPorcentajesControlador {
     
     @GetMapping("/visualizacion")
     public String visualizacion(ModelMap modelo, @RequestParam(required=false) String idEncuesta) throws ErrorServicio{
-        resultadosPorcentajesServicio.calcularPorcentajes(idEncuesta);
         Encuesta encuesta = encuestaRepositorio.getById(idEncuesta);
         
-        ResultadosPorcentajes resultados = encuesta.getResultados();
-        
-        modelo.addAttribute("resultados" , resultados);
-        
-        modelo.addAttribute("encuesta", encuesta);
-        return "QueryVer.html";
+        if (encuesta.getVotos() == null || encuesta.getVotos().size() == 0) {
+            modelo.put("mensaje", "Todavía no movieron esta Query :(");
+            return "QueryVer.html";
+        } else {
+            resultadosPorcentajesServicio.calcularPorcentajes(idEncuesta);
+            ResultadosPorcentajes resultados = encuesta.getResultados();
+            modelo.addAttribute("resultados" , resultados);
+            modelo.addAttribute("encuesta", encuesta);
+            return "QueryVer.html";
+        }        
     }
 }
