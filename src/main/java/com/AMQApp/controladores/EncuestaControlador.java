@@ -51,11 +51,15 @@ public class EncuestaControlador {
     
     
     @PostMapping("/crear")
-    public String crear(@RequestParam(required=false) String usuarioId, @RequestParam(required=false) String titulo, @RequestParam(required=false) String opcion1, @RequestParam(required=false) String opcion2) throws ParseException, ErrorServicio{
+    public String crear(ModelMap modelo, @RequestParam(required=false) String usuarioId, @RequestParam(required=false) String titulo, @RequestParam(required=false) String opcion1, @RequestParam(required=false) String opcion2) throws ParseException, ErrorServicio{
         try{
             usuarioServicio.crearEncuesta(usuarioId, titulo, opcion1, opcion2);
         }catch(ErrorServicio e){
-            e.getMessage();
+            modelo.put("titulo", titulo);
+            modelo.put("opcion1", opcion1);
+            modelo.put("opcion2", opcion2);
+            modelo.put("error", e.getMessage());
+            return "encuesta.html";
         }
         return "redirect:/loginExitoso";
     }
