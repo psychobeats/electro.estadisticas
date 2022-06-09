@@ -1,5 +1,6 @@
 package com.AMQApp.controladores;
 
+import com.AMQApp.entidades.Encuesta;
 import com.AMQApp.entidades.Usuario;
 import com.AMQApp.enums.Pais;
 import com.AMQApp.enums.Sexo;
@@ -68,5 +69,19 @@ public class UsuarioControlador {
         }
         return "index.html";
     }
+    
+    @GetMapping("/misQuerys")
+    public String misQuerys(ModelMap modelo, @RequestParam(required=false) String idUsuario) throws ErrorServicio {
+        List<Encuesta> encuestas = usuarioServicio.listaQuerysUsuario(idUsuario);
+        if (encuestas.size() > 0) {
+            modelo.put("encuestas", encuestas);
+        } else {
+            modelo.put("error", "Aún no creaste ninguna Query :S");
+        }
+        return "ListaEncuestas.html";
+    }
+    
+    
+    
     
 }
