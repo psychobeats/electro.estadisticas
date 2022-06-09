@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,41 +13,62 @@
 </head>
 
 <body>
-
-<div th:replace="perfil :: navBarInicio"></div>
-
-<h1>Crear nueva Query: </h1>
     
-<form>
+    <nav class="nav">
+    <a class="navbar-brand" id="nav-logo"  href="/loginExitoso">
+         <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
+       </a>
+     
+     <a class="nav-link"  href="#">Mi cuenta</a>
+     <a class="nav-link" href="#">Mis Query's</a>
+     <a class="nav-link" href="#">Preguntas Frecuentes</a>
+     <a class="nav-link" href="/logout">Cerrar Sesión</a>
+ </nav> 
+    
+<!--
+<div th:replace="perfil :: navBarInicio"></div>
+-->
+<h1 id="hh1">Crear nueva Query: </h1>
+    
+<form action="/encuesta/crear" method="POST" enctype="multipart/form-data">
+    
+    <!--SE AGREGA EL ACTION="..." DENTRO DE ETIQUETA FORM, PARA QUE EL BOTON LLAME AL CONTROLADOR-->
+    
+    <input type="hidden" name="usuarioId" th:value="${session.usuariosession.id}">
     <div>
-      <input type="text" th:value="${alias}" placeholder="Acá ingresá la pregunta">
+      <input type="text" name = "titulo" th:value="${titulo}" placeholder="Acá ingresá la pregunta">
     </div>
     <div>
       <label>Opción 1: </label>
-      <input type="text" th:value="${opcion1}">
+      <input type="text"  name = "opcion1" th:value="${opcion1}">
     </div>  
     <div>
         <label>Opción 2: </label>
-        <input type="text" th:value="${opcion2}">
+        <input type="text" name = "opcion2" th:value="${opcion2}">
     </div> 
     <div>        
-        <div class="form-text">Te gustaría agregar una tercer opción?</div>        
+        <div class="form-text">Te gustaría agregar una tercer opción?</div>
+
+        <!--
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="option1"> <!--REVISAR ACÁ, PONER UN TRUE SI ACTIVAN EL CHECK-->
-            <label class="form-check-label">Sí</label> 
+          <!--  <label class="form-check-label">Sí</label> 
             <!--Si el check está activado, se da de alta a un "altaOpcion3"-->
-        </div>
+       <!-- </div>
      <!-- PREGUNTAR CON TIMLEAF SI ESTA DE ALTA EL CHEK, SE APARECE ESTO, SINO NO! -->
-        <label>Opción 3: </label>        
-        <input th:if="${Encuesta.altaOpcion3}==true" type="text" th:value="${opcion3}"></a></td>        
+     <!--   <label>Opción 3: </label>        
+        <input th:if="${Encuesta.altaOpcion3}==true" type="text" th:value="${opcion3}"></a></td>
+     -->
     </div> 
+        
+    <!--
     <div>
         <div class="form-text">Le agregamos una fecha límite a tu Query?</div>
         <input type="date" th:value="${fechaLimite}"> <!--Ver si hay que agregar a la entidad un atributo "fechaLimite"-->
-    </div>
+    <!--</div>
+    -->
     
-    
-    <button class="btn btn-primary" type="submit">Crear Query</button>
+    <button class="btn btn-primary" id="btnIndex" type="submit">Crear Query</button>
 </form>
 
 <div th:replace="logIn :: footer"></div>

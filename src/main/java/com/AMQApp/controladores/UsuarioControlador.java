@@ -27,7 +27,7 @@ public class UsuarioControlador {
     public String registro(ModelMap modelo){
         modelo.addAttribute("sexos", Sexo.values());
         modelo.addAttribute("paises", Pais.values());
-        return "RegistroUsuario.html";
+        return "formUsuario.html";
     }
     
     @PostMapping("/registrar")
@@ -37,7 +37,7 @@ public class UsuarioControlador {
         }catch(ErrorServicio e){
             e.getMessage();
         }
-        return "index.html";
+        return "logIn.html";
     }
     
     @GetMapping("/edicion")

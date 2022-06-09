@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"></html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <title> LogIn </title>
+</head>
+
+<body>
+    <div th:fragment="navBarPublico">  
+     
+        <nav class="nav">
+           <a class="navbar-brand" id="nav-logo"  href="/">
+                <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
+              </a>
+            
+            <a class="nav-link"  href="/usuario/registro">Registro</a>
+            <a class="nav-link" href="#">Log In</a>
+            <a class="nav-link" href="#">Preguntas Frecuentes</a>
+        
+        </nav>
+        </div>
+
+<div>
+    <h1 id="hh1"> Ingresar: </h1>
+    <form action="/logincheck" method="POST" enctype="multipart/form-data">        
+    <div>
+        <label id="label-usuario">E-mail: </label>
+        <input class="form-control" id="input-usuario" type="email" name="email">
+    </div>
+    <div>
+       <label id="label-usuario">Clave: </label>
+        <input id="input-usuario" type="password" name = "clave">  
+        <div class="form-text">Condiciones para la clave.</div>
+    </div>         
+<button class="btn btn-primary" type="submit" id="btn-usuario" >Ingresar</button>  
+</form>
+    <br><br>
+    
+    <div class="form-text">¿No tenés cuenta? ¡Registrate para MOVER LA QUERY!</div>
+    <br>
+    <form action="/usuario/registro">
+        <button class="btn btn-primary" type="submit" id="btn-usuario" >Registrarse</button>
+    </form>
+    
+</div>
+
+     <!--SE ELIMINÓ EL HREF DEL BOTÓN INGRESAR, YA QUE LO QUE IMPORTA ES EL FORM ACTION
+         ADEMÁS, SE CAMBIARON LOS "TH:VALUES" POR "NAME" PARA CLAVE E EMAIL-->
+
+<div th:fragment="footer">
+    <footer class="pie-pagina">
+      <div class="grupo-1">
+        <div class="box">
+          <figure>
+            <a>
+              <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160"
+                class="imagen-footer">
+            </a>
+          </figure>
+          <br>
+          <div class="grupo-2">
+            <a> &copy;2022 A MOVER LA QUERY!</a>
+            <br>
+            <a>Todos los Derechos Reservados</a>
+  
+          </div>
+        </div>
+    </footer>
+  </div>
+
+</body>
+</html> 

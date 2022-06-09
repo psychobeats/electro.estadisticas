@@ -37,7 +37,7 @@ public class EncuestaControlador {
         modelo.addAttribute("usuario", usuario);
         
         
-        return "CrearEncuesta.html";
+        return "encuesta.html";
     }
     
 //    @GetMapping("/modificar")
@@ -57,7 +57,7 @@ public class EncuestaControlador {
         }catch(ErrorServicio e){
             e.getMessage();
         }
-        return "index.html";
+        return "redirect:/loginExitoso";
     }
     
      

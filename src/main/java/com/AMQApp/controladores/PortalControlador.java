@@ -30,7 +30,7 @@ public class PortalControlador {
         if (logout != null) {
             modelo.put("logout", "Saliste exitosamente. Dejaste de mover tu Query :(");
         }
-        return "Login.html";
+        return "logIn.html";
     }
     
 //    @PostMapping("/logincheck")
@@ -52,7 +52,7 @@ public class PortalControlador {
 //        modelo.put("alias", usuario.getAlias());
 //        return "LoginExitoso.html";
 //        }else{
-      return "LoginExitoso.html";
+      return "IndexIniciado.html";
     }
     
 }

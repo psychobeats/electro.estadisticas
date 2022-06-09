@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
 <link rel="stylesheet" href=".css">
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>Form usuario</title>
 </head>
 
@@ -22,8 +22,8 @@
         <option th:each="Sexo : ${T(com.attacomsian.runner.domains.constants.Topic).values()}" th:value="${Sexo}" th:text="${Sexo}">Seleccionar</option>
         </select>-->
         <select class="form-control" name="sexo"> 
-                    <option th:each="sex: ${sexos}" th:text="${sex}"></option> 
-                </select>
+            <option th:each="sex: ${sexos}" th:text="${sex}"></option> 
+        </select>
       </div>  
       <div>
         <label>E-mail: </label>
