@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="/style.css">
 <title>Form usuario</title>
 </head>
 
@@ -30,7 +30,8 @@
 <h1 id="hh1">Formulario de registro: </h1>
 <div class="recuadro">
 <form class="form-usuario" action="/usuario/registrar" method="POST" enctype="multipart/form-data">
-  <div class="form_group">
+  <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
+    <div class="form_group">
     <input id="input-usuario" type="input" class="form_field" name = "alias" th:value="${alias}" 
     placeholder="Alias">
     <label for="alias" class="form_label">Alias</label>

@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
     <title>Nueva Query</title>
 </head>
 
@@ -33,7 +33,7 @@
 <form action="/encuesta/crear" method="POST" enctype="multipart/form-data">
     
     <!--SE AGREGA EL ACTION="..." DENTRO DE ETIQUETA FORM, PARA QUE EL BOTON LLAME AL CONTROLADOR-->
-    
+    <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
     <input type="hidden" name="usuarioId" th:value="${session.usuariosession.id}">
     <div>
       <input type="text" name = "titulo" th:value="${titulo}" placeholder="Acá ingresá la pregunta">

@@ -171,7 +171,7 @@ public class UsuarioServicio implements UserDetailsService{
         }
         System.out.println("LAS VALIDACIONES ALIAS CORRECTAS");
         if(email==null||email.isEmpty()){
-            throw new ErrorServicio("Debe indicar un alias");
+            throw new ErrorServicio("Debe indicar un email");
         }
         if(nacimiento==null|| nacimiento.isEmpty()){
             throw new ErrorServicio("Debe indicar su fecha de nacimiento");
