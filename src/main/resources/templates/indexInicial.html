@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="style.css">
     <title>INDEX INICIAL</title>
 </head>
 
@@ -17,76 +17,89 @@
     <div th:fragment="navBarPublico">  
      
         <nav class="nav">
-            <a class="nav-link" href="#"><img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160"></a>
-            <a class="nav-link" href="#">Registro</a>
+           <a class="navbar-brand" id="nav-logo"  href="#">
+                <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
+              </a>
+            
+            <a class="nav-link"  href="#">Registro</a>
             <a class="nav-link" href="#">Log In</a>
             <a class="nav-link" href="#">Preguntas Frecuentes</a>
+        
         </nav>
         </div>
-    
+
     <p></p>
     <div>
-        <img src="https://drive.google.com/uc?export=download&id=1gO6ZP9ngr8VEby5HMTVN4vhDGpMSchvy" align="left" width="500" height=auto/>
+        <div id="logo">
+        <img src="https://drive.google.com/uc?export=download&id=1kp0e1e4Z0jUJNHPLR_Mi21QL7Byls9Gp" width="700" height=auto/>
+        </div>
         <div>
-            <p align="right"> La estadística (la forma femenina del término alemán Statistik, derivado a su vez del
-                italiano
-                statista, "hombre de Estado"),1​ es la rama de la matemática que estudia la variabilidad, colección,
-                organización, análisis, interpretación, y presentación de los datos, así como el proceso aleatorio que
-                los
-                genera siguiendo las leyes de la probabilidad.2​ Como parte de la matemática, la estadística es una
-                ciencia
-                formal deductiva, con un conocimiento propio, dinámico y en continuo desarrollo obtenido a través del
-                método
-                científico formal. En ocasiones, las ciencias fácticas necesitan utilizar técnicas estadísticas durante
-                su
-                proceso de investigación factual, con el fin de obtener nuevos conocimientos basados en la
-                experimentación y
-                en la observación. En estos casos, la aplicación de la estadística permite el análisis de datos
-                provenientes
-                de una muestra representativa, que busca explicar las correlaciones y dependencias de un fenómeno físico
-                o
-                natural, de ocurrencia en forma aleatoria o condicional. </p>
+            <p> Las estidísticas forman un papel importante en nuestras vidas, no solo para resolver dudas entre amigos, 
+                como cuanta gente elige el frio o el calor, sino que nos puede ayudar en nuestros proyectos personales, cuantificando
+                la realidad para tomar mejores decisiones. 
+                Con A MOVER LA  QUERY! vas a poder lograrlo de manera muy facil! </p>
         </div>
     </div>
     <br>
-    <div>
-        <h1 align="center"> QUERY´S MÁS VOTADAS</h1>
-        <table class="table text-center">
-            <thead class="fw-bold">
-                <tr>
-                <th scope="col">Puesto</th>
-                <th scope="col">Query</th>
+    
+    <div><!--Ranking-->
+        <h1 id="hh1"> TOP 5 QUERY'S MÁS VOTADAS: </h1>
+        
+        <table class="table">
+            <thead id="head-ranking">
+            <tr>
+                <th scope="col"> Puesto </th>
+                <th scope="col"> Query </th>
             </tr>
             </thead>
-                    
-            <tbody class="fw-bold">                        
-                <tr th:each="query:${querys}">
-                <td> #1 </td> <!-- Falta averiguar la consulta para que aparezcan las 5 mas votadas(desde tim)--> 
-                <td th:text="${query.titulo}"> Titulo </td> 
-               </tr>
-               <tr th:each="query:${querys}">
-                <td> #2</td> 
-                <td th:text="${query.titulo}"> Titulo </td>
-               </tr>
-               <tr th:each="query:${querys}">
-                <td> #3 </td> 
-                <td th:text="${query.titulo}"> Titulo </td>
-               </tr>
-               <tr th:each="query:${querys}">
-                <td> #4 </td> 
-                <td th:text="${query.titulo}"> Titulo </td>
-               </tr>
-               <tr th:each="query:${querys}">
-                <td> #5 </td> 
-                <td th:text="${query.titulo}"> Titulo </td>
-               </tr>
-            </tbody>        
-            </table>
         
-
+            <tbody id="body-ranking">
+              <tr>
+                <th scope="row"> #1 </th>
+                <td th:each="query:${querys}"> Query </td><!-- consulta para que muestre los primeros 5 resultados -->
+              </tr>
+              <tr> 
+                <th scope="row"> #2 </th>
+                <td th:each="query:${querys}"> Query </td>
+              </tr>
+              <tr>
+                <th scope="row"> #3 </th>
+                <td th:each="query:${querys}"> Query </td>
+              </tr>
+              <tr>
+                <th scope="row"> #4 </th>
+                <td th:each="query:${querys}"> Query </td>
+              </tr>
+              <tr>
+                <th scope="row"> #5 </th>
+                <td th:each="query:${querys}"> Query </td>
+              </tr>
+            </tbody>
+          </table>
     </div>
-    <!--<div th:replace="logIn :: footer"></div> PREGUNTAR QUE ES ESTO!! TIRA ERROR!-->
 
+    <br>
+    
+<div th:fragment="footer">
+  <footer class="pie-pagina">
+    <div class="grupo-1">
+      <div class="box">
+        <figure>
+          <a>
+            <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160"
+              class="imagen-footer">
+          </a>
+        </figure>
+        <br>
+        <div class="grupo-2">
+          <a> &copy;2022 A MOVER LA QUERY!</a>
+          <br>
+          <a>Todos los Derechos Reservados</a>
+
+        </div>
+      </div>
+  </footer>
+</div>
         
 </body>
 
