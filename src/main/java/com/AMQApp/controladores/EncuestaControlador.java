@@ -82,7 +82,7 @@ public class EncuestaControlador {
         
         
         for (Encuesta auxEncuesta: usuario.getEncuestasCreadas()) {
-            if (encuesta.getId() == auxEncuesta.getId()) {
+            if (encuesta.getId().equals(auxEncuesta.getId())) {
                 validarEncuesta = true;
             }
         }

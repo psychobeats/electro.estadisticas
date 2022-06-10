@@ -34,7 +34,7 @@
 <form action="/usuario/registrar" method="POST" enctype="multipart/form-data" class="form-usuario">
   <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
     <div class="form_group">
-    <input id="input-usuario" type="input" class="form_field" name = "alias" th:value="${alias}" 
+    <input id="input-usuario" type="text" class="form_field" name = "alias" th:value="${alias}" 
     placeholder="Alias">
     <label for="alias" class="form_label">Alias</label>
   </div>
@@ -63,15 +63,15 @@
   <br>
   <div class="input-group">
     <label id="label-usuario">Sexo: </label>
-    <select class="form-control" name="sexo">
-     <option id="input-usuario" th:each="sex :${sexos}" th:text="${sex}" th:value="${sexo}" >Seleccionar</option>
+    <select class="form-control" name="sexo" th:value="${sexo}">
+     <option id="input-usuario" th:each="sex :${sexos}" th:text="${sex}" >Seleccionar</option>
     </select>
   </div>  
   <br>
   <div class="input-group">
     <label id="label-usuario">País: </label>
-    <select class="form-control" name = "pais">
-     <option id="input-usuario" th:each="pais1: ${paises}" th:value="${Pais}" th:text="${pais1}">Seleccionar</option>
+    <select class="form-control" name = "pais" th:value="${pais}">
+     <option id="input-usuario" th:each="pais1: ${paises}" th:text="${pais1}">Seleccionar</option>
     </select>
   </div>
   <br>
@@ -81,7 +81,7 @@
   </div> 
   <br>
   <br>
-  <button class="btn btn-primary" id="btnIndex" type="submit" href="#">Guardar</button>
+  <button class="btn btn-primary" id="btnIndex" type="submit">Guardar</button>
 </form>
 </div>
 </div>
