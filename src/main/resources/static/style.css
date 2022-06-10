@@ -46,6 +46,14 @@ body{
     
 }
 
+#p1{
+    text-align: center;
+    font-size: 30px;
+    color: var(--outer-space-crayola);
+    text-shadow: 2px 2px 2px var(--amber);
+
+}
+
 .nav {
     background: linear-gradient(90deg, rgba(64,37,82,1) 0%, rgba(255,239,195,1) 100%);
     display: flex;
@@ -135,8 +143,6 @@ a:link, a:visited, a:active {
     color: var(--dutch-white);
     margin-left: 50%;
     transform: translateX(-50%);
-   
-
 }
 
 #btnIndex:hover{
@@ -144,9 +150,102 @@ a:link, a:visited, a:active {
     color: var(--hot-pink);
 }
 
-
-
 #btnIndex:active{
+    transform: translateY(4px) translateX(4px);
+    box-shadow: rgba(43,58,64, 0.7) 0px 0px 0px;
+    background-color: var(--hot-pink);
+    color: var(--winter-sky);
+    margin-left: 50%;
+    transform: translateX(-46%);    
+}
+
+#table-ranking{
+    background-color: rgb(255, 255, 255, 0.5);    
+    box-shadow: rgba(43,58,64, 0.7) 4px 4px 0px;
+    margin: 0px auto; 
+    padding: 35px; 
+    font-family: 'Pacifico', cursive;
+    font-size: 25px;
+    border-spacing: 100px 18px;
+    color: var(--winter-sky);
+    text-shadow: 2px 2px 2px var(--atomic-tangerine);
+    border-radius: 20px;
+
+}
+
+#columna{
+    font-size: larger;
+    padding-bottom: 20px;
+}
+
+#query-ranking:link{    
+    color:var(--blue-violet);
+}
+#query-ranking:hover{
+    color:var(--orange-pantone);
+}
+#query-ranking:active{
+    color:var(--winter-sky);
+}
+
+#btnRegular{
+    background-color: var(--orange-pantone);
+    box-shadow: rgba(43,58,64, 0.7) 4px 4px 0px;
+    border-radius: 8px;
+    transition: transform 200ms, box-shadow 200ms;
+    width: 85px;
+    height: 35px;
+    font-family: 'Pacifico', cursive;
+    font-size: 11px;
+    color: var(--dutch-white);
+    margin-left: 50%;
+    transform: translateX(-50%);
+   
+
+}
+
+#btnRegular:hover{
+    background-color:var(--winter-sky);
+    color: var(--hot-pink);
+}
+
+
+
+#btnRegular:active{
+    transform: translateY(4px) translateX(4px);
+    box-shadow: rgba(43,58,64, 0.7) 0px 0px 0px;
+    background-color: var(--hot-pink);
+    color: var(--winter-sky);
+    margin-left: 50%;
+    transform: translateX(-46%);
+
+    
+}
+
+#btnMiddle{
+    background-color: var(--orange-pantone);
+    box-shadow: rgba(43,58,64, 0.7) 4px 4px 0px;
+    border-radius: 8px;
+    transition: transform 200ms, box-shadow 200ms;
+    width: 100px;
+    height: 50px;
+    font-family: 'Pacifico', cursive;
+    font-size: 11px;
+    color: var(--dutch-white);
+    margin-left: 50%;
+    transform: translateX(-50%);
+   
+
+}
+
+#btnMiddle:hover{
+    background-color:var(--winter-sky);
+    color: var(--hot-pink);
+}
+
+
+
+#btnMiddle:active{
     transform: translateY(4px) translateX(4px);
     box-shadow: rgba(43,58,64, 0.7) 0px 0px 0px;
     background-color: var(--hot-pink);
@@ -227,6 +326,8 @@ a:link, a:visited, a:active {
 
     .form-text, .form-check{
         color: var(--outer-space-crayola);
+        margin-bottom: 10px;
+        
     }
 
    
@@ -256,6 +357,7 @@ a:link, a:visited, a:active {
     width: 25px;
     height: 25px;
     cursor: pointer;
+    
 }
 
 #input{ position: absolute; transform: scale(0);}
@@ -276,6 +378,64 @@ a:link, a:visited, a:active {
     height: inherit;
     border: 3px solid var(--outer-space-crayola);
     border-radius:6px;
-    transition: all 0.375s;
+    transition: all 0.65s;
+}
+
+.check1{
+    display: block;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    
+}
+
+#input1{ position: absolute; transform: scale(0);}
+
+#input1:checked ~ .checkbox1{
+    transform: rotate(45deg);
+    width: 10px;
+    margin-left:16px;
+    border-color: var(--azure);
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-radius: 0;
+}
+
+.checkbox1{
+    display: block;
+    width: inherit;
+    height: inherit;
+    border: 3px solid var(--outer-space-crayola);
+    border-radius:6px;
+    transition: all 0.65s;
+}
+
+.check2{
+    display: block;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    
+}
+
+#input2{ position: absolute; transform: scale(0);}
+
+#input2:checked ~ .checkbox2{
+    transform: rotate(45deg);
+    width: 10px;
+    margin-left:16px;
+    border-color: var(--winter-sky);
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-radius: 0;
+}
+
+.checkbox2{
+    display: block;
+    width: inherit;
+    height: inherit;
+    border: 3px solid var(--outer-space-crayola);
+    border-radius:6px;
+    transition: all 0.65s;
 }
 
