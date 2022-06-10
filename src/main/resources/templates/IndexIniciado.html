@@ -41,36 +41,36 @@
 </div>
 
 <div><!--Ranking-->
-  <h1 id="hh1"> TOP 5 QUERY'S MÁS VOTADAS: </h1>
-  
-  <table class="table" id="table-ranking">
+<h2 id="hh2"> Ranking de las 5 Query's mas votadas: </h2>
+
+<table class="table" id="table-ranking">
     <thead id="head-ranking">
-     <tr>
-     <th scope="col" id="columna"> Puesto </th>
-     <th scope="col" id="columna"> Query </th>
-     </tr>
+    <tr>
+        <th scope="col"> Puesto </th>
+        <th scope="col"> Query </th>
+    </tr>
     </thead>
-    
+
     <tbody id="body-ranking">
       <tr>
         <th scope="row"> #1 </th>
-        <td th:each="query:${querys}"><a id="query-ranking" href="#"> Pastelito Membrillo vs. Pastelito Batata </a></td><!-- consulta para que muestre los primeros 5 resultados -->
+        <td th:each="query:${querys}"> Query </td><!-- consulta para que muestre los primeros 5 resultados -->
       </tr>
       <tr> 
         <th scope="row"> #2 </th>
-        <td th:each="query:${querys}"><a id="query-ranking" href="#"> Pastelito Membrillo vs. Pastelito Batata </a></td>
+        <td th:each="query:${querys}"> Query </td>
       </tr>
       <tr>
         <th scope="row"> #3 </th>
-        <td th:each="query:${querys}"><a id="query-ranking" href="#"> Pastelito Membrillo vs. Pastelito Batata </a></td>
+        <td th:each="query:${querys}"> Query </td>
       </tr>
       <tr>
         <th scope="row"> #4 </th>
-        <td th:each="query:${querys}"><a id="query-ranking" href="#"> Pastelito Membrillo vs. Pastelito Batata </a></td>
+        <td th:each="query:${querys}"> Query </td>
       </tr>
       <tr>
         <th scope="row"> #5 </th>
-        <td th:each="query:${querys}"><a id="query-ranking" href="#">Pastelito Membrillo vs. Pastelito Batata </a></td>
+        <td th:each="query:${querys}"> Query </td>
       </tr>
     </tbody>
   </table>
