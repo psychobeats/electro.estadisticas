@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+</html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <title>PREGUNTAS FRECUENTES</title>
+  <link rel="icon" type="icon/png" sizes=""href="assets/favicon.png">
+
+</head>
+
+<body>
+
+  <div th:fragment="navBarPublico">
+
+    <nav class="nav">
+      <a class="navbar-brand" id="nav-logo" href="#">
+        <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
+      </a>
+
+      <a class="nav-link" href="#">Registro</a>
+      <a class="nav-link" href="#">Log In</a>
+      <a class="nav-link" href="#">Preguntas Frecuentes</a>
+
+    </nav>
+  </div>
+
+  <div>
+    <h1 id="hh1">Preguntas Frecuentes</h1>
+    <div class="layout">
+      <div class="accordion">
+
+        <div class="accordion__pregunta">
+          <p>¿Quién puede ver/votar mi Query?</p>
+        </div>
+        <div class="accordion__respuesta">
+          <p> Al crear una query vos podes elegir si la haces pública o privada (haciendo vos mismo la difusión de tu
+            query). La persona que desee votar la query lo podrá hacer, una sola vez, luegos de haber iniciado sesión.
+            Recordá que no podrás votar una query creada por vos mismo.
+          </p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion__pregunta">
+          <p>¿Cómo subo una nueva Query? </p>
+        </div>
+        <div class="accordion__respuesta">
+          <p>Para subir una nueva query es muy fácil. Simplemente tendrás que, en la página principal hacer click en
+            "crear una query" que te va a redirigir a otra página. Allí, completaras el formulario con la pregunta y las
+            opciones que se podrán elegir. Una vez hecho esto hace click en A MOVER LA QUERY!</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion__pregunta">
+          <p>¿Puedo borrar una de mis Query's creadas?</p>
+        </div>
+        <div class="accordion__respuesta">
+          <p>Si! Podrás borrar una query creada desde 'Mis Query´s.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion__pregunta">
+          <p>¿Qué temas no están permitidos? </p>
+        </div>
+        <div class="accordion__respuesta">
+          <p> No permitimos el lenguaje que incita al odio, discriminación, bullying ni otro contenido que pudiera
+            lastimar u ofender a las personas.
+          </p>
+        </div>
+      </div>
+
+      <script>
+        let respuestas = document.querySelectorAll(".accordion");
+        respuestas.forEach((event) => {
+          event.addEventListener('click', () => {
+            if (event.classList.contains("active")) {
+              event.classList.remove("active");
+            } else {
+              event.classList.add("active");
+            }
+          })
+        })
+      </script>
+    </div>
+
+    <div th:fragment="footer">
+      <footer class="pie-pagina">
+        <div class="grupo-1">
+          <div class="box">
+            <figure>
+              <a>
+                <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160"
+                  class="imagen-footer">
+              </a>
+            </figure>
+            <br>
+            <div class="grupo-2">
+              <a> &copy;2022 A MOVER LA QUERY!</a>
+              <br>
+              <a>Todos los Derechos Reservados</a>
+
+            </div>
+          </div>
+      </footer>
+    </div>
+
+</body>
+
+</html>
