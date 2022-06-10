@@ -75,10 +75,12 @@ public class UsuarioControlador {
         List<Encuesta> encuestas = usuarioServicio.listaQuerysUsuario(idUsuario);
         if (encuestas.size() > 0) {
             modelo.put("encuestas", encuestas);
+            return "misQuerys.html";
         } else {
             modelo.put("error", "Aún no creaste ninguna Query :S");
+            return "IndexIniciado.html";
         }
-        return "ListaEncuestas.html";
+        
     }
     
     

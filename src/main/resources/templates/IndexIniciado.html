@@ -24,7 +24,7 @@
        </a>
      
      <a class="nav-link"  href="#">Mi cuenta</a>
-     <a class="nav-link" href="#">Mis Query's</a>
+     <a class="nav-link" th:href="@{/usuario/misQuerys/(idUsuario=${session.usuariosession.id})}">Mis Query's</a>
      <a class="nav-link" href="#">Preguntas Frecuentes</a> 
      <a class="nav-link" href="/logout">Cerrar Sesión</a>
  </nav>
@@ -38,8 +38,10 @@
 
 <div> <!--Crear una nueva Query -->
 <h1 id="hh1">Crear nueva Query</h1>
+<p th:if="${error}!=null" th:text="${error}" style="color:red;">
 <form th:action="@{/encuesta/crearEnc}">
-    <input type="hidden" name="id" th:value="${session.usuariosession.id}">
+   
+        
     <button class="btn btn-primary" role="button" id="btnIndex">Click acá</button>
 </form>
 </div>

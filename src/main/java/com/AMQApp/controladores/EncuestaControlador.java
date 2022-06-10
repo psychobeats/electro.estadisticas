@@ -127,4 +127,36 @@ public class EncuestaControlador {
         return "redirect:/encuesta/listar";
     }
     
+      @GetMapping("/baja")
+    public String darBaja(ModelMap modelo, @RequestParam(required=false) String id){
+        try{
+            encuestaServicio.bajaEncuesta(id);
+        }catch(ErrorServicio ex){
+            modelo.put("error", ex.getMessage());
+        }
+        return "misQuerys";
+       
+    }
+     @GetMapping("/alta")
+    public String darAlta(ModelMap modelo, @RequestParam(required=false) String id){
+        try{
+            encuestaServicio.altaEncuesta(id);
+        }catch(ErrorServicio ex){
+            modelo.put("error", ex.getMessage());   
+        }
+        return "misQuerys";
+        
+    }
+    
+     @GetMapping("/eliminar")
+    public String eliminar(ModelMap modelo, @RequestParam(required=false) String id){
+        try{
+            encuestaServicio.eliminar(id);
+        }catch(ErrorServicio ex){
+            modelo.put("error", ex.getMessage());
+            
+        }
+        return "misQuerys";
+    }
+    
 }
