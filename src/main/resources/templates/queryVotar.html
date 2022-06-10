@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <input type="hidden" name="idUsuario" th:value="${session.usuariosession.id}">
+    
   <nav class="nav">
     <a class="navbar-brand" id="nav-logo"  href="#">
          <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
@@ -35,25 +35,27 @@
  <!--  <a class="btn btn-success" name = "opcion1" th:href="@{/encuesta/votar(idEncuesta=${encuesta.id},idUsuario=${session.usuariosession.id},opcion=${encuesta.opcion1})}" th:text="${encuesta.opcion1}"></a>
   <a class="btn btn-success" name = "opcion2" th:href="@{/encuesta/votar/(idEncuesta=${encuesta.id},idUsuario=${session.usuariosession.id},opcion=${encuesta.opcion2})}" th:text="${encuesta.opcion2}"></a>
   -->
-  
+  <form action="/encuesta/votar" method="GET">
   <div class="form_group">
+      <input type="hidden" name="idUsuario" th:value="${session.usuariosession.id}">
+          <input type="hidden" name="idEncuesta" th:value="${encuesta.id}">
   <label class="check1"> 
-  <input type="radio" id="input-query" name = "opcion"  th:text="${encuesta.opcion1}"> 
-  <span class="checkbox1"></span>
+  <input type="radio" id="input-query" name = "opcion" th:value="${encuesta.opcion1}" th:text="${encuesta.opcion1}" required> 
+  <!--<span class="checkbox1"></span>-->
   </label>
   <br>
   <label class="check2"> 
-  <input type="radio" id="input-query" name = "opcion"  th:text="${encuesta.opcion2}"> 
-  <span class="checkbox2"></span>
+  <input type="radio" id="input-query" name="opcion" th:value="${encuesta.opcion2}" th:text="${encuesta.opcion2}"> 
+  <!--<span class="checkbox2"></span>-->
   </label>
 </div>
  <br>
  <div class="container text-center">
-  <button id="btn-query" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" >A MOVER LA QUERY!</button>
+  <button id="btn-query" type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" >A MOVER LA QUERY!</button>
   </div>
-     
+  </form>
   <br>
-      
+    <!--  
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -72,11 +74,11 @@
         </div>
         <div class="modal-footer">
           <button id="btn-query" type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</button>
-          <button id="btn-query" th:href="@{/encuesta/votar(idEncuesta=${encuesta.id},idUsuario=${session.usuariosession.id},opcion=${encuesta.opcion1})}" type="button" class="btn btn-primary">SI</button>
+          <button id="btn-query" th:href="@{/encuesta/votar(idEncuesta=${encuesta.id},idUsuario=${session.usuariosession.id},opcion=${opcion})}" type="button" class="btn btn-primary">SI</button>
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 

@@ -111,7 +111,7 @@ public class EncuestaControlador {
     }
     
     @GetMapping("/votar")
-    public String votar(ModelMap modelo, @RequestParam String idEncuesta, @RequestParam String idUsuario, @RequestParam String opcion){
+    public String votar(ModelMap modelo, @RequestParam(required=false) String idEncuesta, @RequestParam(required=false) String idUsuario, @RequestParam(required=false) String opcion){
         try{
             Usuario usuario = usuarioServicio.buscarPorId(idUsuario);
             
