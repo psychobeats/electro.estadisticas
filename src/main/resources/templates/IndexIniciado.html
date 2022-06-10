@@ -41,7 +41,7 @@
 <p th:if="${error}!=null" th:text="${error}" style="color:red;">
 <form th:action="@{/encuesta/crearEnc}">
    
-        
+    <input type="hidden" name="id" th:value="${session.usuariosession.id}">    
     <button class="btn btn-primary" role="button" id="btnIndex">Click acá</button>
 </form>
 </div>

@@ -9,13 +9,18 @@ import com.AMQApp.servicios.EncuestaServicio;
 import com.AMQApp.servicios.UsuarioServicio;
 import java.text.ParseException;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Controller
 @RequestMapping("/encuesta")
@@ -134,18 +139,24 @@ public class EncuestaControlador {
         }catch(ErrorServicio ex){
             modelo.put("error", ex.getMessage());
         }
-        return "misQuerys";
+        return "redirect:/usuario/misQuerys";
        
     }
      @GetMapping("/alta")
-    public String darAlta(ModelMap modelo, @RequestParam(required=false) String id){
+    public String darAlta(ModelMap modelo, @RequestParam(required=false) String id, @RequestParam(required=false) String idUsuario){
         try{
+            Usuario usuario= usuarioServicio.buscarPorId(id);
+            //ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            //HttpSession session = attr.getRequest().getSession(true);
+            //session.setAttribute("usuariosession", usuario);
+            //modelo.put("usuariosession", session.getAttribute("usuariosession"));
+            //UserDetails user = usuarioServicio.loadUserByUsername(usuario.getEmail());
+           
             encuestaServicio.altaEncuesta(id);
         }catch(ErrorServicio ex){
             modelo.put("error", ex.getMessage());   
         }
-        return "misQuerys";
-        
+        return "redirect:/usuario/misQuerys";
     }
     
      @GetMapping("/eliminar")
