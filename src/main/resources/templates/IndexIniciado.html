@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -11,21 +11,21 @@
 
     <link rel="stylesheet" href="style.css">
     <title>Index sesión Iniciada</title>
+    <link rel="icon" type="icon/png" sizes=""href="assets/favicon.png">
 </head>
 
 
 <body>
 
- <!--<div th:fragment="navBarInicio"> --> 
+ <!-- <div th:fragment="navBarInicio"> --> 
   <nav class="nav">
-    <a class="navbar-brand" id="nav-logo"  href="/loginExitoso">
+    <a class="navbar-brand" id="nav-logo"  href="#">
          <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
        </a>
      
      <a class="nav-link"  href="#">Mi cuenta</a>
      <a class="nav-link" href="#">Mis Query's</a>
-     <a class="nav-link" href="#">Preguntas Frecuentes</a>
-     <a class="nav-link" href="/logout">Cerrar Sesión</a>
+     <a class="nav-link" href="#">Preguntas Frecuentes</a> 
  </nav>
 <!-- </div> -->
 
@@ -37,51 +37,40 @@
 
 <div> <!--Crear una nueva Query -->
 <h1 id="hh1">Crear nueva Query</h1>
-<form th:action="@{/encuesta/crearEnc}">
-    <input type="hidden" name="id" th:value="${session.usuariosession.id}">
-    <button class="btn btn-primary" role="button" id="btnIndex">Click acá</button>
-</form>
-
-    <!--SE SACÓ EL HREF DEL BOTÓN. PARA QUE FUNCIONE SE LO ENCERRÓ EN ETIQUETAS FORM, Y AL FORM 
-        SE AGREGÓ UN TH:ACTION="" CON LA LLAMADA AL CONTROLADOR
-    
-    OBSERVACIÓN: ESTO NO FUNCIONÓ POR SI SOLO: th:action="@{/encuesta/crearEnc(id=${session.usuariosession.id})}"
-                 SE TUVO QUE AGREGAR EL INPUT CLASS="HIDDEN" CON EL VALUE USUARIOSESSION.ID. AGREDADO ESO,
-                 SE PUDO SACAR LA PORCIÓN "(id=${session.usuariosession.id}) DE LA LLAMADA AL CONTROLADOR EN EL
-                 FORM   :)  :)   "-->
+<button class="btn btn-primary" href="#" role="button" id="btnIndex">Click acá</button>
 </div>
 
 <div><!--Ranking-->
-<h2 id="hh2"> Ranking de las 5 Query's mas votadas: </h2>
-
-<table class="table" id="table-ranking">
+  <h1 id="hh1"> TOP 5 QUERY'S MÁS VOTADAS: </h1>
+  
+  <table class="table" id="table-ranking">
     <thead id="head-ranking">
-    <tr>
-        <th scope="col"> Puesto </th>
-        <th scope="col"> Query </th>
-    </tr>
+     <tr>
+     <th scope="col" id="columna"> Puesto </th>
+     <th scope="col" id="columna"> Query </th>
+     </tr>
     </thead>
-
+    
     <tbody id="body-ranking">
       <tr>
         <th scope="row"> #1 </th>
-        <td th:each="query:${querys}"> Query </td><!-- consulta para que muestre los primeros 5 resultados -->
+        <td th:each="query:${querys}"><a id="query-ranking" href="#"> Pastelito Membrillo vs. Pastelito Batata </a></td><!-- consulta para que muestre los primeros 5 resultados -->
       </tr>
       <tr> 
         <th scope="row"> #2 </th>
-        <td th:each="query:${querys}"> Query </td>
+        <td th:each="query:${querys}"><a id="query-ranking" href="#"> Pastelito Membrillo vs. Pastelito Batata </a></td>
       </tr>
       <tr>
         <th scope="row"> #3 </th>
-        <td th:each="query:${querys}"> Query </td>
+        <td th:each="query:${querys}"><a id="query-ranking" href="#"> Pastelito Membrillo vs. Pastelito Batata </a></td>
       </tr>
       <tr>
         <th scope="row"> #4 </th>
-        <td th:each="query:${querys}"> Query </td>
+        <td th:each="query:${querys}"><a id="query-ranking" href="#"> Pastelito Membrillo vs. Pastelito Batata </a></td>
       </tr>
       <tr>
         <th scope="row"> #5 </th>
-        <td th:each="query:${querys}"> Query </td>
+        <td th:each="query:${querys}"><a id="query-ranking" href="#">Pastelito Membrillo vs. Pastelito Batata </a></td>
       </tr>
     </tbody>
   </table>

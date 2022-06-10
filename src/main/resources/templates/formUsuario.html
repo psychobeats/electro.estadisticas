@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html>
 
 <head>
 <link rel="stylesheet" href=".css">
@@ -8,20 +8,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="style.css">
 <title>Form usuario</title>
+<link rel="icon" type="icon/png" sizes=""href="assets/favicon.png">
 </head>
 
 <body>
   <div th:fragment="navBarPublico">  
      
     <nav class="nav">
-       <a class="navbar-brand" id="nav-logo"  href="/">
+       <a class="navbar-brand" id="nav-logo"  href="#">
             <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
           </a>
         
-        <a class="nav-link"  href="/usuario/registro">Registro</a>
-        <a class="nav-link" href="/login">Log In</a>
+        <a class="nav-link"  href="#">Registro</a>
+        <a class="nav-link" href="#">Log In</a>
         <a class="nav-link" href="#">Preguntas Frecuentes</a>
     
     </nav>
@@ -29,61 +30,54 @@
 
 <h1 id="hh1">Formulario de registro: </h1>
 <div class="recuadro">
-<form class="form-usuario" action="/usuario/registrar" method="POST" enctype="multipart/form-data">
-  <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
-    <div class="form_group">
-    <input id="input-usuario" type="input" class="form_field" name = "alias" th:value="${alias}" 
+<form class="form-usuario">
+  <div class="form_group">
+    <input id="input-usuario" type="input" class="form_field" th:value="${alias}" 
     placeholder="Alias">
     <label for="alias" class="form_label">Alias</label>
   </div>
   <br>
   <div class="form_group">
-    <input id="input-usuario" type="input" class="form_field" name = "email" th:value="${email}" 
+    <input id="input-usuario" type="input" class="form_field" th:value="${email}" 
     placeholder="E-mail">
     <label for="e-mail" class="form_label">E-mail</label>
   </div> 
   <br>
   <div class="form_group">
     
-    <input id="input-usuario" type="password" class="form_field" name = "clave" th:value="${clave}"
+    <input id="input-usuario" type="password" class="form_field" th:value="${clave}"
     placeholder="Password">
     <label for="input-usuario" class="form_label"> Password</label>
     <div class="form-text1">Condiciones para la clave.</div>
   </div>
   <br>
   <div class="form_group">
-    <input id="input-usuario" type="password" class="form_field" name = "claveValidar" th:value="${claveValidar}" 
+    <input id="input-usuario" type="password" class="form_field" th:value="${claveValidar}" 
     placeholder="Confirmar Password">
     <label for="input-usuario" class="form_label">Confirmar Password </label>
   </div>
   <br>
   <div class="input-group">
     <label id="label-usuario">Sexo: </label>
-    <select class="form-control" name="sexo">
-     <option id="input-usuario" th:each="sex :${sexos}" th:text="${sex}">Seleccionar</option>
-    </select>
-  </div>      
-  <br>
-      
-      
-  <div class="input-group">
-    <label id="label-usuario">País: </label>
-    <select class="form-control" name="pais">
-     <option id="input-usuario" th:each="pais1: ${paises}" th:text="${pais1}">Seleccionar</option>
+    <select class="form-control" th:field="*{Sexo}">
+     <option id="input-usuario" th:each="Sexo : ${T(com.attacomsian.runner.domains.constants.Topic).values()}" th:value="${Sexo}" th:text="${Sexo}">Seleccionar</option>
     </select>
   </div>  
   <br>
   <div class="input-group">
+    <label id="label-usuario">País: </label>
+    <select class="form-control" th:field="*{Pais}">
+     <option id="input-usuario" th:each="Pais : ${T(com.attacomsian.runner.domains.constants.Topic).values()}" th:value="${Pais}" th:text="${Pais}">Seleccionar</option>
+    </select>
+  </div>
+  <br>
+  <div class="input-group">
     <label id="label-usuario">Fecha de Nacimiento: </label>
-    <input id="input-usuario" type="date" name = "nacimiento" th:value="${nacimiento}">
+    <input id="input-usuario" type="date" th:value="${nacimiento}">
   </div> 
   <br>
 
-      
-      <!--HAY QUE ELEGIR UNO DE LOS ID PARA EL BOTÓN-->
-      <!--id="btn-usuario"-->
-      
-      <button class="btn btn-primary" id="btnIndex" type="submit" href="#">Guardar</button>
+  <button class="btn btn-primary" id="btnIndex" type="submit" id="btn-usuario" href="#">Guardar</button>
 </form>
 
 <div th:fragment="footer">
