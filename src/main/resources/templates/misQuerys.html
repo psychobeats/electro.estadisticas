@@ -40,12 +40,18 @@
             
         <td th:text="${encuesta.titulo}">Titulo</td> 
         
-        <form action="/encuesta/alta"> 
+        <!--<form action="/encuesta/alta"> 
             <input type="hidden" name="idUsuario" th:value="${session.usuariosession.id}">
             <input type="hidden" name="id" th:value="${encuesta.id}">
         <td th:if="${encuesta.alta}==false"><button type="submit" id="btnRegular">Dar de alta</button></a></td>
-        </form>
+        </form>-->
+        <!--<td th:if="${session.usuariosession != null && encuesta.alta}==true">
+                <input type="hidden" name="idUsuario" th:value="${session.usuariosession.id}">
+                    <a th:href="@{/encuesta/baja(id=${encuesta.id})}"><button type="button" id="btnRegular">Dar de baja</button></a>
+        </td>-->
         <td th:if="${encuesta.alta}==true"><a th:href="@{/encuesta/baja(id=${encuesta.id})}"><button type="button" id="btnRegular">Dar de baja</button></a></td>
+        
+        <td th:if="${encuesta.alta}==false"><a th:href="@{/encuesta/alta(id=${encuesta.id})}"><button type="button" id="btnRegular">Dar de alta</button></a></td>
         
         <td><a th:href="@{/encuesta/eliminar(id=${encuesta.id})}"><button type="button" class="btn btn-primary" id="btnRegular" data-toggle="modal" data-target="#exampleModal" data-whatever="@ndo">Eliminar</button></a></td>              
         </tr>

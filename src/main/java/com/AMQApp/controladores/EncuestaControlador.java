@@ -139,13 +139,13 @@ public class EncuestaControlador {
         }catch(ErrorServicio ex){
             modelo.put("error", ex.getMessage());
         }
-        return "redirect:/usuario/misQuerys";
+        return "misQuerys";
        
     }
      @GetMapping("/alta")
-    public String darAlta(ModelMap modelo, @RequestParam(required=false) String id, @RequestParam(required=false) String idUsuario){
+    public String darAlta(ModelMap modelo, @RequestParam(required=false) String id){
         try{
-            Usuario usuario= usuarioServicio.buscarPorId(id);
+            //Usuario usuario= usuarioServicio.buscarPorId(idUsuario);
             //ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
             //HttpSession session = attr.getRequest().getSession(true);
             //session.setAttribute("usuariosession", usuario);
@@ -156,7 +156,7 @@ public class EncuestaControlador {
         }catch(ErrorServicio ex){
             modelo.put("error", ex.getMessage());   
         }
-        return "redirect:/usuario/misQuerys";
+        return "misQuerys";
     }
     
      @GetMapping("/eliminar")
