@@ -26,10 +26,12 @@ public class Usuario {
     @Column(nullable = false, unique = true)
     private String alias;
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Sexo sexo;
     @Column(nullable = false, unique = true)
     private String email;
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Pais pais;
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)

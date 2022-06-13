@@ -7,12 +7,18 @@ import com.AMQApp.entidades.Voto;
 import com.AMQApp.errores.ErrorServicio;
 import com.AMQApp.repositorios.EncuestaRepositorio;
 import com.AMQApp.repositorios.ResultadosPorcentajesRepositorio;
+import com.AMQApp.repositorios.VotoRepositorio;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import static java.util.Arrays.sort;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 
@@ -29,6 +35,9 @@ public class EncuestaServicio {
     @Autowired
     private VotoServicio votoServicio;
     
+    @Autowired
+    private VotoRepositorio votoRepositorio;
+    
     
     
 //    CONSULTAR:
@@ -40,7 +49,7 @@ public class EncuestaServicio {
 //  
     
     @Transactional
-    public Encuesta crearEncuesta(String titulo, String opcion1, String opcion2) throws ErrorServicio {
+    public Encuesta crearEncuesta(String titulo, String opcion1, String opcion2, String caducidad) throws ErrorServicio, ParseException {
        Encuesta e1 = new Encuesta();
        validar(titulo, opcion1, opcion2);
             e1.setTitulo(titulo);
@@ -48,11 +57,15 @@ public class EncuestaServicio {
             e1.setOpcion2(opcion2);
             Date inicio = new Date();
             e1.setInicio(inicio);
- 
-            Date caducidad = inicio;
-            caducidad.setDate(inicio.getDate() + 1);
-
-            e1.setCaducidad(caducidad);
+            
+            if (caducidad != null && !caducidad.isEmpty()) {
+                SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                Date caducidad1 = formato.parse(caducidad);
+                //validarNacimientoDate(caducidad1);
+                e1.setCaducidad(caducidad1);
+            } else {
+                e1.setCaducidad(null);
+            }
 
             List<Voto> votos = new ArrayList();
             e1.setVotos(votos);
@@ -69,9 +82,12 @@ public class EncuestaServicio {
         Optional<Encuesta> respuesta = encuestaRepositorio.findById(idEncuesta);
         if(respuesta.isPresent()){
             Encuesta encuesta = respuesta.get();
+            
             Voto voto = votoServicio.votar(usuario, opcion);
+            votoRepositorio.save(voto);
             encuesta.getVotos().add(voto);
             encuestaRepositorio.save(encuesta);
+            
         }else{
             throw new ErrorServicio("No existe una encuesta con el id indicado");
         }
@@ -102,8 +118,11 @@ public class EncuestaServicio {
     {
         for (Encuesta encuesta : encuestas) {
             Date actual = new Date();
-            if (encuesta.getCaducidad().before(actual)) {
-                encuesta.setAlta(false);
+            if (encuesta.getCaducidad() != null) {
+                if (encuesta.getCaducidad().before(actual)) {
+                    encuesta.setAlta(false);
+                    encuestaRepositorio.save(encuesta);
+                }
             }
         }
     }
@@ -159,6 +178,19 @@ public class EncuestaServicio {
         bajaPorCaducidad(encuestas);
 
         return encuestas;
+    }
+    
+    public List<Encuesta> topFive() throws ErrorServicio{
+        List<Encuesta> encuestasOrdenadasPorVotos = encuestaRepositorio.ordenarPorVotos();
+        List<Encuesta> encuestasTopFive = new ArrayList();
+        
+        for(int i = 0; i<5; i++){
+            encuestasTopFive.add(encuestasOrdenadasPorVotos.get(i));
+        }
+        if(encuestasTopFive.isEmpty() || encuestasTopFive == null){
+            throw new ErrorServicio("Aún no hay encuestas");
+        }
+        return encuestasTopFive;
     }
     
     
