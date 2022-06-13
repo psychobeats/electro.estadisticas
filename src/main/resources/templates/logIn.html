@@ -10,7 +10,7 @@
     
     <link rel="stylesheet" href="/style.css">
     <title> LogIn </title>
-    <link rel="icon" type="icon/png" sizes=""href="assets/favicon.png">
+    <link rel="icon" type="icon/png" sizes=""href="/assets/favicon.png">
 </head>
 
 <body>
@@ -38,21 +38,16 @@
   </div>-->
     <form action="/logincheck" method="POST" enctype="multipart/form-data" class="form-usuario">        
     <div class="form_group">
-        <input id="input-usuario" type="input" class="form_field" name="email" th:value="${email}" placeholder="E-mail">
+        <input id="input-usuario" type="input" class="form_field" name = "email" th:value="${email}" placeholder="E-mail">
         <label for="e-mail" class="form_label">E-mail</label>
     </div>
     <div class="form_group">
-        <input id="input-usuario" type="password" class="form_field" name="clave" th:value="${clave}" placeholder="Password">
+        <input id="input-usuario" type="password" class="form_field" name = "clave" th:value="${clave}" placeholder="Password">
         <label for="password" class="form_label">Clave</label>
-    <!--    <div class="form-text">Condiciones para la clave.</div> -->
+        <!--<div class="form-text">Condiciones para la clave.</div>-->
     </div>
-    <br>         
-    
-                <!--id="btn-usuario"-->
-          
-              
-                
-<button class="btn btn-primary" type="submit" id="btnIndex"  href="#">Ingresar</button>  
+    <br>
+<button class="btn btn-primary" id="btnIndex" type="submit">Ingresar</button>  
 </form>
 </div>
 
@@ -79,4 +74,4 @@
   </div>
 
 </body>
-</html>
+</html> 

@@ -254,6 +254,16 @@ public class UsuarioServicio implements UserDetailsService{
         }
     }
     
-    
-    
+    @Transactional
+    public List<Encuesta> listaQuerysUsuario(String idUsuario) throws ErrorServicio
+    {
+        Optional<Usuario> resultado = usuarioRepositorio.findById(idUsuario);
+        if (resultado.isPresent()) {
+            Usuario usuario = resultado.get();
+            List<Encuesta> encuestas = usuario.getEncuestasCreadas();
+            return encuestas;
+        } else {
+            throw new ErrorServicio("Por algún extraño y retorcido motivo, no se encontró el usuario :S");
+        }
+    }
 }
