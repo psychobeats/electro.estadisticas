@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" >
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/style.css">
+  <title>EDITAR USUARIO</title>
+</head>
+
+<body>
+  
+   <h1 th:text="${usuario.alias + ': Edita tu perfil'}">Cambio de Contraseña</h1>
+   
+
+    <form action="/usuario/cambiarClave" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="id" th:value="${session.usuariosession.id}">
+        
+    <label>Clave: </label>
+        <input type="password" name = "clave" th:value="${clave}">
+        <br>
+        <div class="form-text">La clave debe contener 6 caracteres o más</div>
+      </div>
+      <br>
+      <div>
+        <label>Confirmar Clave: </label>
+        <input name= "claveValidar" type="password" th:value="${claveValidar}">
+      </div>
+          <br>
+         <button class="btn btn-primary" type="submit">Guardar</button>
+    </form>
+   <br>
+   <form action="/usuario/perfil">
+       <button class="btn btn-primary" type="submit">Cancelar</button>
+   </form>
+  
+</body>
+
+</html>
+

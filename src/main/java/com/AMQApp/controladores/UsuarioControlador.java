@@ -61,14 +61,32 @@ public class UsuarioControlador {
     }
     
     @PostMapping("/editar")
-    public String editar(@RequestParam(required=false) String idUsuario, @RequestParam(required=false) String alias,@RequestParam Sexo sexo,@RequestParam(required=false) String email,@RequestParam Pais pais,@RequestParam(required=false) String nacimiento,@RequestParam(required=false) String clave,@RequestParam(required=false) String claveValidar) throws ParseException{
+    public String editar(@RequestParam(required=false) String idUsuario, @RequestParam(required=false) String alias,@RequestParam Sexo sexo,@RequestParam(required=false) String email,@RequestParam Pais pais,@RequestParam(required=false) String nacimiento) throws ParseException{
         try{
-            usuarioServicio.modificar(idUsuario, alias, sexo, pais, nacimiento, clave, claveValidar);
+            usuarioServicio.modificar(idUsuario, alias, sexo, pais, nacimiento);
         }catch(ErrorServicio e){
             e.getMessage();
         }
         return "IndexIniciado.html";
     }
+    
+    
+    @GetMapping("/cambioClave")
+    public String cambioClave(ModelMap modelo, String id) throws ErrorServicio{
+        Usuario usuario = usuarioServicio.buscarPorId(id);
+        modelo.addAttribute("usuario", usuario);
+        modelo.addAttribute("sexos", Sexo.values());
+        modelo.addAttribute("paises", Pais.values());
+        return "cambioClave.html";
+    }
+    
+    @PostMapping("/cambiarClave")
+    public String cambiarClave(@RequestParam(required=false)  String id, @RequestParam(required=false)  String clave, @RequestParam(required=false) String claveValidar) throws ParseException, ErrorServicio{
+        usuarioServicio.modificarContraseña(id, clave, claveValidar);        
+        return "IndexIniciado.html";
+    }
+    
+    
     
     @GetMapping("/misQuerys")
     public String misQuerys(ModelMap modelo, @RequestParam(required=false) String idUsuario) throws ErrorServicio {

@@ -75,9 +75,9 @@ public class UsuarioServicio implements UserDetailsService{
     }
     
     @Transactional(propagation = Propagation.NESTED)
-    public void modificar(String id, String alias, Sexo sexo, Pais pais, String nacimiento, String clave, String claveValidar) throws ErrorServicio, ParseException{
+    public void modificar(String id, String alias, Sexo sexo, Pais pais, String nacimiento) throws ErrorServicio, ParseException{
         System.out.println(nacimiento);
-        validar2(alias, nacimiento, clave, claveValidar);
+        validar2(alias, nacimiento);
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         Date nacimiento1 = formato.parse(nacimiento);
         validarNacimientoDate(nacimiento1);
@@ -88,13 +88,27 @@ public class UsuarioServicio implements UserDetailsService{
             usuario.setSexo(sexo);
             usuario.setPais(pais);
             usuario.setNacimiento(nacimiento1);
-            String claveEncriptada = new BCryptPasswordEncoder().encode(clave);
-            usuario.setClave(claveEncriptada);
+            //String claveEncriptada = new BCryptPasswordEncoder().encode(clave);
+            //usuario.setClave(claveEncriptada);
             usuarioRepositorio.save(usuario);
         }else{
             throw new ErrorServicio("No se encontró el usuario");
         }
     }
+    
+    @Transactional(propagation = Propagation.NESTED)
+    public void modificarContraseña(String id, String clave, String claveValidar) throws ErrorServicio{
+        validarClaves(clave, claveValidar);
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+        if(respuesta.isPresent()){
+            Usuario usuario = respuesta.get();
+            String claveEncriptada = new BCryptPasswordEncoder().encode(clave);
+            usuario.setClave(claveEncriptada);
+        }else{
+            throw new ErrorServicio("No se encontró usuario con ese Id, o no se recibió Id alguno");
+        }
+    }
+    
     
     @Transactional(propagation = Propagation.NESTED)
     public void darBaja(String id) throws ErrorServicio{
@@ -197,7 +211,7 @@ public class UsuarioServicio implements UserDetailsService{
     }
     
     
-    public void validar2(String alias, String nacimiento, String clave, String claveValidar) throws ErrorServicio{
+    public void validar2(String alias, String nacimiento) throws ErrorServicio{
         if(alias==null||alias.isEmpty()){
             throw new ErrorServicio("Debe indicar un alias");
         }
@@ -208,6 +222,25 @@ public class UsuarioServicio implements UserDetailsService{
         System.out.println("LA VALIDACIÓN DEL NACIMIENTO Fue CORRECTA");
         
         System.out.println("LAS VALIDACIONES EMAIL CORRECTAS");
+//        if(clave==null||clave.isEmpty()){
+//            throw new ErrorServicio("Debe indicar una clave");
+//        }
+//        if (clave.length()<6){
+//            throw new ErrorServicio("La clave debe tener al menos 6 caracteres");
+//        }
+//        System.out.println("LAS VALIDACIONES CLAVE CORRECTAS");
+//
+//        if(claveValidar==null||claveValidar.isEmpty()){
+//            throw new ErrorServicio("Debe repetir su clave");
+//        }
+//        if (!clave.equals(claveValidar)) {
+//            throw new ErrorServicio("Las claves no coinciden");
+//        }
+//        System.out.println("LAS VALIDACIONES CLAVE_VALIDAR CORRECTAS");
+    }
+
+    public void validarClaves(String clave, String claveValidar) throws ErrorServicio
+    {
         if(clave==null||clave.isEmpty()){
             throw new ErrorServicio("Debe indicar una clave");
         }
@@ -224,8 +257,6 @@ public class UsuarioServicio implements UserDetailsService{
         }
         System.out.println("LAS VALIDACIONES CLAVE_VALIDAR CORRECTAS");
     }
-
-    
     
     
     public void validarNacimientoDate(Date nacimiento1) throws ErrorServicio {

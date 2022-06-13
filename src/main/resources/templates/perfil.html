@@ -41,9 +41,23 @@
                 <p>EMAIL</p>
                 <span th:text="${session.usuariosession.email}" id="span-usuario">email</span>
             </div>
-        
-            <a th:href="@{/usuario/misQuerys/(idUsuario=${session.usuariosession.id})}"><button id="btn-usuario">Mis Query´s</button>
+       
+            <br><br>
+            <a th:href="@{/usuario/misQuerys/(idUsuario=${session.usuariosession.id})}">
+                <button id="btn-index">Mis Query´s</button>
             </a>
+            
+            <br><br><br>
+            <a th:href="@{/usuario/edicion (id=${session.usuariosession.id})}">
+                <button id="btn-index">Editar Mi Perfil</button>
+            </a>
+            
+            <br><br><br>
+            <a th:href="@{/usuario/cambioClave (id=${session.usuariosession.id})}">
+                <button id="btn-index">Cambiar Contraseña</button>
+            </a>
+                        
+            
                 <!--<button th:href="#" id="btn-usuario">Query´s votadas</button>-->
     </div>
 
