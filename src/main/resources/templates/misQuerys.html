@@ -13,16 +13,21 @@
     <link rel="icon" type="icon/png" sizes=""href="/assets/favicon.png">
 </head>
 <body>
+        <form action="/usuario/misQuerys">
+        <input type="hidden" name="idUsuario" th:value="${session.usuariosession.id}">
+    </form>
   <nav class="nav">
-    <a class="navbar-brand" id="nav-logo"  href="#">
+    <a class="navbar-brand" id="nav-logo"  href="/loginExitoso">
          <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
        </a>
      
-     <a class="nav-link"  href="#">Mi cuenta</a>
-     <a class="nav-link" href="#">Mis Query's</a>
-     <a class="nav-link" href="#">Preguntas Frecuentes</a> 
+     <a class="nav-link"  href="/usuario/perfil">Mi cuenta</a>
+     <!--<a class="nav-link" href="">Mis Query's</a>-->
+     <a class="nav-link" href="/preguntasFrecuentesIn">Preguntas Frecuentes</a>
+     <a class="nav-link" href="/encuesta/listar">Querys</a>
+     <a class="nav-link" href="/logout">Cerrar Sesión</a>
  </nav>
-<p th:if="${error}!=null" th:text="${error}" style="color:red;">
+
 <h1 id="hh1">Mis Query's</h1>
 
 <table class="table text-center">
@@ -49,11 +54,28 @@
                 <input type="hidden" name="idUsuario" th:value="${session.usuariosession.id}">
                     <a th:href="@{/encuesta/baja(id=${encuesta.id})}"><button type="button" id="btnRegular">Dar de baja</button></a>
         </td>-->
-        <td th:if="${encuesta.alta}==true"><a th:href="@{/encuesta/baja(id=${encuesta.id})}"><button type="button" id="btnRegular">Dar de baja</button></a></td>
+        
+        
+        <td>
+            <input type="hidden" name="idUsuario" th:value="${session.usuariosession.id}">
+                
+            <a th:if="${encuesta.alta}==false" th:href="@{/encuesta/alta(id=${encuesta.id}, idUsuario = ${session.usuariosession.id})}"><button type="button" id="btnRegular">Dar de alta</button></a>
+            <a th:if="${encuesta.alta}==true" th:href="@{/encuesta/baja(id=${encuesta.id}, idUsuario = ${session.usuariosession.id})}"><button type="button" id="btnRegular">Dar de baja</button></a>
+        </td>
+        <!--
+        <td>
+            <input type="hidden" name="idUsuario" th:value="${session.usuariosession.id}">
+            <a th:if="${encuesta.alta}==true" th:href="@{/encuesta/baja(id=${encuesta.id}, idUsuario = ${session.usuariosession.id})}"><button type="button" id="btnRegular">Dar de baja</button></a>
+        </td>
+        
+        <!--<a class="btn btn-info" role="button" th:href="@{/encuesta/alta(id=${encuesta.id}, idUsuario=${session.usuariosession.id})}" >Dar de baja</a></td>
+        <td th:if="${encuesta.alta}==true"><a th:href="@{/encuesta/baja(id=${encuesta.id}, idUsuario = ${session.usuariosession.id})}"><button type="button" id="btnRegular">Dar de baja</button></a></td>
         
         <td th:if="${encuesta.alta}==false"><a th:href="@{/encuesta/alta(id=${encuesta.id})}"><button type="button" id="btnRegular">Dar de alta</button></a></td>
-        
-        <td><a th:href="@{/encuesta/eliminar(id=${encuesta.id})}"><button type="button" class="btn btn-primary" id="btnRegular" data-toggle="modal" data-target="#exampleModal" data-whatever="@ndo">Eliminar</button></a></td>              
+        -->
+        <td>
+            <a th:href="@{/encuesta/eliminar(id=${encuesta.id})}"><button type="button" class="btn btn-primary" id="btnRegular" data-toggle="modal" data-target="#exampleModal" data-whatever="@ndo">Eliminar</button></a>
+        </td>              
         </tr>
             
     </tbody>        

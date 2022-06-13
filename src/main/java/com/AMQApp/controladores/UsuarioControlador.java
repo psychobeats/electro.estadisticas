@@ -67,7 +67,7 @@ public class UsuarioControlador {
         }catch(ErrorServicio e){
             e.getMessage();
         }
-        return "index.html";
+        return "IndexIniciado.html";
     }
     
     @GetMapping("/misQuerys")
@@ -81,6 +81,11 @@ public class UsuarioControlador {
             return "IndexIniciado.html";
         }
         
+    }
+    
+    @GetMapping("/perfil")
+    public String perfil(){
+        return "perfil";
     }
     
     
