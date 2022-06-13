@@ -43,7 +43,14 @@
     <div class="form_group">
         <input type="input" class="form_field" name = "opcion2" th:value="${opcion2}" placeholder="Opción 2">
         <label for="Opción 2" class="form_label">Opción 2</label>
-    </div> 
+    </div>
+    <div class="input-group">
+    <label id="label-usuario">Fecha de Finalización: </label>
+    <br>
+    <input id="input-usuario" type="date" name = "caducidad" th:value="${caducidad}">
+    <br>
+    <label>(Si prefieres que la query no tenga fecha de finalización, no completes el campo) </label>
+  </div> 
         
     <!-- A PARTIR DE ACA ESTA COMENTADO PORQUE TIRA ERROR
     <div class="form_group">        

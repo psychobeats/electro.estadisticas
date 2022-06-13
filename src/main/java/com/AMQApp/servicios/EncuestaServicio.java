@@ -8,6 +8,8 @@ import com.AMQApp.errores.ErrorServicio;
 import com.AMQApp.repositorios.EncuestaRepositorio;
 import com.AMQApp.repositorios.ResultadosPorcentajesRepositorio;
 import com.AMQApp.repositorios.VotoRepositorio;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import static java.util.Arrays.sort;
 import java.util.Date;
@@ -47,7 +49,7 @@ public class EncuestaServicio {
 //  
     
     @Transactional
-    public Encuesta crearEncuesta(String titulo, String opcion1, String opcion2) throws ErrorServicio {
+    public Encuesta crearEncuesta(String titulo, String opcion1, String opcion2, String caducidad) throws ErrorServicio, ParseException {
        Encuesta e1 = new Encuesta();
        validar(titulo, opcion1, opcion2);
             e1.setTitulo(titulo);
@@ -55,11 +57,15 @@ public class EncuestaServicio {
             e1.setOpcion2(opcion2);
             Date inicio = new Date();
             e1.setInicio(inicio);
- 
-            Date caducidad = inicio;
-            caducidad.setDate(inicio.getDate() + 1);
-
-            e1.setCaducidad(caducidad);
+            
+            if (caducidad != null && !caducidad.isEmpty()) {
+                SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                Date caducidad1 = formato.parse(caducidad);
+                //validarNacimientoDate(caducidad1);
+                e1.setCaducidad(caducidad1);
+            } else {
+                e1.setCaducidad(null);
+            }
 
             List<Voto> votos = new ArrayList();
             e1.setVotos(votos);
@@ -112,8 +118,11 @@ public class EncuestaServicio {
     {
         for (Encuesta encuesta : encuestas) {
             Date actual = new Date();
-            if (encuesta.getCaducidad().before(actual)) {
-                encuesta.setAlta(false);
+            if (encuesta.getCaducidad() != null) {
+                if (encuesta.getCaducidad().before(actual)) {
+                    encuesta.setAlta(false);
+                    encuestaRepositorio.save(encuesta);
+                }
             }
         }
     }

@@ -60,12 +60,12 @@ public class UsuarioServicio implements UserDetailsService{
         usuarioRepositorio.save(usuario);
     }
     
-    public void crearEncuesta(String idUsuario, String titulo, String opcion1, String opcion2) throws ErrorServicio{
+    public void crearEncuesta(String idUsuario, String titulo, String opcion1, String opcion2, String caducidad) throws ErrorServicio, ParseException{
 
         Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
         if(respuesta.isPresent()){
             Usuario usuario = respuesta.get();
-            Encuesta e1 = encuestaServicio.crearEncuesta(titulo, opcion1, opcion2);
+            Encuesta e1 = encuestaServicio.crearEncuesta(titulo, opcion1, opcion2, caducidad);
             usuario.getEncuestasCreadas().add(e1);
             usuarioRepositorio.save(usuario);
         }else{
@@ -292,6 +292,7 @@ public class UsuarioServicio implements UserDetailsService{
         if (resultado.isPresent()) {
             Usuario usuario = resultado.get();
             List<Encuesta> encuestas = usuario.getEncuestasCreadas();
+            encuestaServicio.bajaPorCaducidad(encuestas);
             return encuestas;
         } else {
             throw new ErrorServicio("Por algún extraño y retorcido motivo, no se encontró el usuario :S");

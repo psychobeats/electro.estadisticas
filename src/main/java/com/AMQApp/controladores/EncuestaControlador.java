@@ -56,9 +56,9 @@ public class EncuestaControlador {
     
     
     @PostMapping("/crear")
-    public String crear(ModelMap modelo, @RequestParam(required=false) String usuarioId, @RequestParam(required=false) String titulo, @RequestParam(required=false) String opcion1, @RequestParam(required=false) String opcion2) throws ParseException, ErrorServicio{
+    public String crear(ModelMap modelo, @RequestParam(required=false) String usuarioId, @RequestParam(required=false) String titulo, @RequestParam(required=false) String opcion1, @RequestParam(required=false) String opcion2, @RequestParam(required=false) String caducidad) throws ParseException, ErrorServicio{
         try{
-            usuarioServicio.crearEncuesta(usuarioId, titulo, opcion1, opcion2);
+            usuarioServicio.crearEncuesta(usuarioId, titulo, opcion1, opcion2, caducidad);
         }catch(ErrorServicio e){
             modelo.put("titulo", titulo);
             modelo.put("opcion1", opcion1);
@@ -146,7 +146,7 @@ public class EncuestaControlador {
         
        
     }
-     @GetMapping("/alta")
+    @GetMapping("/alta")
     public String darAlta(ModelMap modelo, @RequestParam(required=false) String id, @RequestParam(required=false) String idUsuario){
         try{
             //Usuario usuario= usuarioServicio.buscarPorId(idUsuario);
@@ -167,7 +167,7 @@ public class EncuestaControlador {
         
     }
     
-     @GetMapping("/eliminar")
+    @GetMapping("/eliminar")
     public String eliminar(ModelMap modelo, @RequestParam(required=false) String id){
         try{
             encuestaServicio.eliminar(id);

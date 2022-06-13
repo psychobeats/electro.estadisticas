@@ -36,6 +36,7 @@
     <thead class="fw-bold">
        <tr>
        <th scope="col">Query </th>
+       <th scope="col">Fecha Finalización</th>
        <th scope="col">Alta/Baja</th>
        <th scope="col">Eliminar</th></tr>
     </tr>
@@ -46,7 +47,10 @@
         <tr th:each="encuesta:${encuestas}">
             
         <td th:text="${encuesta.titulo}">Titulo</td> 
-        
+        <td>
+            <label th:if="${encuesta.caducidad} != null" th:text="${encuesta.caducidad}">Caducidad</label>
+            <label th:if="${encuesta.caducidad} == null">Sin fecha Finalización</label>
+        </td>
         <!--<form action="/encuesta/alta"> 
             <input type="hidden" name="idUsuario" th:value="${session.usuariosession.id}">
             <input type="hidden" name="id" th:value="${encuesta.id}">
