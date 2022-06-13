@@ -1,21 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../static/style.css">
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/style.css">
-    <title>INDEX INICIAL</title>
-    <link rel="icon" type="icon/png" sizes=""href="/assets/favicon.png">
+<title>Index Inicial</title>
+<link rel="icon" type="icon/png" sizes=""href="assets/favicon.png">
 </head>
 
 <body>
-    <div th:fragment="navBarPublico">  
      
         <nav class="nav">
            <a class="navbar-brand" id="nav-logo"  href="/">
@@ -27,16 +24,13 @@
             <a class="nav-link" href="/encuesta/listar">Querys</a>
             <a class="nav-link" href="/preguntasFrecuentes">Preguntas Frecuentes</a>
         
-        </nav>
-        </div>
-
-    <p></p>
-    <div>
-        <div id="logo">
-        <img src="https://drive.google.com/uc?export=download&id=1kp0e1e4Z0jUJNHPLR_Mi21QL7Byls9Gp" width="700" height=auto/>
-        </div>
-        <div>
-            <p id="p1"> Las estidísticas forman un papel importante en nuestras vidas, no solo para resolver dudas entre amigos, 
+  <div>
+  <div id="logo">
+    <img src="https://drive.google.com/uc?export=download&id=1kp0e1e4Z0jUJNHPLR_Mi21QL7Byls9Gp" width="700" height=auto/>
+  </div>
+    
+  <div id="formulario">
+      <p id="parrafoIndex"> Las estidísticas forman un papel importante en nuestras vidas, no solo para resolver dudas entre amigos, 
                 como cuanta gente elige el frio o el calor, sino que nos puede ayudar en nuestros proyectos personales, cuantificando
                 la realidad para tomar mejores decisiones. 
                 <br>
@@ -68,7 +62,45 @@
     </table>
   </div>
 
-    <br>
+  <br>
+    
+  <!-- <div>
+    <h1 id="hh1"> TOP 5 QUERY'S MÁS VOTADAS: </h1>
+     
+    <table class="table" id="table-ranking">
+      <thead id="head-ranking">
+      <tr>
+       <th scope="col"> Puesto </th>
+       <th scope="col"> Query </th>
+      </tr>
+      </thead>
+        
+      <tbody id="body-ranking">
+      <tr>
+      <th scope="row"> #1 </th>
+        <td th:each="query:${querys}"> Query </td> consulta para que muestre los primeros 5 resultados
+      </tr>
+      <tr> 
+        <th scope="row"> #2 </th>
+        <td th:each="query:${querys}"> Query </td>
+      </tr>
+      <tr>
+        <th scope="row"> #3 </th>
+        <td th:each="query:${querys}"> Query </td>
+      </tr>
+      <tr>
+        <th scope="row"> #4 </th>
+        <td th:each="query:${querys}"> Query </td>
+      </tr>
+      <tr>
+        <th scope="row"> #5 </th>
+        <td th:each="query:${querys}"> Query </td>
+      </tr>
+      </tbody>
+    </table> 
+    </div>
+    </div> -->
+  <br>
     
 <div th:fragment="footer">
   <footer class="pie-pagina">

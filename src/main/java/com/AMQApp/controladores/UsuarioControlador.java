@@ -1,6 +1,5 @@
 package com.AMQApp.controladores;
 
-import com.AMQApp.entidades.Encuesta;
 import com.AMQApp.entidades.Usuario;
 import com.AMQApp.enums.Pais;
 import com.AMQApp.enums.Sexo;
@@ -32,7 +31,7 @@ public class UsuarioControlador {
     }
     
     @PostMapping("/registrar")
-    public String registrar(ModelMap modelo, @RequestParam(required=false) String alias,@RequestParam(required=false) Sexo sexo,@RequestParam(required=false) String email,@RequestParam(required=false) Pais pais,@RequestParam(required=false) String nacimiento,@RequestParam(required=false) String clave,@RequestParam(required=false) String claveValidar) throws ParseException{
+    public String registrar(ModelMap modelo, @RequestParam(required=false) String alias,@RequestParam Sexo sexo,@RequestParam(required=false) String email,@RequestParam Pais pais,@RequestParam(required=false) String nacimiento,@RequestParam(required=false) String clave,@RequestParam(required=false) String claveValidar) throws ParseException{
         try{
             usuarioServicio.crear(alias, sexo, email, pais, nacimiento, clave, claveValidar);
         }catch(ErrorServicio e){
