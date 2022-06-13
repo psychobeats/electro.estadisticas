@@ -155,22 +155,6 @@ public class EncuestaServicio {
                 throw new ErrorServicio("El id llegó, pero la encuesta no fue encontrada");
         }    
     }
-    
-    @Transactional
-    public void eliminar(String id) throws ErrorServicio{
-         if (id == null || id.isEmpty()) {
-            throw new ErrorServicio("No llegó el id de la consulta");
-        }else{
-        
-        Optional <Encuesta> respuesta = encuestaRepositorio.findById(id);
-        if(respuesta.isPresent()){
-        encuestaRepositorio.delete(respuesta.get());
-        }else{
-            throw new ErrorServicio("La encuesta no fue encontrada");
-        }
-        
-        }
-    }
 
     @Transactional
     public List<Encuesta> listaDeEncuestas() throws ErrorServicio

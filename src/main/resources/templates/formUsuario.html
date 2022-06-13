@@ -1,105 +1,111 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
-<link rel="stylesheet" href=".css">
+<link rel="stylesheet" href="../static/style.css">
 <meta charset="utf-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/style.css">
-<title>Form usuario</title>
-<link rel="icon" type="icon/png" sizes=""href="/assets/favicon.png">
+<title>Form Usuario</title>
+<link rel="icon" type="icon/png" sizes=""href="assets/favicon.png">
 </head>
 
+
 <body>
-  <div th:fragment="navBarPublico">  
+<div th:fragment="navBarPublico">  
      
-    <nav class="nav">
-       <a class="navbar-brand" id="nav-logo"  href="#">
-            <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
-          </a>
-        
-        <a class="nav-link"  href="/usuario/registro">Registro</a>
-        <a class="nav-link" href="/login">Log In</a>
-        <a class="nav-link" href="#">Preguntas Frecuentes</a>
+  <nav class="nav">
+    <a class="navbar-brand" id="nav-logo"  href="/">
+      <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160"></a>
+    <a class="nav-link"  href="/usuario/registro">Registro</a>
+    <a class="nav-link" href="/login">Log In</a>
+    <a class="nav-link" href="#">Preguntas Frecuentes</a>
     
-    </nav>
-    </div>
+  </nav>
+</div>
 
 <div id="formulario">
 <h1 id="hh1">Formulario de registro: </h1>
 <div class="recuadro">
-<form action="/usuario/registrar" method="POST" enctype="multipart/form-data" class="form-usuario">
-  <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
+<form class="form-usuario" action="/usuario/registrar" method="POST" enctype="multipart/form-data">
+    <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
     <div class="form_group">
-    <input id="input-usuario" type="text" class="form_field" name = "alias" th:value="${alias}" 
+    <input id="input-usuario" type="input" class="form_field" name = "alias" th:value="${alias}" 
     placeholder="Alias">
     <label for="alias" class="form_label">Alias</label>
   </div>
   <br>
   <div class="form_group">
-    <input id="input-usuario" type="email" class="form_field" name = "email" th:value="${email}" 
+    <input id="input-usuario" type="input" class="form_field" name = "email" th:value="${email}" 
     placeholder="E-mail">
     <label for="e-mail" class="form_label">E-mail</label>
   </div> 
   <br>
-  <div class="form_group">
-    
+  <div class="form_group">    
     <input id="input-usuario" type="password" class="form_field" name = "clave" th:value="${clave}"
     placeholder="Password">
     <label for="input-usuario" class="form_label"> Password</label>
-    <br>
-    <div class="condiciones-clave">Mínimo 6 dígitos.</div>
+    <div class="condiciones-clave">Condiciones para la clave.</div>
   </div>
   <br>
   <div class="form_group">
-    <input id="input-usuario" type="password" class="form_field" name ="claveValidar" th:value="${claveValidar}" 
+    <input id="input-usuario" type="password" class="form_field" name = "claveValidar" th:value="${claveValidar}" 
     placeholder="Confirmar Password">
     <label for="input-usuario" class="form_label">Confirmar Password </label>
   </div>
   <br>
-  <br>
   <div class="input-group">
     <label id="label-usuario">Sexo: </label>
-    <select class="form-control" name="sexo" th:value="${sexo}">
-     <option id="input-usuario" th:each="sex :${sexos}" th:text="${sex}" >Seleccionar</option>
+    <select class="form-control" name="sexo">
+     <option id="input-usuario" th:each="sex :${sexos}" th:text="${sex}">Seleccionar</option>
     </select>
-  </div>  
+  </div>      
   <br>
+      
+      
   <div class="input-group">
     <label id="label-usuario">País: </label>
-    <select class="form-control" name = "pais" th:value="${pais}">
+    <select class="form-control" name="pais">
      <option id="input-usuario" th:each="pais1: ${paises}" th:text="${pais1}">Seleccionar</option>
     </select>
-  </div>
+  </div>  
   <br>
   <div class="input-group">
     <label id="label-usuario">Fecha de Nacimiento: </label>
     <input id="input-usuario" type="date" name = "nacimiento" th:value="${nacimiento}">
   </div> 
   <br>
-  <br>
-  <button class="btn btn-primary" id="btnIndex" type="submit">Guardar</button>
+      
+      <!--HAY QUE ELEGIR UNO DE LOS ID PARA EL BOTÓN-->
+      <!--id="btn-usuario"-->
+      
+  <button class="btn btn-primary" id="btnIndex" type="submit" href="#">Guardar</button>
 </form>
 </div>
 </div>
 
-<div th:fragment="footer">
-  <footer class="pie-pagina">
+
+<footer class="pie-pagina">
     <div class="grupo-1">
-      <div class="box">       
-        <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160"
-        class="imagen-footer">       
+      <div class="box">
+        <figure>
+          <a>
+            <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160"
+              class="imagen-footer">
+          </a>
+        </figure>
+        <br>
         <div class="grupo-2">
           <a> &copy;2022 A MOVER LA QUERY!</a>
           <br>
           <a>Todos los Derechos Reservados</a>
+
         </div>
       </div>
   </footer>
-</div>
+
 
 </body>
 </html>

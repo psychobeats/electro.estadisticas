@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+<link rel="stylesheet" href="../static/style.css">
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+
+<title>Crear Encuesta</title>
+<link rel="icon" type="icon/png" sizes=""href="assets/favicon.png">
+</head>
+
+<body>
+  <nav class="nav">
+    <a class="navbar-brand" id="nav-logo"  href="#">
+      <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
+    </a>       
+    <a class="nav-link"  href="#">Mi cuenta</a>
+    <a class="nav-link" href="#">Mis Query's</a>
+    <a class="nav-link" href="#">Preguntas Frecuentes</a> 
+  </nav>
+
+  <div id="formulario">
+  <h1 id="hh1">Crear encuesta</h1>
+  <div class="recuadro">
+  <form class="form-usuario" action="/encuesta/crear" method="POST" enctype="multipart/form-data">
+  <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
+    <div class="form_group">
+    <input type="hidden" name="usuarioId" th:value="${session.usuariosession.id}">
+    <input id="input-usuario" type="input" class="form_field" name = "titulo" th:value="${titulo}"
+    placeholder="Título de tu Query">
+    <label class="form_label">Título de tu Query </label>
+    </div>
+    <div class="form_group">
+    <input id="input-usuario" type="input" class="form_field" name = "opcion1" th:value="${opcion1}"
+    placeholder="Opcion 1">
+    <label class="form_label">Opcion 1 </label>
+    </div>  
+    <div class="form_group">
+    <input id="input-usuario" type="input" class="form_field" name = "opcion2" th:value="${opcion2}"
+    placeholder="Opcion 2">
+    <label class="form_label">Opcion 2 </label>
+    </div>
+    <button class="btn btn-primary" id="btnIndex" type="submit">Guardar</button>
+  
+  </form>
+  </div>
+  </div>
+  <footer class="pie-pagina">
+    <div class="grupo-1">
+      <div class="box">
+        <figure>
+          <a>
+            <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160"
+              class="imagen-footer">
+          </a>
+        </figure>
+        <br>
+        <div class="grupo-2">
+          <a> &copy;2022 A MOVER LA QUERY!</a>
+          <br>
+          <a>Todos los Derechos Reservados</a>
+
+        </div>
+      </div>
+  </footer>
+  </body>
+
+</html>

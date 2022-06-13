@@ -82,7 +82,7 @@ public class EncuestaControlador {
         
         
         for (Encuesta auxEncuesta: usuario.getEncuestasCreadas()) {
-            if (encuesta.getId().equals(auxEncuesta.getId())) {
+            if (encuesta.getId() == auxEncuesta.getId()) {
                 validarEncuesta = true;
             }
         }
@@ -111,7 +111,7 @@ public class EncuestaControlador {
     }
     
     @GetMapping("/votar")
-    public String votar(ModelMap modelo, @RequestParam(required=false) String idEncuesta, @RequestParam(required=false) String idUsuario, @RequestParam(required=false) String opcion){
+    public String votar(ModelMap modelo, @RequestParam String idEncuesta, @RequestParam String idUsuario, @RequestParam String opcion){
         try{
             Usuario usuario = usuarioServicio.buscarPorId(idUsuario);
             
@@ -125,38 +125,6 @@ public class EncuestaControlador {
         }
         //modelo.put("mensaje", "Se ha votado la encuesta correctamente");
         return "redirect:/encuesta/listar";
-    }
-    
-      @GetMapping("/baja")
-    public String darBaja(ModelMap modelo, @RequestParam(required=false) String id){
-        try{
-            encuestaServicio.bajaEncuesta(id);
-        }catch(ErrorServicio ex){
-            modelo.put("error", ex.getMessage());
-        }
-        return "misQuerys";
-       
-    }
-     @GetMapping("/alta")
-    public String darAlta(ModelMap modelo, @RequestParam(required=false) String id){
-        try{
-            encuestaServicio.altaEncuesta(id);
-        }catch(ErrorServicio ex){
-            modelo.put("error", ex.getMessage());   
-        }
-        return "misQuerys";
-        
-    }
-    
-     @GetMapping("/eliminar")
-    public String eliminar(ModelMap modelo, @RequestParam(required=false) String id){
-        try{
-            encuestaServicio.eliminar(id);
-        }catch(ErrorServicio ex){
-            modelo.put("error", ex.getMessage());
-            
-        }
-        return "misQuerys";
     }
     
 }

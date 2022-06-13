@@ -1,74 +1,82 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
-    <link rel="stylesheet" href="/style.css">
-    <title>Nueva Query</title>
-    <link rel="icon" type="icon/png" sizes=""href="/assets/favicon.png">
+<head>
+<link rel="stylesheet" href="../static/style.css">
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+
+<title>Nueva Query</title>
+<link rel="icon" type="icon/png" sizes=""href="assets/favicon.png">
 </head>
 
 <body>
 
-    <nav class="nav">
-        <a class="navbar-brand" id="nav-logo"  href="#">
-             <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
-           </a>
-         
-         <a class="nav-link"  href="#">Mi cuenta</a>
-         <a class="nav-link" href="#">Mis Query's</a>
-         <a class="nav-link" href="#">Preguntas Frecuentes</a> 
-     </nav>
+<nav class="nav">
+  <a class="navbar-brand" id="nav-logo"  href="#">
+    <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
+  </a>       
+  <a class="nav-link"  href="#">Mi cuenta</a>
+  <a class="nav-link" href="#">Mis Query's</a>
+  <a class="nav-link" href="#">Preguntas Frecuentes</a> 
+</nav>
 
+<div id="formulario">
 <h1 id="hh1">Crear nueva Query: </h1>
-
-<form action="/encuesta/crear" method="POST" enctype="multipart/form-data" class="form-usuario">
+<div class="recuadro">
+<form class="form-usuario" action="/encuesta/crear" method="POST" enctype="multipart/form-data" class="form-usuario">
     <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
     <input type="hidden" name="usuarioId" th:value="${session.usuariosession.id}">    
     <div class="form_group">
-      <input type="input" class="form_field" name = "titulo" th:value="${titulo}" placeholder="Ingresá tú pregunta">
+      <input type="input" class="form_field" name="titulo" th:value="${tiitulo}" placeholder="Ingresá tú pregunta">
       <label for="Ingresá tú pregunta" class="form_label">Ingresá tú pregunta</label>
     </div>
     <div class="form_group">
-      <input type="input" class="form_field" name = "opcion1" th:value="${opcion1}" placeholder="Opción 1">
+      <input type="input" class="form_field" name="opcion1" th:value="${opcion1}" placeholder="Opción 1">
       <label for="Opción 1" class="form_label">Opción 1</label>
     </div>  
     <div class="form_group">
-        <input type="input" class="form_field" name = "opcion2" th:value="${opcion2}" placeholder="Opción 2">
+        <input type="input" class="form_field" name="opcion2" th:value="${opcion2}" placeholder="Opción 2">
         <label for="Opción 2" class="form_label">Opción 2</label>
-    </div> 
+    </div>     
         
-    <!-- A PARTIR DE ACA ESTA COMENTADO PORQUE TIRA ERROR
+    <!--
     <div class="form_group">        
         <div class="form-text">Te gustaría agregar una tercer opción?   
         <br>
-        <!--<label class="labelbox">Sí</label> **REVISAR ESPACIADO BOTTOM** --> </div> 
-     <!--   <label class="check"> 
+        <!--<label class="labelbox">Sí</label> **REVISAR ESPACIADO BOTTOM** -->
+    <!--
+    </div> 
+        <label class="check"> 
           <input type="checkbox" id="input"> <!--REVISAR ACÁ, PONER UN TRUE SI ACTIVAN EL CHECK-->
-      <!--    <span class="checkbox"></span>
+    <!--    <span class="checkbox"></span>
           <!--Si el check está activado, se da de alta a un "altaOpcion3"-->
-       <!-- </label>
-      </div>
+    <!--    </label>
+      </div> -->
+      
+        
+      <!--
       <div class="form_group">  
      <!-- PREGUNTAR CON TIMLEAF SI ESTA DE ALTA EL CHEK, SE APARECE ESTO, SINO NO! -->
-      <!--  <input th:if="${Encuesta.altaOpcion3}==true" type="input" class="form_field" th:value="${opcion3}" placeholder="Opción 3"></a></td>   
+    <!--    <input th:if="${Encuesta.altaOpcion3}==true" type="input" class="form_field" th:value="${opcion3}" placeholder="Opción 3"></a></td>   
         <label for="Opción 3" class="form_label">Opción 3</label>       
     </div> 
     <div class="form_group">
         <div class="form-text">Le agregamos una fecha límite a tu Query?</div>
         <input type="date" th:value="${fechaLimite}"> <!--Ver si hay que agregar a la entidad un atributo "fechaLimite"-->
-   <!-- </div> -->
-    <br> 
+    <!--
+    </div>-->
+    <br>
     
     <button class="btn btn-primary" id="btnIndex" type="submit">Crear Query</button>
 </form>
+</div>
+</div>
+</div>
 
-<div th:fragment="footer">
+<div>
   <footer class="pie-pagina">
     <div class="grupo-1">
       <div class="box">
