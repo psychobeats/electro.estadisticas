@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" >
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" >
 
 
 <head>
@@ -20,6 +20,7 @@
    
 
     <form action="/usuario/editar" method="POST" enctype="multipart/form-data">
+        <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
     <input type="hidden" name="idUsuario" th:value="${session.usuariosession.id}">
       <div>
         <label>Alias: </label>
@@ -30,7 +31,7 @@
         <!--<select class="form-control" th:field="*{Sexo}">
         <option th:each="Sexo : ${T(com.attacomsian.runner.domains.constants.Topic).values()}" th:value="${Sexo}" th:text="${Sexo}">Seleccionar</option>
         </select>-->
-        <select class="form-control" name="sexo"> 
+        <select class="form-control" name="sexo" th:value="${sexo}"> 
                     <option th:each="sex: ${sexos}" th:text="${sex}"></option> 
                 </select>
       </div>  
@@ -39,7 +40,7 @@
         <!--<select class="form-control" th:field="*{Pais}">
         <option th:each="Pais : ${T(com.attacomsian.runner.domains.constants.Topic).values()}" th:value="${Pais}" th:text="${Pais}">Seleccionar</option>
         </select>-->
-        <select class="form-control" name="pais"> 
+        <select class="form-control" name="pais" th:value="${pais}"> 
                     <option th:each="pais1: ${paises}" th:text="${pais1}"></option> 
         </select>
       </div>
