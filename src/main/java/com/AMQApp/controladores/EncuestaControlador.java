@@ -133,19 +133,23 @@ public class EncuestaControlador {
     }
     
       @GetMapping("/baja")
-    public String darBaja(ModelMap modelo, @RequestParam(required=false) String id){
+    public String darBaja(ModelMap modelo, @RequestParam(required=false) String id, @RequestParam(required=false) String idUsuario){
         try{
             encuestaServicio.bajaEncuesta(id);
+            List<Encuesta> encuestas = usuarioServicio.listaQuerysUsuario(idUsuario);
+            modelo.put("encuestas", encuestas);
+            return "misQuerys";
         }catch(ErrorServicio ex){
             modelo.put("error", ex.getMessage());
+            return "misQuerys";
         }
-        return "redirect:/usuario/misQuerys";
+        
        
     }
      @GetMapping("/alta")
     public String darAlta(ModelMap modelo, @RequestParam(required=false) String id, @RequestParam(required=false) String idUsuario){
         try{
-            Usuario usuario= usuarioServicio.buscarPorId(id);
+            //Usuario usuario= usuarioServicio.buscarPorId(idUsuario);
             //ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
             //HttpSession session = attr.getRequest().getSession(true);
             //session.setAttribute("usuariosession", usuario);
@@ -153,10 +157,14 @@ public class EncuestaControlador {
             //UserDetails user = usuarioServicio.loadUserByUsername(usuario.getEmail());
            
             encuestaServicio.altaEncuesta(id);
+            List<Encuesta> encuestas = usuarioServicio.listaQuerysUsuario(idUsuario);
+            modelo.put("encuestas", encuestas);
+            return "misQuerys";
         }catch(ErrorServicio ex){
-            modelo.put("error", ex.getMessage());   
+            modelo.put("error", ex.getMessage());
+            return "misQuerys";
         }
-        return "redirect:/usuario/misQuerys";
+        
     }
     
      @GetMapping("/eliminar")

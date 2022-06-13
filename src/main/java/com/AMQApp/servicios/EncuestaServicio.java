@@ -9,11 +9,14 @@ import com.AMQApp.repositorios.EncuestaRepositorio;
 import com.AMQApp.repositorios.ResultadosPorcentajesRepositorio;
 import com.AMQApp.repositorios.VotoRepositorio;
 import java.util.ArrayList;
+import static java.util.Arrays.sort;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 
@@ -182,6 +185,19 @@ public class EncuestaServicio {
         bajaPorCaducidad(encuestas);
 
         return encuestas;
+    }
+    
+    public List<Encuesta> topFive() throws ErrorServicio{
+        List<Encuesta> encuestasOrdenadasPorVotos = encuestaRepositorio.ordenarPorVotos();
+        List<Encuesta> encuestasTopFive = new ArrayList();
+        
+        for(int i = 0; i<5; i++){
+            encuestasTopFive.add(encuestasOrdenadasPorVotos.get(i));
+        }
+        if(encuestasTopFive.isEmpty() || encuestasTopFive == null){
+            throw new ErrorServicio("Aún no hay encuestas");
+        }
+        return encuestasTopFive;
     }
     
     

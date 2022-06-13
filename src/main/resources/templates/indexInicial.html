@@ -18,13 +18,14 @@
     <div th:fragment="navBarPublico">  
      
         <nav class="nav">
-           <a class="navbar-brand" id="nav-logo"  href="#">
+           <a class="navbar-brand" id="nav-logo"  href="/">
                 <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
               </a>
             
             <a class="nav-link"  href="/usuario/registro">Registro</a>
             <a class="nav-link" href="/login">Log In</a>
-            <a class="nav-link" href="#">Preguntas Frecuentes</a>
+            <a class="nav-link" href="/encuesta/listar">Querys</a>
+            <a class="nav-link" href="/preguntasFrecuentes">Preguntas Frecuentes</a>
         
         </nav>
         </div>
@@ -58,25 +59,10 @@
       </thead>
       
       <tbody id="body-ranking">
-        <tr>
-          <th scope="row"> #1 </th>
-          <td th:each="query:${querys}"><a id="query-ranking" href="#"> Pastelito Membrillo vs. Pastelito Batata </a></td><!-- consulta para que muestre los primeros 5 resultados -->
-        </tr>
-        <tr> 
-          <th scope="row"> #2 </th>
-          <td th:each="query:${querys}"><a id="query-ranking" href="#"> Pastelito Membrillo vs. Pastelito Batata </a></td>
-        </tr>
-        <tr>
-          <th scope="row"> #3 </th>
-          <td th:each="query:${querys}"><a id="query-ranking" href="#"> Pastelito Membrillo vs. Pastelito Batata </a></td>
-        </tr>
-        <tr>
-          <th scope="row"> #4 </th>
-          <td th:each="query:${querys}"><a id="query-ranking" href="#"> Pastelito Membrillo vs. Pastelito Batata </a></td>
-        </tr>
-        <tr>
-          <th scope="row"> #5 </th>
-          <td th:each="query:${querys}"><a id="query-ranking" href="#"> Pastelito Membrillo vs. Pastelito Batata </a></td>
+        <tr th:each="query:${querys}">
+          <th scope="row" th:text="${'#'+(querys.indexOf(query)+1)}"> </th>
+          <td>
+              <a id="query-ranking" th:href="@{/resultados/visualizacion(idEncuesta=${query.id})}" th:text="${query.titulo}"> Pastelito Membrillo vs. Pastelito Batata </a></td><!-- consulta para que muestre los primeros 5 resultados -->
         </tr>
       </tbody>
     </table>

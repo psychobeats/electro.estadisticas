@@ -2,6 +2,7 @@ package com.AMQApp.controladores;
 
 import com.AMQApp.entidades.Usuario;
 import com.AMQApp.errores.ErrorServicio;
+import com.AMQApp.servicios.EncuestaServicio;
 import com.AMQApp.servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,8 +18,16 @@ public class PortalControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
     
+    @Autowired
+    private EncuestaServicio encuestaServicio;
+    
     @GetMapping("/")
-    public String index(){
+    public String index(ModelMap modelo){
+        try{
+            modelo.put("querys", encuestaServicio.topFive());
+        }catch(ErrorServicio e){
+            modelo.put("error", e.getMessage());
+        }
         return "indexInicial.html";
     }
     
@@ -32,27 +41,27 @@ public class PortalControlador {
         }
         return "logIn.html";
     }
-    
-//    @PostMapping("/logincheck")
-//    public String logear(ModelMap modelo, @RequestParam String email) throws ErrorServicio{
-//        Usuario usuario = usuarioServicio.buscarPorEmail(email);
-//        modelo.addAttribute("usuario", usuario);
-//        modelo.put("usuario", usuario);
-//        return "LoginExitoso.html";
-//        
-//    }
+
 
     
     @GetMapping("/loginExitoso")
-    public String loginExito(){
-//        System.out.println("EMAIL: " + email);
-//        Usuario usuario = usuarioServicio.buscarPorEmail(email);
-//        if(usuario!=null){
-//        modelo.addAttribute("usuario", usuario);
-//        modelo.put("alias", usuario.getAlias());
-//        return "LoginExitoso.html";
-//        }else{
+    public String loginExito(ModelMap modelo){
+         try{
+            modelo.put("querys", encuestaServicio.topFive());
+        }catch(ErrorServicio e){
+            modelo.put("error", e.getMessage());
+        }
       return "IndexIniciado.html";
+    }
+    
+    @GetMapping("/preguntasFrecuentes")
+    public String preguntasFrecuentes(){
+        return "preguntasFrecuentes";
+    }
+    
+    @GetMapping("/preguntasFrecuentesIn")
+    public String preguntasFrecuentesIn(){
+        return "preguntasFrecuentesIniciado";
     }
     
 }
