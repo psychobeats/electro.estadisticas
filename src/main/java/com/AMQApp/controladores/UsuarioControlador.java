@@ -1,5 +1,6 @@
 package com.AMQApp.controladores;
 
+import com.AMQApp.entidades.Encuesta;
 import com.AMQApp.entidades.Usuario;
 import com.AMQApp.enums.Pais;
 import com.AMQApp.enums.Sexo;

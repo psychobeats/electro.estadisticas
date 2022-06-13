@@ -167,15 +167,15 @@ public class EncuestaControlador {
         
     }
     
-    @GetMapping("/eliminar")
-    public String eliminar(ModelMap modelo, @RequestParam(required=false) String id){
-        try{
-            encuestaServicio.eliminar(id);
-        }catch(ErrorServicio ex){
-            modelo.put("error", ex.getMessage());
-            
-        }
-        return "misQuerys";
-    }
+//    @GetMapping("/eliminar")
+//    public String eliminar(ModelMap modelo, @RequestParam(required=false) String id){
+//        try{
+//            encuestaServicio.eliminar(id);
+//        }catch(ErrorServicio ex){
+//            modelo.put("error", ex.getMessage());
+//            
+//        }
+//        return "misQuerys";
+//    }
     
 }

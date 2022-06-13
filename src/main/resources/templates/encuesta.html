@@ -2,14 +2,14 @@
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
-<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="/style.css">
 <meta charset="utf-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
 
 <title>Nueva Query</title>
-<link rel="icon" type="icon/png" sizes=""href="assets/favicon.png">
+<link rel="icon" type="icon/png" sizes=""href="/assets/favicon.png">
 </head>
 
 <body>
@@ -29,7 +29,7 @@
 <div id="formulario">
 <h1 id="hh1">Crear nueva Query: </h1>
 <div class="recuadro">
-<form class="form-usuario" action="/encuesta/crear" method="POST" enctype="multipart/form-data" class="form-usuario">
+<form class="form-usuario" action="/encuesta/crear" method="POST" enctype="multipart/form-data">
     <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
     <input type="hidden" name="usuarioId" th:value="${session.usuariosession.id}">    
     <div class="form_group">
