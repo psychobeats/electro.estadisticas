@@ -24,8 +24,45 @@
          <a class="nav-link" href="#">Preguntas Frecuentes</a> 
      </nav>
 
-    <h1 th:text="${encuesta.titulo}"> Título</h1>
-    <BR>
+    <h1 id="hh1" th:text="${encuesta.titulo}"> Título</h1>
+    <br>
+    
+    <canvas id="myChart" width="200" height="200"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>   
+    <script>
+      const ctx = document.getElementById('myChart').getContext('2d');
+      const myChart = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+              labels: ['Opcion A', 'Opcion B'],/*th:text de opciones 1 y 2*/
+              datasets: [{
+                  label: '# of Votes', /*Total de votos*/
+                  data: [12, 19],/*Resultados de las opciones de voto 1 y 2*/
+                  backgroundColor: [
+                      'rgba(255, 0, 110, 0.2)',
+                      'rgba(58, 134, 255, 0.2)',
+                      ],
+                  borderColor: [
+                      'rgba(255, 0, 110, 1)',
+                      'rgba(58, 134, 255, 1)',
+                  ],
+                  
+                  borderWidth: 2
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      });
+      </script>
+
+
+
    
         
 <div th:fragment="footer">
@@ -48,7 +85,7 @@
         </div>
     </footer>
   </div>
-            
+        
 </body>
 
 </html>
