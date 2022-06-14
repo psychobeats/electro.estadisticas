@@ -21,7 +21,7 @@
             
             <a class="nav-link"  href="/usuario/registro">Registro</a>
             <a class="nav-link" href="/login">Log In</a>
-            <a class="nav-link" href="/encuesta/listar">Querys</a>
+           <!-- <a class="nav-link" href="/encuesta/listar">Querys</a>  -->
             <a class="nav-link" href="/preguntasFrecuentes">Preguntas Frecuentes</a>
         </nav>
         
@@ -44,7 +44,7 @@
     
 <div><!--Ranking-->
     <h1 id="hh1"> TOP 5 QUERY'S MÁS VOTADAS: </h1>
-    
+    <p th:if="${error!=null}" th:text="${error}"></p>
     <table class="table" id="table-ranking">
       <thead id="head-ranking">
        <tr>
@@ -103,6 +103,9 @@
     </div> -->
   <br>
     
+      <a href="/encuesta/listar"><button class="btn btn-primary" role="button" id="btnIndex" > Más Querys! </button>
+          </a>
+
 <div th:fragment="footer">
   <footer class="pie-pagina">
     <div class="grupo-1">

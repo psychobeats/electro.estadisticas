@@ -19,21 +19,20 @@
              <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
            </a>
          
-         <a class="nav-link"  href="/usuario/perfil">Mi cuenta</a>
+         <a class="nav-link"  th:href="@{/usuario/perfil/(id=${session.usuariosession.id})}">Mi cuenta</a>
          <a class="nav-link" th:href="@{/usuario/misQuerys/(idUsuario=${session.usuariosession.id})}">Mis Query's</a>
          <a class="nav-link" href="/preguntasFrecuentesIn">Preguntas Frecuentes</a> 
-         <a class="nav-link" href="/encuesta/listar">Querys</a>
-         <a class="nav-link" href="/logout">Cerrar Sesión</a>
+         <!-- <a class="nav-link" href="/encuesta/listar">Querys</a> -->
+         <!-- <a class="nav-link" href="/logout">Cerrar Sesión</a> -->
      </nav>
 
 <div id="formulario">
 <h1 id="hh1">Crear nueva Query: </h1>
-<div class="recuadro">
 <form class="form-usuario" action="/encuesta/crear" method="POST" enctype="multipart/form-data">
     <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
     <input type="hidden" name="usuarioId" th:value="${session.usuariosession.id}">    
     <div class="form_group">
-      <input type="input" class="form_field" name="titulo" th:value="${tiitulo}" placeholder="Ingresá tú pregunta">
+      <input type="input" class="form_field" name="titulo" th:value="${titulo}" placeholder="Ingresá tú pregunta">
       <label for="Ingresá tú pregunta" class="form_label">Ingresá tú pregunta</label>
     </div>
     <div class="form_group">
@@ -46,8 +45,8 @@
     </div>
 
     <div class="form_group">
-    <input id="input-usuario" type="date" name = "caducidad" th:value="${caducidad}">
     <label id="label-usuario" class="form-label">Fecha de Finalización: </label>
+    <input id="input-usuario" type="date" name = "caducidad" th:value="${caducidad}">
     <br>
     <label class="condiciones-clave">(Si prefieres que la query no tenga fecha de finalización, no completes el campo) </label>
   </div> 
@@ -82,7 +81,6 @@
     
     <button class="btn btn-primary" id="btnIndex" type="submit">Crear Query</button>
 </form>
-</div>
 </div>
 </div>
 

@@ -28,7 +28,7 @@
          <a class="nav-link" th:if = "${session.usuariosession==null}" href="/login">Log In</a>
          <a class="nav-link" th:if = "${session.usuariosession==null}" href="/preguntasFrecuentes">Preguntas Frecuentes</a>
          
-         <a class="nav-link"  th:if = "${session.usuariosession!=null}"href="/usuario/perfil">Mi cuenta</a>
+         <a class="nav-link"  th:if = "${session.usuariosession!=null}"th:href="@{/usuario/perfil/(id=${session.usuariosession.id})}">Mi cuenta</a>
          <a class="nav-link" th:if = "${session.usuariosession!=null}" th:href="@{/usuario/misQuerys/(idUsuario=${session.usuariosession.id})}">Mis Query's</a>
          <a class="nav-link" th:if = "${session.usuariosession!=null}" href="/preguntasFrecuentesIn">Preguntas Frecuentes</a> 
      

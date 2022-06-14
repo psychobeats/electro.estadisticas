@@ -21,7 +21,7 @@
          <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
        </a>
      
-     <a class="nav-link"  href="/usuario/perfil">Mi cuenta</a>
+     <a class="nav-link"  th:href="@{/usuario/perfil/(id=${session.usuariosession.id})}">Mi cuenta</a>
      <!--<a class="nav-link" href="">Mis Query's</a>-->
      <a class="nav-link" href="/preguntasFrecuentesIn">Preguntas Frecuentes</a>
      <a class="nav-link" href="/encuesta/listar">Querys</a>
@@ -29,10 +29,10 @@
  </nav>
 
 <h1 id="hh1">Mis Query's</h1>
-
+<p th:if="${error!=null}" th:text="${error}" style="color: white;"></p>
 <!--Este es el comentario a ver si funciona todo-->
 
-<table class="table text-center">
+<table th:if="${error==null}" class="table text-center">
     <thead class="fw-bold">
        <tr>
        <th scope="col">Query </th>

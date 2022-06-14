@@ -28,15 +28,15 @@
 
       <a class="nav-link" href="/usuario/registro">Registro</a>
       <a class="nav-link" href="/login">Log In</a>
-      <a class="nav-link" href="/preguntasFrecuentes">Preguntas Frecuentes</a>
-      <a class="nav-link" href="/encuesta/listar">Querys</a>
+      <a class="nav-link active" href="/preguntasFrecuentes">Preguntas Frecuentes</a>
+      <!-- <a class="nav-link" href="/encuesta/listar">Querys</a> -->
 
     </nav>
   </div>
 
-  <div>
+  <div id="formulario">
     <h1 id="hh1">Preguntas Frecuentes</h1>
-    <div class="layout">
+    <div>
       <div class="accordion">
 
         <div class="accordion__pregunta">
@@ -66,7 +66,7 @@
           <p>¿Puedo borrar una de mis Query's creadas?</p>
         </div>
         <div class="accordion__respuesta">
-          <p>Si! Podrás borrar una query creada desde 'Mis Query´s.</p>
+          <p>Si! Podrás dar de baja a cualquiera de tus querys creadas, desde 'Mis Query´s.</p>
         </div>
       </div>
 
@@ -94,7 +94,7 @@
         })
       </script>
     </div>
-
+  </div>
     <div th:fragment="footer">
       <footer class="pie-pagina">
         <div class="grupo-1">
