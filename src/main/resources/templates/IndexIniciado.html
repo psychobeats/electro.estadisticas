@@ -21,7 +21,7 @@
          <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
        </a>
      
-     <a class="nav-link"  href="/usuario/perfil">Mi cuenta</a>
+     <a class="nav-link" th:href="@{/usuario/perfil/(id=${session.usuariosession.id})}">Mi cuenta</a>
      <a class="nav-link" th:href="@{/usuario/misQuerys/(idUsuario=${session.usuariosession.id})}">Mis Query's</a>
      <a class="nav-link" href="/preguntasFrecuentesIn">Preguntas Frecuentes</a> 
      <a class="nav-link" href="/encuesta/listar">Querys</a>

@@ -37,7 +37,7 @@ public class PortalControlador {
             modelo.put("error", "Usuario y/o contraseña incorrect@s");
         }
         if (logout != null) {
-            modelo.put("logout", "Saliste exitosamente. Dejaste de mover tu Query :(");
+            modelo.put("logout", "Dejaste de mover tu Query :(");
         }
         return "logIn.html";
     }

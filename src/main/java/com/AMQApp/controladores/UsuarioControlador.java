@@ -111,7 +111,7 @@ public class UsuarioControlador {
             modelo.put("error", e.getMessage());
             return "cambioClave";
         }        
-        return "IndexIniciado.html";
+        return "redirect:/logout";
     }
     
     
@@ -130,7 +130,14 @@ public class UsuarioControlador {
     }
     
     @GetMapping("/perfil")
-    public String perfil(){
+    public String perfil(ModelMap modelo,@RequestParam(required=false) String id){
+         try{
+            Usuario usuario = usuarioServicio.buscarPorId(id);
+            modelo.put("usuario", usuario);
+        }catch(ErrorServicio ex){
+            modelo.put("error", "Se ha cerrado la sesión");
+            return "indexInicial";
+        }       
         return "perfil";
     }
     
