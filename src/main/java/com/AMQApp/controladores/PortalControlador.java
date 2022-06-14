@@ -23,11 +23,11 @@ public class PortalControlador {
     
     @GetMapping("/")
     public String index(ModelMap modelo){
-        try{
-            modelo.put("querys", encuestaServicio.topFive());
-        }catch(ErrorServicio e){
-            modelo.put("error", e.getMessage());
-        }
+//        try{
+//            modelo.put("querys", encuestaServicio.topFive());
+//        }catch(ErrorServicio e){
+//            modelo.put("error", e.getMessage());
+//        }
         return "indexInicial.html";
     }
     
@@ -46,11 +46,11 @@ public class PortalControlador {
     
     @GetMapping("/loginExitoso")
     public String loginExito(ModelMap modelo){
-         try{
-            modelo.put("querys", encuestaServicio.topFive());
-        }catch(ErrorServicio e){
-            modelo.put("error", e.getMessage());
-        }
+//         try{
+//            modelo.put("querys", encuestaServicio.topFive());
+//        }catch(ErrorServicio e){
+//            modelo.put("error", e.getMessage());
+//        }
       return "IndexIniciado.html";
     }
     
