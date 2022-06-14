@@ -106,6 +106,7 @@ body{
         box-shadow: rgba(43,58,64, 0.7) 4px 4px 0px;
         border-radius: 20px;
         text-align: left;
+        
     }
     
     .form-control{
@@ -128,8 +129,7 @@ body{
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-left: 200px; 
-        margin-bottom: 1px;   
+        margin-left: 200px;  
         min-height: 200vh;
     }
         
@@ -333,6 +333,7 @@ a:link, a:visited, a:active {
     color: var(--dutch-white);
     margin-left: 50%;
     transform: translateX(-50%);
+    
 }
 
 #btnIndex:hover{
@@ -514,7 +515,7 @@ a:link, a:visited, a:active {
 }
 
 .recuadro{
-    margin-bottom: 115px;
+    height: fit-content;
 }
 
 
@@ -612,3 +613,21 @@ a:link, a:visited, a:active {
     transition: all 0.65s;
 }
 
+
+/*TIPO DATE*/ 
+input[type="date"]{
+    background-color:var(--amber) ;
+    padding: 10px;
+    position: absolute;
+    transform: translate(-50%, -50% );
+    top: 30%;
+    left: 45%;
+    font-family: 'Pacifico', cursive;
+    color: var(--outer-space-crayola);
+    font-size: 15px ;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 10px;    
+    box-shadow: rgba(43,58,64, 0.7) 4px 4px 0px;    
+}
