@@ -20,7 +20,8 @@
    
 
     <form action="/usuario/cambiarClave" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="id" th:value="${session.usuariosession.id}">
+    <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
+        <input type="hidden" name="id" th:value="${session.usuariosession.id}">
         
     <label>Clave: </label>
         <input type="password" name = "clave" th:value="${clave}">

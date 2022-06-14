@@ -97,8 +97,20 @@ public class UsuarioControlador {
     }
     
     @PostMapping("/cambiarClave")
-    public String cambiarClave(@RequestParam(required=false)  String id, @RequestParam(required=false)  String clave, @RequestParam(required=false) String claveValidar) throws ParseException, ErrorServicio{
-        usuarioServicio.modificarContraseña(id, clave, claveValidar);        
+    public String cambiarClave(ModelMap modelo, @RequestParam(required=false)  String id, @RequestParam(required=false)  String clave, @RequestParam(required=false) String claveValidar) throws ParseException, ErrorServicio{
+        try{
+            usuarioServicio.modificarContraseña(id, clave, claveValidar);
+        }catch(ErrorServicio e){
+            try{
+            Usuario usuario = usuarioServicio.buscarPorId(id);
+            modelo.put("usuario", usuario);
+        }catch(ErrorServicio ex){
+            modelo.put("error", "Se ha cerrado la sesión");
+            return "indexInicial";
+        }
+            modelo.put("error", e.getMessage());
+            return "cambioClave";
+        }        
         return "IndexIniciado.html";
     }
     
