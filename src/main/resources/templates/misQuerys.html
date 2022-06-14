@@ -38,7 +38,6 @@
        <th scope="col">Query </th>
        <th scope="col">Fecha Finalización</th>
        <th scope="col">Alta/Baja</th>
-       <th scope="col">Eliminar</th></tr>
     </tr>
     </thead>
             
@@ -78,10 +77,7 @@
         <td th:if="${encuesta.alta}==true"><a th:href="@{/encuesta/baja(id=${encuesta.id}, idUsuario = ${session.usuariosession.id})}"><button type="button" id="btnRegular">Dar de baja</button></a></td>
         
         <td th:if="${encuesta.alta}==false"><a th:href="@{/encuesta/alta(id=${encuesta.id})}"><button type="button" id="btnRegular">Dar de alta</button></a></td>
-        -->
-        <td>
-            <a th:href="@{/encuesta/eliminar(id=${encuesta.id})}"><button type="button" class="btn btn-primary" id="btnRegular" data-toggle="modal" data-target="#exampleModal" data-whatever="@ndo">Eliminar</button></a>
-        </td>              
+        -->             
         </tr>
             
     </tbody>        
