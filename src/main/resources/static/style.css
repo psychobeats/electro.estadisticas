@@ -612,3 +612,11 @@ a:link, a:visited, a:active {
     transition: all 0.65s;
 }
 
+#myChart{ 
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: rgb(255,153,106, 0.3);
+    box-shadow: rgba(43,58,64, 0.7) 4px 4px 0px;
+    border-radius: 6px;
+}
+
