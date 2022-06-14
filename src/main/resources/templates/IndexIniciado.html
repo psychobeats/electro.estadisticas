@@ -2,7 +2,7 @@
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
-<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="/style.css">
 <meta charset="utf-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,7 +54,7 @@
 
 <div><!--Ranking-->
     <h1 id="hh1"> TOP 5 QUERY'S MÁS VOTADAS: </h1>
-    
+    <p th:if="${error!=null}" th:text="${error}"></p>
     <table class="table" id="table-ranking">
       <thead id="head-ranking">
        <tr>
@@ -73,8 +73,8 @@
     </table>
   </div>
   
-  <button class="btn btn-primary" role="button" id="btnIndex" href="/encuesta/listar"> Más Querys! </button>
-  
+    <a href="/encuesta/listar"><button class="btn btn-primary" role="button" id="btnIndex"> Más Querys! </button>
+        </a>
 <div>
   <footer class="pie-pagina">
     <div class="grupo-1">

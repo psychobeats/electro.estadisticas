@@ -3,7 +3,7 @@
 
 
 <head>
-<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="/style.css">
 <meta charset="utf-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,12 +56,14 @@
     </div>
     <div id="botonesEditarUsuario">       
     <button class="btn btn-primary" id="btnIndex" type="submit">Guardar</button>
+    
+    
+    </form>
     <form action="/usuario/perfil">
+       <input type="hidden" name="id" th:value="${session.usuariosession.id}">
       <button class="btn btn-primary" id="btnIndex" type="submit">Cancelar</button>
     </form>
     </div>
-    </form>
-
   </div>
     
 

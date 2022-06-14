@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../static/style.css">
+  <link rel="stylesheet" href="/style.css">
   <title>EDITAR USUARIO</title>
 </head>
 
@@ -44,10 +44,17 @@
       <input id="input-usuario" class="form_field" name= "claveValidar" type="password" th:value="${claveValidar}" placeholder="Confirmar Clave">
       <label class="form_label">Confirmar Clave: </label>
       </div>      
-      <button class="btn btn-primary" id="btnIndex" type="submit">Cambiar!</button>
-      <form action="/usuario/perfil">
-        <button class="btn btn-primary" id="btnIndex" type="submit">Cancelar</button>
-      </form>
+        
+     <div id="botonesEditarUsuario">       
+    <button class="btn btn-primary" id="btnIndex" type="submit">Guardar</button>
+    
+    
+    </form>
+    <form action="/usuario/perfil">
+       <input type="hidden" name="id" th:value="${session.usuariosession.id}">
+      <button class="btn btn-primary" id="btnIndex" type="submit">Cancelar</button>
+    </form>
+    </div>
   </div>
 
 

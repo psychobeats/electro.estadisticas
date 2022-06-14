@@ -29,10 +29,10 @@
  </nav>
 
 <h1 id="hh1">Mis Query's</h1>
-
+<p th:if="${error!=null}" th:text="${error}" style="color: white;"></p>
 <!--Este es el comentario a ver si funciona todo-->
 
-<table class="table text-center">
+<table th:if="${error==null}" class="table text-center">
     <thead class="fw-bold">
        <tr>
        <th scope="col">Query </th>

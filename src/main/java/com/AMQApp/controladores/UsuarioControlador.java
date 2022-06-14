@@ -124,7 +124,7 @@ public class UsuarioControlador {
             return "misQuerys.html";
         } else {
             modelo.put("error", "Aún no creaste ninguna Query :S");
-            return "IndexIniciado.html";
+            return "misQuerys.html";
         }
         
     }
