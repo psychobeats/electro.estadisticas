@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <title>PREGUNTAS FRECUENTES</title>
     <link rel="icon" type="icon/png" sizes=""href="/assets/favicon.png">
 </head>
@@ -21,58 +21,55 @@
      
      <a class="nav-link"  href="/usuario/perfil">Mi cuenta</a>
      <a class="nav-link" th:href="@{/usuario/misQuerys/(idUsuario=${session.usuariosession.id})}">Mis Query's</a>
-     <a class="nav-link" href="/preguntasFrecuentesIn">Preguntas Frecuentes</a> 
-     <a class="nav-link" href="/encuesta/listar">Querys</a>
-     <a class="nav-link" href="/logout">Cerrar Sesión</a>
+     <a class="nav-link active" href="/preguntasFrecuentesIn">Preguntas Frecuentes</a> 
+     <!-- <a class="nav-link" href="/encuesta/listar">Querys</a>
+     <a class="nav-link" href="/logout">Cerrar Sesión</a> -->
  </nav>
 
-<div>
-    <h1 id="hh1">Preguntas Frecuentes</h1>
-     <div class="layout">
-      <div class="accordion">
-            
-        <div class="accordion__pregunta">
-          <p>¿Cómo subo una nueva Query?</p>
-        </div>
-        <div class="accordion__respuesta">
-          <p>Una vez que hayas creado tu usuario y te hayas logeado, vas a visualizar un botón de "crear nueva Query" en el inicio de la página. Dale click y empezá a crear nuevas encuestas. Ta </p>
-        </div>
-      </div>
-    
-      <div class="accordion">
-        <div class="accordion__pregunta">
-          <p>¿Hay reglas para crear las Query's?</p>
-        </div>
-        <div class="accordion__respuesta">
-          <p>Respuesta.</p>
-        </div>
-      </div>
-    
+ <div id="formulario">
+  <h1 id="hh1">Preguntas Frecuentes</h1>
+  <div>
     <div class="accordion">
+
       <div class="accordion__pregunta">
-        <p>¿Puedo votar mi propia Query?</p>
+        <p>¿Quién puede ver/votar mi Query?</p>
       </div>
       <div class="accordion__respuesta">
-        <p>Respuesta.</p>
+        <p> Al crear una query vos podes elegir si la haces pública o privada (haciendo vos mismo la difusión de tu
+          query). La persona que desee votar la query lo podrá hacer, una sola vez, luegos de haber iniciado sesión.
+          Recordá que no podrás votar una query creada por vos mismo.
+        </p>
       </div>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion__pregunta">
+        <p>¿Cómo subo una nueva Query? </p>
       </div>
-    
+      <div class="accordion__respuesta">
+        <p>Para subir una nueva query es muy fácil. Simplemente tendrás que, en la página principal hacer click en
+          "crear una query" que te va a redirigir a otra página. Allí, completaras el formulario con la pregunta y las
+          opciones que se podrán elegir. Una vez hecho esto hace click en A MOVER LA QUERY!</p>
+      </div>
+    </div>
+
     <div class="accordion">
       <div class="accordion__pregunta">
         <p>¿Puedo borrar una de mis Query's creadas?</p>
       </div>
       <div class="accordion__respuesta">
-        <p>Respuesta.</p>
+        <p>Si! Podrás dar de baja a cualquiera de tus querys creadas, desde 'Mis Query´s.</p>
       </div>
-      </div>
-    
+    </div>
+
     <div class="accordion">
       <div class="accordion__pregunta">
-        <p>¿Quién puede votar mis Query's?</p>
+        <p>¿Qué temas no están permitidos? </p>
       </div>
       <div class="accordion__respuesta">
-        <p>Respuesta.</p>
-      </div>
+        <p> No permitimos el lenguaje que incita al odio, discriminación, bullying ni otro contenido que pudiera
+          lastimar u ofender a las personas.
+        </p>
       </div>
     </div>
     
@@ -87,7 +84,7 @@
       })
     </script>
     </div>  
-    
+ </div>   
     
 <div th:fragment="footer">
   <footer class="pie-pagina">

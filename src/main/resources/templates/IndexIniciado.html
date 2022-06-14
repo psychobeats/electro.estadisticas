@@ -2,7 +2,7 @@
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="../static/style.css">
 <meta charset="utf-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,8 +24,8 @@
      <a class="nav-link" th:href="@{/usuario/perfil/(id=${session.usuariosession.id})}">Mi cuenta</a>
      <a class="nav-link" th:href="@{/usuario/misQuerys/(idUsuario=${session.usuariosession.id})}">Mis Query's</a>
      <a class="nav-link" href="/preguntasFrecuentesIn">Preguntas Frecuentes</a> 
-     <a class="nav-link" href="/encuesta/listar">Querys</a>
-     <a class="nav-link" href="/logout">Cerrar Sesión</a>
+     <!-- <a class="nav-link" href="/encuesta/listar">Querys</a> -->
+    <!-- <a class="nav-link" href="/logout">Cerrar Sesión</a> -->
  </nav>
 <!-- </div> -->
 
@@ -72,10 +72,10 @@
       </tbody>
     </table>
   </div>
-
-       <br>
-
-<div th:fragment="footer">
+  
+  <button class="btn btn-primary" role="button" id="btnIndex" href="/encuesta/listar"> Más Querys! </button>
+  
+<div>
   <footer class="pie-pagina">
     <div class="grupo-1">
       <div class="box">
@@ -91,8 +91,8 @@
           <br>
           <a>Todos los Derechos Reservados</a>
 
-        </div>
-      </div>
+    </div>
+</div>
   </footer>
 </div>
 

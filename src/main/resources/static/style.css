@@ -42,6 +42,8 @@ body{
     font-size: 80px;
     font-family: 'Righteous', cursive;
     text-align: center;
+    margin: 50px;
+    padding: 20px;
 }
 
 #hh2{
@@ -105,8 +107,7 @@ body{
         background-color: rgb(255, 255, 255, 0.5);    
         box-shadow: rgba(43,58,64, 0.7) 4px 4px 0px;
         border-radius: 20px;
-        text-align: left;
-        
+        text-align: left;        
     }
     
     .form-control{
@@ -130,7 +131,7 @@ body{
         flex-direction: column;
         align-items: center;
         margin-left: 200px;  
-        min-height: 200vh;
+        min-height: 120vh;
     }
         
     .form_group{
@@ -284,7 +285,23 @@ p {
     font-size: 30px;
     color: var(--winter-sky);
     text-shadow: 2px 2px 2px var(--amber);
-    padding: 80px;
+    padding: 30px;
+}
+
+#parrafoPerfil{
+    text-align: left;
+    font-size: 20px;
+    color: var(--winter-sky);
+    text-shadow: 2px 2px 2px var(--amber); 
+    
+}
+
+#spanPerfil{
+    font-family: 'Pacifico', cursive;
+    text-align: left;
+    font-size: 32px;
+    color: var(--outer-space-crayola);
+    text-shadow: none; 
 }
 
 /*PREGUNTAS FRECUENTES*/
@@ -298,12 +315,20 @@ p {
     margin-bottom: 10px;
 }
 .accordion__pregunta p{
+    font-family: 'Pacifico', cursive;
+    font-size: 30px;
+    color: var(--winter-sky);
+    text-align: center;
     margin: 5px;
     padding: 0;
 }
 .accordion__respuesta p{
+    font-family: 'Righteous', cursive;
+    color: var(--outer-space-crayola);
+    font-size: 20px;
+    text-align: center;
     margin: 5px;
-    padding: 10px;
+    padding: 30px;
 }
 .accordion:hover{
     cursor: pointer;
@@ -332,8 +357,8 @@ a:link, a:visited, a:active {
     font-size: 22px;
     color: var(--dutch-white);
     margin-left: 50%;
-    transform: translateX(-50%);
-    
+    transform: translateX(-50%);   
+
 }
 
 #btnIndex:hover{
@@ -362,6 +387,7 @@ a:link, a:visited, a:active {
     border-spacing: 100px 18px;
     color: var(--winter-sky);
     text-shadow: 2px 2px 2px var(--atomic-tangerine);
+    margin-bottom: 80px;
 }
 
 #columna{
@@ -435,15 +461,52 @@ a:link, a:visited, a:active {
     transform: translateX(-46%);    
 }
 
+
+#btnPerfil{
+    background-color: var(--orange-pantone);
+    box-shadow: rgba(43,58,64, 0.7) 4px 4px 0px;
+    border-radius: 8px;
+    transition: transform 200ms, box-shadow 200ms;
+    width: 100px;
+    height: 50px;
+    font-family: 'Pacifico', cursive;
+    font-size: 14px;
+    color: var(--dutch-white);
+    margin-top: 10px;
+    margin-right: 70px;
+    margin-left: auto;
+    margin-bottom: 30px;
+    transform: translateX(-50%);
+}
+
+#btnPerfil:hover{
+    background-color:var(--winter-sky);
+    color: var(--hot-pink);
+}
+
+#btnPerfil:active{
+    transform: translateY(4px) translateX(4px);
+    box-shadow: rgba(43,58,64, 0.7) 0px 0px 0px;
+    background-color: var(--hot-pink);
+    color: var(--winter-sky);
+    margin-left: 5%;
+    transform: translateX(-10%);    
+}
+
+#botonesPerfil{
+  margin-left: 150px ;
+  display: flex;
+  justify-content: center;
+}
+
+
 .form-usuario{    
     font-family: 'Pacifico', cursive;
     font-size: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 200px; 
-    margin-bottom: 1px;   
-    min-height: 200vh;
+    margin-left: 80px;   
 }
     
 .form_group{
@@ -617,11 +680,8 @@ a:link, a:visited, a:active {
 /*TIPO DATE*/ 
 input[type="date"]{
     background-color:var(--amber) ;
-    padding: 10px;
-    position: absolute;
-    transform: translate(-50%, -50% );
-    top: 30%;
-    left: 45%;
+    text-align: center;
+    padding: 15px;    
     font-family: 'Pacifico', cursive;
     color: var(--outer-space-crayola);
     font-size: 15px ;
