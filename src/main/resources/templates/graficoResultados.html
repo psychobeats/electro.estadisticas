@@ -26,16 +26,19 @@
 
     <h1 id="hh1" th:text="${encuesta.titulo}"> Título</h1>
     <br>
-    
+    <input type="hidden" name="opcionA" th:value="${encuesta.opcion1}"> 
+
     <canvas id="myChart" width="200" height="200"></canvas>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>   
     <script>
+      var op1 = opcionA;
+      var op2 = hh1;
       const ctx = document.getElementById('myChart').getContext('2d');
       const myChart = new Chart(ctx, {
           type: 'doughnut',
           data: {
-              labels: ['Opcion A', 'Opcion B'],/*th:text de opciones 1 y 2*/
+              labels: ['op1', 'op2'],/*th:text de opciones 1 y 2*/
               datasets: [{
                   label: '# of Votes', /*Total de votos*/
                   data: [12, 19],/*Resultados de las opciones de voto 1 y 2*/
