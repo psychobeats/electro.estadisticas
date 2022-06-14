@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" >
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/style.css">
+  <title>EDITAR USUARIO</title>
+</head>
+
+<body>
+
+  <nav class="nav">
+    <a class="navbar-brand" id="nav-logo"  href="/loginExitoso">
+         <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
+       </a>
+     
+     <a class="nav-link"  href="/usuario/perfil">Mi cuenta</a>
+     <a class="nav-link" th:href="@{/usuario/misQuerys/(idUsuario=${session.usuariosession.id})}">Mis Query's</a>
+     <a class="nav-link" href="/preguntasFrecuentesIn">Preguntas Frecuentes</a> 
+     <!-- <a class="nav-link" href="/encuesta/listar">Querys</a>
+     <a class="nav-link" href="/logout">Cerrar Sesión</a> -->
+ </nav>
+
+  <h1 id="hh1" th:text="${usuario.alias + ': Edita tu perfil'}"> ¡Cambio de Contraseña! </h1>
+  
+  <div id="formulario">
+  <form class="form-usuario" action="/usuario/cambiarClave" method="POST" enctype="multipart/form-data">
+    <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
+    <input type="hidden" name="id" th:value="${session.usuariosession.id}">
+    
+    <div class="form_group">
+      <input id="input-usuario" type="password"  class="form_field" name = "clave" th:value="${clave}" placeholder="Clave">
+      <label class="form_label">Clave: </label>
+    </div>
+    <div class="condiciones-clave">La clave debe contener 6 caracteres o más.</div>
+    <div class="form_group">
+      <input id="input-usuario" class="form_field" name= "claveValidar" type="password" th:value="${claveValidar}" placeholder="Confirmar Clave">
+      <label class="form_label">Confirmar Clave: </label>
+      </div>      
+        
+     <div id="botonesEditarUsuario">       
+    <button class="btn btn-primary" id="btnIndex" type="submit">Guardar</button>
+    
+    
+    </form>
+    <form action="/usuario/perfil">
+       <input type="hidden" name="id" th:value="${session.usuariosession.id}">
+      <button class="btn btn-primary" id="btnIndex" type="submit">Cancelar</button>
+    </form>
+    </div>
+  </div>
+
+
+  <footer class="pie-pagina">
+    <div class="grupo-1">
+      <div class="box">
+        <figure>
+          <a>
+            <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160"
+              class="imagen-footer">
+          </a>
+        </figure>
+        <br>
+        <div class="grupo-2">
+          <a> &copy;2022 A MOVER LA QUERY!</a>
+          <br>
+          <a>Todos los Derechos Reservados</a>
+
+        </div>
+      </div>
+  </footer>
+
+
+</body>
+</html>
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" >
+
+
+<head>
+<link rel="stylesheet" href="/style.css">
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+<title>Editar perfil</title>
+<link rel="icon" type="icon/png" sizes=""href="/assets/favicon.png">
+</head>
+
+<body>
+  <nav class="nav">
+    <a class="navbar-brand" id="nav-logo"  href="/loginExitoso">
+      <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
+    </a>       
+    <a class="nav-link"  th:href="@{/usuario/perfil/(id=${session.usuariosession.id})}">Mi cuenta</a>
+    <a class="nav-link" th:href="@{/usuario/misQuerys/(idUsuario=${session.usuariosession.id})}">Mis Query's</a>
+    <a class="nav-link" href="/preguntasFrecuentesIn">Preguntas Frecuentes</a> 
+  </nav>
+  
+  <div id="formulario">
+   <h1 id="hh1" th:text="${usuario.alias + ': Edita tu perfil'}">Edita tu perfil: </h1>
+   <form class="form-usuario" action="/usuario/editar" method="POST" enctype="multipart/form-data">
+      <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
+      <input type="hidden" name="idUsuario" th:value="${session.usuariosession.id}">
+    <div class="form_group">
+      <input id="input-usuario" type="text" class="form_field" th:placeholder="${usuario.alias}" name = "alias" th:value="${alias}" placeholder="Alias">
+      <label class="form_label">Alias: </label>
+    </div>
+    <div class="input-group">
+      <label id="label-usuario">Sexo: </label>
+        <!--<select class="form-control" th:field="*{Sexo}">
+        <option th:each="Sexo : ${T(com.attacomsian.runner.domains.constants.Topic).values()}" th:value="${Sexo}" th:text="${Sexo}">Seleccionar</option>
+        </select>-->
+      <select class="form-control" name="sexo" th:value="${sexo}"> 
+        <option id="input-usuario" th:each="sex: ${sexos}" th:text="${sex}"></option> 
+      </select>
+    </div>  
+    <div class="input-group">
+      <label id="label-usuario">País: </label>
+        <!--<select class="form-control" th:field="*{Pais}">
+        <option th:each="Pais : ${T(com.attacomsian.runner.domains.constants.Topic).values()}" th:value="${Pais}" th:text="${Pais}">Seleccionar</option>
+        </select>-->
+      <select class="form-control" name="pais" th:value="${pais}"> 
+        <option id="input-usuario" th:each="pais1: ${paises}" th:text="${pais1}"></option> 
+      </select>
+    </div>
+    <br>
+    <div class="form_group">
+      <label id="label-usuario">Fecha de Nacimiento: </label>
+      <input id="input-usuario" type="date" name = "nacimiento" th:value="${nacimiento}">
+    </div>
+    <div id="botonesEditarUsuario">       
+    <button class="btn btn-primary" id="btnIndex" type="submit">Guardar</button>
+    
+    
+    </form>
+    <form action="/usuario/perfil">
+       <input type="hidden" name="id" th:value="${session.usuariosession.id}">
+      <button class="btn btn-primary" id="btnIndex" type="submit">Cancelar</button>
+    </form>
+    </div>
+  </div>
+    
+
+<footer class="pie-pagina">
+  <div class="grupo-1">
+    <div class="box">
+    <figure>
+    <a>
+    <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160" class="imagen-footer">
+    </a>
+    </figure>
+    <br>
+    <div class="grupo-2">
+    <a> &copy;2022 A MOVER LA QUERY!</a>
+    <br>
+    <a>Todos los Derechos Reservados</a>
+    </div>
+   </div>
+</footer>
+      
+</body>
+
+</html>

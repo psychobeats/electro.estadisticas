@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+<link rel="stylesheet" href="/style.css">
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+
+<title>Index Inicial</title>
+<link rel="icon" type="icon/png" sizes=""href="/assets/favicon.png">
+</head>
+
+<body>
+     
+        <nav class="nav">
+           <a class="navbar-brand" id="nav-logo"  href="/">
+                <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
+              </a>
+            
+            <a class="nav-link"  href="/usuario/registro">Registro</a>
+            <a class="nav-link" href="/login">Log In</a>
+           <!-- <a class="nav-link" href="/encuesta/listar">Querys</a>  -->
+            <a class="nav-link" href="/preguntasFrecuentes">Preguntas Frecuentes</a>
+        </nav>
+        
+  <div>
+  <div id="logo">
+    <img src="https://drive.google.com/uc?export=download&id=1kp0e1e4Z0jUJNHPLR_Mi21QL7Byls9Gp" width="700" height=auto/>
+  </div>
+    
+  <div id="formulario">
+      <p id="parrafoIndex"> Las estidísticas forman un papel importante en nuestras vidas, no solo para resolver dudas entre amigos, 
+                como cuanta gente elige el frio o el calor, sino que nos puede ayudar en nuestros proyectos personales, cuantificando
+                la realidad para tomar mejores decisiones. 
+                <br>
+                <br>
+                En A MOVER LA  QUERY lo vas a poder lograrlo de manera muy fácil! </p>
+        </div>
+    </div>
+    <br>
+    
+    
+<div><!--Ranking-->
+    <h1 id="hh1"> TOP 5 QUERY'S MÁS VOTADAS: </h1>
+    <p th:if="${error!=null}" th:text="${error}"></p>
+    <table class="table" id="table-ranking">
+      <thead id="head-ranking">
+       <tr>
+       <th scope="col" > Puesto </th>
+       <th scope="col"> Query </th>
+       </tr>
+      </thead>
+      
+      <tbody id="body-ranking">
+        <tr th:each="query:${querys}">
+          <th scope="row" th:text="${'#'+(querys.indexOf(query)+1)}"> </th>
+          <td>
+              <a id="query-ranking" th:href="@{/resultados/visualizacion(idEncuesta=${query.id})}" th:text="${query.titulo}"> Pastelito Membrillo vs. Pastelito Batata </a></td><!-- consulta para que muestre los primeros 5 resultados -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <br>
+    
+  <!-- <div>
+    <h1 id="hh1"> TOP 5 QUERY'S MÁS VOTADAS: </h1>
+     
+    <table class="table" id="table-ranking">
+      <thead id="head-ranking">
+      <tr>
+       <th scope="col"> Puesto </th>
+       <th scope="col"> Query </th>
+      </tr>
+      </thead>
+        
+      <tbody id="body-ranking">
+      <tr>
+      <th scope="row"> #1 </th>
+        <td th:each="query:${querys}"> Query </td> consulta para que muestre los primeros 5 resultados
+      </tr>
+      <tr> 
+        <th scope="row"> #2 </th>
+        <td th:each="query:${querys}"> Query </td>
+      </tr>
+      <tr>
+        <th scope="row"> #3 </th>
+        <td th:each="query:${querys}"> Query </td>
+      </tr>
+      <tr>
+        <th scope="row"> #4 </th>
+        <td th:each="query:${querys}"> Query </td>
+      </tr>
+      <tr>
+        <th scope="row"> #5 </th>
+        <td th:each="query:${querys}"> Query </td>
+      </tr>
+      </tbody>
+    </table> 
+    </div>
+    </div> -->
+  <br>
+    
+      <a href="/encuesta/listar"><button class="btn btn-primary" role="button" id="btnIndex" > Más Querys! </button>
+          </a>
+
+<div th:fragment="footer">
+  <footer class="pie-pagina">
+    <div class="grupo-1">
+      <div class="box">
+        <figure>
+          <a>
+            <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160"
+              class="imagen-footer">
+          </a>
+        </figure>
+        <br>
+        <div class="grupo-2">
+          <a> &copy;2022 A MOVER LA QUERY!</a>
+          <br>
+          <a>Todos los Derechos Reservados</a>
+
+        </div>
+      </div>
+  </footer>
+</div>
+        
+</body>
+
+</html>
