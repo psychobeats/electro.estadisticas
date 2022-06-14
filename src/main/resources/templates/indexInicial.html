@@ -2,7 +2,7 @@
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="../static/style.css">
 <meta charset="utf-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
             
             <a class="nav-link"  href="/usuario/registro">Registro</a>
             <a class="nav-link" href="/login">Log In</a>
-            <a class="nav-link" href="/encuesta/listar">Querys</a>
+           <!-- <a class="nav-link" href="/encuesta/listar">Querys</a>  -->
             <a class="nav-link" href="/preguntasFrecuentes">Preguntas Frecuentes</a>
         </nav>
         
@@ -103,6 +103,9 @@
     </div> -->
   <br>
     
+  <button class="btn btn-primary" role="button" id="btnIndex" href="/encuesta/listar"> Más Querys! </button>
+
+
 <div th:fragment="footer">
   <footer class="pie-pagina">
     <div class="grupo-1">
