@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
     <link rel="icon" type="icon/png" sizes=""href="assets/favicon.png">
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="/style.css">
+         
     <title>Grafico Resultados</title>
 </head>
 
@@ -28,8 +29,8 @@
     <br>
     
     <canvas id="myChart" width="200" height="200"></canvas>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>   
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      
     <script>
       const ctx = document.getElementById('myChart').getContext('2d');
       const myChart = new Chart(ctx, {
