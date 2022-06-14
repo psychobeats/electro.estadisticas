@@ -28,7 +28,7 @@
 
 <div id="formulario">
 <h1 id="hh1">Crear nueva Query: </h1>
-<div class="recuadro">
+<div class="recuadro" height=200 >
 <form class="form-usuario" action="/encuesta/crear" method="POST" enctype="multipart/form-data" class="form-usuario">
     <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
     <input type="hidden" name="usuarioId" th:value="${session.usuariosession.id}">    
@@ -44,12 +44,12 @@
         <input type="input" class="form_field" name="opcion2" th:value="${opcion2}" placeholder="Opción 2">
         <label for="Opción 2" class="form_label">Opción 2</label>
     </div>
-    <div class="input-group">
-    <label id="label-usuario">Fecha de Finalización: </label>
-    <br>
+
+    <div class="form_group">
     <input id="input-usuario" type="date" name = "caducidad" th:value="${caducidad}">
+    <label id="label-usuario" class="form-label">Fecha de Finalización: </label>
     <br>
-    <label>(Si prefieres que la query no tenga fecha de finalización, no completes el campo) </label>
+    <label class="condiciones-clave">(Si prefieres que la query no tenga fecha de finalización, no completes el campo) </label>
   </div> 
         
     <!--
