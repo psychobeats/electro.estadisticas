@@ -1,5 +1,6 @@
 package com.AMQApp.enums;
 
-public enum Pais {
-    
+public enum Pais 
+{
+    ARGENTINA,BRASIL,COLOMBIA,PERÚ,CHILE,VENEZUELA,ECUADOR,BOLIVIA,URUGUAY,PARAGUAY,MEXICO;
 }

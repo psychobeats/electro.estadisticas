@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/style.css">
+    <title>Mi perfil</title>
+    <link rel="icon" type="icon/png" sizes=""href="/assets/favicon.png">
+</head>
+
+<body>
+ <nav class="nav">
+    <a class="navbar-brand" id="nav-logo"  href="/loginExitoso">
+      <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
+    </a>
+    <!--<a class="nav-link"  href="/usuario/perfil">Mi cuenta</a>-->
+    <a class="nav-link" th:href="@{/usuario/misQuerys/(idUsuario=${session.usuariosession.id})}">Mis Query's</a>
+    <a class="nav-link" href="/preguntasFrecuentesIn">Preguntas Frecuentes</a> 
+    <a class="nav-link" href="/encuesta/listar">Querys</a>
+    <!-- <a class="nav-link" href="/logout">Cerrar Sesión</a> -->
+ </nav>
+
+<div id="formulario">
+  <h1 id="hh1"> Mi cuenta:</h1>
+  <div>
+    <p id="parrafoPerfil">ALIAS: <span id="spanPerfil" th:text="${usuario.alias}">alias</span></p>
+      
+    <p id="parrafoPerfil">FECHA DE NACIMIENTO: <span id="spanPerfil" th:text="${usuario.nacimiento}">nacimiento</span></p> 
+      
+    <p id="parrafoPerfil">PAIS: <span id="spanPerfil" th:text="${usuario.pais}">pais</span></p> 
+      
+    <p id="parrafoPerfil">SEXO: <span id="spanPerfil" th:text="${usuario.sexo}">sexo</span></p>
+      
+    <p id="parrafoPerfil">EMAIL: <span id="spanPerfil" th:text="${usuario.email}">email</span></p>
+      
+  </div>
+ 
+
+ <div id="botonesPerfil">
+  <a th:href="@{/usuario/misQuerys/(idUsuario=${session.usuariosession.id})}">
+  <button class="btn btn-primary" id="btnPerfil">Mis Query´s</button></a>
+  <a th:href="@{/usuario/edicion (id=${session.usuariosession.id})}">
+  <button class="btn btn-primary" id="btnPerfil">Editar Mi Perfil</button></a> 
+  <a th:href="@{/usuario/cambioClave (id=${session.usuariosession.id})}">
+  <button class="btn btn-primary" id="btnPerfil">Cambiar Contraseña</button></a>
+  <!--<button th:href="#" id="btn-usuario">Query´s votadas</button>-->
+  <a href="/logout">
+  <button class="btn btn-primary" id="btnPerfil">Cerrar Sesión</button></a>
+  </div>  
+</div> 
+
+<div th:fragment="footer">
+    <footer class="pie-pagina">
+      <div class="grupo-1">
+        <div class="box">
+          <figure>
+            <a>
+              <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160"
+                class="imagen-footer">
+            </a>
+          </figure>
+          <br>
+          <div class="grupo-2">
+            <a> &copy;2022 A MOVER LA QUERY!</a>
+            <br>
+            <a>Todos los Derechos Reservados</a>
+  
+          </div>
+        </div>
+    </footer>
+  </div>
+
+
+</body>
+
+</html>

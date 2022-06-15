@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+<link rel="stylesheet" href="/style.css">
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+
+<title>Nueva Query</title>
+<link rel="icon" type="icon/png" sizes=""href="/assets/favicon.png">
+</head>
+
+<body>
+
+    <nav class="nav">
+        <a class="navbar-brand" id="nav-logo"  href="/loginExitoso">
+             <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
+           </a>
+         
+         <a class="nav-link"  th:href="@{/usuario/perfil/(id=${session.usuariosession.id})}">Mi cuenta</a>
+         <a class="nav-link" th:href="@{/usuario/misQuerys/(idUsuario=${session.usuariosession.id})}">Mis Query's</a>
+         <a class="nav-link" href="/preguntasFrecuentesIn">Preguntas Frecuentes</a> 
+         <!-- <a class="nav-link" href="/encuesta/listar">Querys</a> -->
+         <!-- <a class="nav-link" href="/logout">Cerrar Sesión</a> -->
+     </nav>
+
+<div id="formulario">
+<h1 id="hh1">Crear nueva Query: </h1>
+<form class="form-usuario" action="/encuesta/crear" method="POST" enctype="multipart/form-data">
+    <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
+    <input type="hidden" name="usuarioId" th:value="${session.usuariosession.id}">    
+    <div class="form_group">
+      <input type="input" class="form_field" name="titulo" th:value="${titulo}" placeholder="Ingresá tú pregunta">
+      <label for="Ingresá tú pregunta" class="form_label">Ingresá tú pregunta</label>
+    </div>
+    <div class="form_group">
+      <input type="input" class="form_field" name="opcion1" th:value="${opcion1}" placeholder="Opción 1">
+      <label for="Opción 1" class="form_label">Opción 1</label>
+    </div>  
+    <div class="form_group">
+        <input type="input" class="form_field" name="opcion2" th:value="${opcion2}" placeholder="Opción 2">
+        <label for="Opción 2" class="form_label">Opción 2</label>
+    </div>
+
+    <div class="form_group">
+    <label id="label-usuario" class="form-label">Fecha de Finalización: </label>
+    <input id="input-usuario" type="date" name = "caducidad" th:value="${caducidad}">
+    <br>
+    <label class="condiciones-clave">(Si prefieres que la query no tenga fecha de finalización, no completes el campo) </label>
+  </div> 
+        
+    <!--
+    <div class="form_group">        
+        <div class="form-text">Te gustaría agregar una tercer opción?   
+        <br>
+        <!--<label class="labelbox">Sí</label> **REVISAR ESPACIADO BOTTOM** -->
+    <!--
+    </div> 
+        <label class="check"> 
+          <input type="checkbox" id="input"> <!--REVISAR ACÁ, PONER UN TRUE SI ACTIVAN EL CHECK-->
+    <!--    <span class="checkbox"></span>
+          <!--Si el check está activado, se da de alta a un "altaOpcion3"-->
+    <!--    </label>
+      </div> -->
+      
+        
+      <!--
+      <div class="form_group">  
+     <!-- PREGUNTAR CON TIMLEAF SI ESTA DE ALTA EL CHEK, SE APARECE ESTO, SINO NO! -->
+    <!--    <input th:if="${Encuesta.altaOpcion3}==true" type="input" class="form_field" th:value="${opcion3}" placeholder="Opción 3"></a></td>   
+        <label for="Opción 3" class="form_label">Opción 3</label>       
+    </div> 
+    <div class="form_group">
+        <div class="form-text">Le agregamos una fecha límite a tu Query?</div>
+        <input type="date" th:value="${fechaLimite}"> <!--Ver si hay que agregar a la entidad un atributo "fechaLimite"-->
+    <!--
+    </div>-->
+    <br>
+    
+    <button class="btn btn-primary" id="btnIndex" type="submit">Crear Query</button>
+</form>
+</div>
+</div>
+
+<div>
+  <footer class="pie-pagina">
+    <div class="grupo-1">
+      <div class="box">
+        <figure>
+          <a>
+            <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160"
+              class="imagen-footer">
+          </a>
+        </figure>
+        <br>
+        <div class="grupo-2">
+          <a> &copy;2022 A MOVER LA QUERY!</a>
+          <br>
+          <a>Todos los Derechos Reservados</a>
+
+        </div>
+      </div>
+  </footer>
+</div>
+  
+</body>
+</html> 

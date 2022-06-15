@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+<link rel="stylesheet" href="/style.css">
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+
+<title>LogIn</title>
+<link rel="icon" type="icon/png" sizes=""href="/assets/favicon.png">
+</head>
+
+<body>
+    <div th:fragment="navBarPublico">  
+     
+        <nav class="nav">
+           <a class="navbar-brand" id="nav-logo"  href="/">
+                <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
+              </a>
+            
+            <a class="nav-link"  href="/usuario/registro">Registro</a>
+            <a class="nav-link" href="/login">Log In</a>
+            <a class="nav-link" href="/encuesta/listar">Querys</a>
+            <a class="nav-link" href="/preguntasFrecuentes">Preguntas Frecuentes</a>
+        
+        </nav>
+        </div>
+
+<div>
+    <h1 id="hh1"> Ingresar: </h1>
+    <!--<form class="form-usuario">
+  <div class="form_group">
+    <input id="input-usuario" type="input" class="form_field" th:value="${alias}" 
+    placeholder="Alias">
+    <label for="alias" class="form_label">Alias</label>
+  </div>-->
+    <form action="/logincheck" method="POST" enctype="multipart/form-data" class="form-usuario">   
+        <p th:if="${error != null}" th:text="${error}" style="color: red"></p>
+        <p th:if="${logout != null}" th:text="${logout}" style="color: green"></p>
+    <div class="form_group">
+        <input id="input-usuario" type="input" class="form_field" name="email" th:value="${email}" placeholder="E-mail">
+        <label for="e-mail" class="form_label">E-mail</label>
+    </div>
+    <div class="form_group">
+        <input id="input-usuario" type="password" class="form_field" name="clave" th:value="${clave}" placeholder="Password">
+        <label for="password" class="form_label">Clave</label>
+    <!--    <div class="form-text">Condiciones para la clave.</div> -->
+    </div>
+    <br>         
+    
+                <!--id="btn-usuario"-->
+          
+              
+                
+<button class="btn btn-primary" type="submit" id="btnIndex"  href="#">Ingresar</button>  
+</form>
+</div>
+
+
+<div th:fragment="footer">
+    <footer class="pie-pagina">
+      <div class="grupo-1">
+        <div class="box">
+          <figure>
+            <a>
+              <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160"
+                class="imagen-footer">
+            </a>
+          </figure>
+          <br>
+          <div class="grupo-2">
+            <a> &copy;2022 A MOVER LA QUERY!</a>
+            <br>
+            <a>Todos los Derechos Reservados</a>
+  
+          </div>
+        </div>
+    </footer>
+  </div>
+
+</body>
+</html>
