@@ -16,7 +16,7 @@
     
   <nav class="nav">
     <a class="navbar-brand" id="nav-logo"  href="/loginExitoso">
-         <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
+         <img src="/img/logopequenio.png" width="160">
        </a>
      
      <a class="nav-link"  th:href="@{/usuario/perfil/(id=${session.usuariosession.id})}">Mi cuenta</a>
@@ -38,6 +38,29 @@
   <!--<button type="button" class="btn btn-link">A MOVER LA QUERY!</button>-->
 <br>
   
+    
+    <div th:fragment="footer">
+  <footer class="pie-pagina">
+    <div class="grupo-1">
+      <div class="box">
+        <figure>
+          <a>
+            <img src="/img/logopequenio.png" width="160"
+              class="imagen-footer">
+          </a>
+        </figure>
+        <br>
+        <div class="grupo-2">
+          <a> &copy;2022 A MOVER LA QUERY!</a>
+          <br>
+          <a>Todos los Derechos Reservados</a>
+
+        </div>
+      </div>
+  </footer>
+</div>
+    
+    
 </body>
 
 </html>

@@ -18,7 +18,7 @@
     </form>
   <nav class="nav">
     <a class="navbar-brand" id="nav-logo"  href="/loginExitoso">
-         <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
+         <img src="/img/logopequenio.png" width="160">
        </a>
      
      <a class="nav-link"  th:href="@{/usuario/perfil/(id=${session.usuariosession.id})}">Mi cuenta</a>
@@ -38,6 +38,7 @@
        <th scope="col">Query </th>
        <th scope="col">Fecha Finalización</th>
        <th scope="col">Alta/Baja</th>
+       <th scope="col">Ver Resultados</th>
     </tr>
     </thead>
             
@@ -67,6 +68,9 @@
             <a th:if="${encuesta.alta}==false" th:href="@{/encuesta/alta(id=${encuesta.id}, idUsuario = ${session.usuariosession.id})}"><button type="button" id="btnRegular">Dar de alta</button></a>
             <a th:if="${encuesta.alta}==true" th:href="@{/encuesta/baja(id=${encuesta.id}, idUsuario = ${session.usuariosession.id})}"><button type="button" id="btnRegular">Dar de baja</button></a>
         </td>
+        <td>
+            <a th:href="@{/resultados/visualizacion(idEncuesta=${encuesta.id})}"><button type="button" id="btnRegular">Ver Query</button></a>
+        </td>
         <!--
         <td>
             <input type="hidden" name="idUsuario" th:value="${session.usuariosession.id}">
@@ -84,9 +88,11 @@
     </table>
 
    <br><br>
-   <form action="/loginExitoso">
-       <button class="btn btn-primary" type="submit">Principal</button>
-   </form>
+   <form th:action="@{/encuesta/crearEnc}">
+   
+    <input type="hidden" name="id" th:value="${session.usuariosession.id}">    
+    <button class="btn btn-primary" role="button" id="btnIndex">Crear Query</button>
+</form>
     <!--
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
         <div class="modal-dialog">
@@ -119,7 +125,7 @@
       <div class="box">
         <figure>
           <a>
-            <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160"
+            <img src="/img/logopequenio.png" width="160"
               class="imagen-footer">
           </a>
         </figure>
