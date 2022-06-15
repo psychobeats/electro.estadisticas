@@ -28,7 +28,7 @@
       <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
       <input type="hidden" name="idUsuario" th:value="${session.usuariosession.id}">
     <div class="form_group">
-      <input id="input-usuario" type="text" class="form_field" th:placeholder="${usuario.alias}" name = "alias" th:value="${alias}" placeholder="Alias">
+      <input id="input-usuario" type="text" class="form_field" th:placeholder="${usuario.alias}" name = "alias" th:value="${usuario.alias}" placeholder="Alias">
       <label class="form_label">Alias: </label>
     </div>
     <div class="input-group">
@@ -36,7 +36,7 @@
         <!--<select class="form-control" th:field="*{Sexo}">
         <option th:each="Sexo : ${T(com.attacomsian.runner.domains.constants.Topic).values()}" th:value="${Sexo}" th:text="${Sexo}">Seleccionar</option>
         </select>-->
-      <select class="form-control" name="sexo" th:value="${sexo}"> 
+      <select class="form-control" name="sexo" th:value="${usuario.sexo}"> 
         <option id="input-usuario" th:each="sex: ${sexos}" th:text="${sex}"></option> 
       </select>
     </div>  
@@ -45,7 +45,7 @@
         <!--<select class="form-control" th:field="*{Pais}">
         <option th:each="Pais : ${T(com.attacomsian.runner.domains.constants.Topic).values()}" th:value="${Pais}" th:text="${Pais}">Seleccionar</option>
         </select>-->
-      <select class="form-control" name="pais" th:value="${pais}"> 
+      <select class="form-control" name="pais" th:value="${usuario.pais}"> 
         <option id="input-usuario" th:each="pais1: ${paises}" th:text="${pais1}"></option> 
       </select>
     </div>
