@@ -34,7 +34,7 @@ public class ResultadosPorcentajesControlador {
             ResultadosPorcentajes resultados = encuesta.getResultados();
             modelo.addAttribute("resultados" , resultados);
             modelo.addAttribute("encuesta", encuesta);
-            return "graficoResultados.html";
+            return "QueryVer.html";
         }        
     }
 }

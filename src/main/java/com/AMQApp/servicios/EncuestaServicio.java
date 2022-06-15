@@ -183,12 +183,16 @@ public class EncuestaServicio {
     public List<Encuesta> topFive() throws ErrorServicio{
         List<Encuesta> encuestasOrdenadasPorVotos = encuestaRepositorio.ordenarPorVotos();
         List<Encuesta> encuestasTopFive = new ArrayList();
-        
-        for(int i = 0; i<5; i++){
+        if(encuestasOrdenadasPorVotos.isEmpty() || encuestasOrdenadasPorVotos == null){
+            throw new ErrorServicio("Aún no hay Querys :(");
+        } else if ( encuestasOrdenadasPorVotos.size() < 5 ){
+            for(int i = 0; i< encuestasOrdenadasPorVotos.size(); i++){
             encuestasTopFive.add(encuestasOrdenadasPorVotos.get(i));
-        }
-        if(encuestasTopFive.isEmpty() || encuestasTopFive == null){
-            throw new ErrorServicio("Aún no hay encuestas");
+            }
+        } else {
+            for(int i = 0; i< 5; i++){
+            encuestasTopFive.add(encuestasOrdenadasPorVotos.get(i));
+            }
         }
         return encuestasTopFive;
     }
