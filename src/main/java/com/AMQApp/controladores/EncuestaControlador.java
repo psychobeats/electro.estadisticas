@@ -9,18 +9,13 @@ import com.AMQApp.servicios.EncuestaServicio;
 import com.AMQApp.servicios.UsuarioServicio;
 import java.text.ParseException;
 import java.util.List;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Controller
 @RequestMapping("/encuesta")
@@ -37,12 +32,16 @@ public class EncuestaControlador {
 
     
     @GetMapping("/crearEnc")
-    public String crearEnc(ModelMap modelo,@RequestParam String id) throws ErrorServicio{
-        Usuario usuario = usuarioServicio.buscarPorId(id);
-        modelo.addAttribute("usuario", usuario);
+    public String crearEnc(ModelMap modelo,@RequestParam(required=false) String id){
+        try{
+            Usuario usuario = usuarioServicio.buscarPorId(id);
+            modelo.addAttribute("usuario", usuario);   
+            return "encuesta.html";
+        }catch(ErrorServicio e){
+            modelo.put("error", e.getMessage());
+            return "Error";
+        }
         
-        
-        return "encuesta.html";
     }
     
 //    @GetMapping("/modificar")
@@ -71,10 +70,16 @@ public class EncuestaControlador {
     
      
     @GetMapping("/listar")
-    public String listar(ModelMap modelo, @RequestParam(required=false) String idUsuario) throws ErrorServicio {
-        List<Encuesta> encuestas = encuestaServicio.listaDeEncuestas();
-        modelo.put("encuestas", encuestas);
-        return "ListaEncuestas.html";
+    public String listar(ModelMap modelo, @RequestParam(required=false) String idUsuario){
+        
+            try{
+                List<Encuesta> encuestas = encuestaServicio.listaDeEncuestas();
+                modelo.put("encuestas", encuestas);
+                return "ListaEncuestas.html";
+            }catch(ErrorServicio e){
+                modelo.put("error", e.getMessage());
+                return "Error";
+            }              
     }
     
     @GetMapping("/votacion")
@@ -87,7 +92,7 @@ public class EncuestaControlador {
         
         
         for (Encuesta auxEncuesta: usuario.getEncuestasCreadas()) {
-            if (encuesta.getId() == auxEncuesta.getId()) {
+            if (encuesta.getId().equals(auxEncuesta.getId())) {
                 validarEncuesta = true;
             }
         }

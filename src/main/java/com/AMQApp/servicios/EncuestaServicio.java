@@ -6,21 +6,16 @@ import com.AMQApp.entidades.Usuario;
 import com.AMQApp.entidades.Voto;
 import com.AMQApp.errores.ErrorServicio;
 import com.AMQApp.repositorios.EncuestaRepositorio;
-import com.AMQApp.repositorios.ResultadosPorcentajesRepositorio;
 import com.AMQApp.repositorios.VotoRepositorio;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import static java.util.Arrays.sort;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 
 @Service
 public class EncuestaServicio {
@@ -195,6 +190,15 @@ public class EncuestaServicio {
             }
         }
         return encuestasTopFive;
+    }
+    
+    public Encuesta buscarPorId(String id) throws ErrorServicio{
+        Optional<Encuesta> respuesta = encuestaRepositorio.findById(id);
+        if(respuesta.isPresent()){
+            return respuesta.get();
+        }else{
+            throw new ErrorServicio("No se encontró la encuesta");
+        }
     }
     
     
