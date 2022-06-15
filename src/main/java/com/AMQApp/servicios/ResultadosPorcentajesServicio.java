@@ -171,7 +171,7 @@ public class ResultadosPorcentajesServicio {
             resultadosPorcentajesRepositorio.save(rp);
             encuestaRepositorio.save(e1);
         } else {
-            throw new ErrorServicio("");
+            throw new ErrorServicio("No se pudieron calcular los porcentajes");
         }
     }
         

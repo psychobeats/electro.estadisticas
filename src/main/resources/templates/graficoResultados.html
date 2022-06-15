@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
     <link rel="icon" type="icon/png" sizes=""href="assets/favicon.png">
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="/style.css">
+         
     <title>Grafico Resultados</title>
 </head>
 
@@ -26,16 +27,19 @@
 
     <h1 id="hh1" th:text="${encuesta.titulo}"> Título</h1>
     <br>
-    
-    <canvas id="myChart" width="200" height="200"></canvas>
+    <input type="hidden" name="opcionA" th:value="${encuesta.opcion1}"> 
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>   
+    <canvas id="myChart" width="200" height="200"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      
     <script>
+      var op1 = opcionA;
+      var op2 = hh1;
       const ctx = document.getElementById('myChart').getContext('2d');
       const myChart = new Chart(ctx, {
           type: 'doughnut',
           data: {
-              labels: ['Opcion A', 'Opcion B'],/*th:text de opciones 1 y 2*/
+              labels: ['op1', 'op2'],/*th:text de opciones 1 y 2*/
               datasets: [{
                   label: '# of Votes', /*Total de votos*/
                   data: [12, 19],/*Resultados de las opciones de voto 1 y 2*/
