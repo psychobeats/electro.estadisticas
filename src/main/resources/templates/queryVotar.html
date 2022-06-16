@@ -28,9 +28,10 @@
 
   <br>
           <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
-  <h1 th:text="${encuesta.titulo}">Titulo</h1>
-  <a class="btn btn-success" name = "opcion1" th:href="@{/encuesta/votar(idEncuesta=${encuesta.id},idUsuario=${session.usuariosession.id},opcion=${encuesta.opcion1})}" th:text="${encuesta.opcion1}"></a>
-  <a class="btn btn-success" name = "opcion2" th:href="@{/encuesta/votar/(idEncuesta=${encuesta.id},idUsuario=${session.usuariosession.id},opcion=${encuesta.opcion2})}" th:text="${encuesta.opcion2}"></a>
+  <h1 id="hh1" th:text="${encuesta.titulo}">Titulo</h1>
+  <a id="btnQueryVotar" type="button" class="btn btn-success" name = "opcion1" th:href="@{/encuesta/votar(idEncuesta=${encuesta.id},idUsuario=${session.usuariosession.id},opcion=${encuesta.opcion1})}" th:text="${encuesta.opcion1}"></a>
+  <br>
+  <a id="btnQueryVotar" type="button" class="btn btn-success" name = "opcion2" th:href="@{/encuesta/votar/(idEncuesta=${encuesta.id},idUsuario=${session.usuariosession.id},opcion=${encuesta.opcion2})}" th:text="${encuesta.opcion2}"></a>
   <!--<button type="radio" name = "opcion1" th:value="${encuesta.opcion1}"> Opción 1 </button> 
   <input type="radio" name = "opcion2" th:value="${encuesta.opcion2}"> Opción 2-->
   
