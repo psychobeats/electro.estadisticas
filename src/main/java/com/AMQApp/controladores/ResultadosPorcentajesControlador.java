@@ -27,8 +27,9 @@ public class ResultadosPorcentajesControlador {
         
         Encuesta encuesta = encuestaRepositorio.getById(idEncuesta);
         
-        if (encuesta.getVotos() == null || encuesta.getVotos().size() == 0) {
+        if (encuesta.getVotos() == null || encuesta.getVotos().isEmpty()) {
             modelo.put("mensaje", "Todavía no movieron esta Query :(");
+            modelo.addAttribute("encuesta", encuesta);
             return "QueryVer.html";
         } else {
             try{

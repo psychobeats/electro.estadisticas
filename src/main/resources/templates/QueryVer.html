@@ -33,11 +33,14 @@
          <a class="nav-link" th:if = "${session.usuariosession!=null}" href="/preguntasFrecuentesIn">Preguntas Frecuentes</a> 
      
      </nav>
-    <p th:if="${mensaje != null}" th:text="${mensaje}" style="color:red;"></p>
+    
     <p th:if="${mensaje == null}"></p>
     <h3 id="hh2"> Título de la Query </h3>    
       
     <h2 id="hh1" th:text="${encuesta.titulo}"></h2>    
+    <p th:if="${mensaje != null}" th:text="${mensaje}" style="color:red;"></p>
+    
+    <div th:if="${mensaje == null}">
     <h3 id="hh2"> Total de votantes </h3>
     
     <h2 id="hh2" th:value = ${resultados.totalVotos}></h2>
@@ -92,6 +95,7 @@
             
         </div>
 
+    </div>
     </div>
     
     
