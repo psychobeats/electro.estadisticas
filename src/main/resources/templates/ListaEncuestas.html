@@ -17,15 +17,14 @@
 
 <body>
      <nav class="nav">
-    <a class="navbar-brand" id="nav-logo"  href="/loginExitoso">
-         <img src="/img/logopequenio.png" width="160">
-       </a>
-     
-     <a class="nav-link"  th:href="@{/usuario/perfil/(id=${session.usuariosession.id})}">Mi cuenta</a>
-     <a class="nav-link" th:href="@{/usuario/misQuerys/(idUsuario=${session.usuariosession.id})}">Mis Query's</a>
-     <a class="nav-link" href="/preguntasFrecuentesIn">Preguntas Frecuentes</a> 
-     <a class="nav-link" href="/encuesta/listar">Querys</a>
-         <a class="nav-link" href="/logout">Cerrar Sesión</a>
+   <a class="navbar-brand" id="nav-logo"  href="/">
+               <img src="/img/logopequenio.png" width="160">
+              </a>
+            
+            <a class="nav-link"  href="/usuario/registro">Registro</a>
+            <a class="nav-link" href="/login">Log In</a>
+           <!-- <a class="nav-link" href="/encuesta/listar">Querys</a>  -->
+            <a class="nav-link" href="/preguntasFrecuentes">Preguntas Frecuentes</a>
  </nav>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-
