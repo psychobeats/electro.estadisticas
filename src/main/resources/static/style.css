@@ -52,9 +52,52 @@ body{
     font-size: 50px;
     font-family: 'Righteous', cursive;
     text-align: center;
-    margin-top: 120px;
+   
+}
+
+#container1{
+    display: flex;
+    margin-left: 30%
+}
+#container2{
+    display: flex;
+    margin-left: 15%
+}
+
+#opciones1{
+    color: var(--blue-violet);
+    text-shadow: 2px 2px 2px var(--amber);
+    font-size: 30px;
+    font-family: 'Righteous', cursive;
+   
+    
+}
+
+#resultado1{
+    font-family: 'Monoton', cursive;
+    color: var(--azure);
+    text-shadow: 2px 2px 2px var(--winter-sky);
+   font-size: 80px;
 }
     
+
+#resultado2{
+    font-family: 'Monoton', cursive;
+    color: var(--winter-sky);
+    text-shadow: 2px 2px 2px var(--azure);
+    font-size: 80px;
+}
+
+#resultado3{
+    font-family: 'Monoton', cursive;
+    color: var(--amber);
+    text-shadow: 2px 2px 2px var(--blue-violet);
+    font-size: 80px;
+}
+
+
+
+
 /*NAVBAR*/
     .nav {
         background: linear-gradient(90deg, rgba(64,37,82,1) 0%, rgba(255,239,195,1) 100%);
@@ -129,10 +172,14 @@ body{
         font-size: 1.5rem;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        margin-left: 200px;  
-        min-height: 120vh;
+        align-items: flex-start;
+        margin-left: 100px;  
+        min-height: fit-content;
+        padding: 50px;
+        min-width: fit-content;
     }
+
+
         
     .form_group{
         position: relative;
@@ -147,7 +194,7 @@ body{
         border-bottom: 2px solid var(--outer-space-crayola);
         outline: 0;
         font-size: 1.3rem;
-        color: #fff;
+        color: var(--outer-space-crayola);
         padding: 7px 0;
         background: transparent;
         transition: border-color 0.2s;    
@@ -390,6 +437,37 @@ a:link, a:visited, a:active {
     margin-bottom: 80px;
 }
 
+#btnFormulario{    
+    background-color: var(--orange-pantone);
+    box-shadow: rgba(43,58,64, 0.7) 4px 4px 0px;
+    border-radius: 8px;
+    transition: transform 200ms, box-shadow 200ms;
+    width: 150px;
+    height: 75px;
+    font-family: 'Pacifico', cursive;
+    font-size: 22px;
+    color: var(--dutch-white);
+    margin-top: 50px;
+    margin-left: 80%;
+    transform: translateX(-50%);   
+
+}
+
+#btnFormulario:hover{
+    background-color:var(--winter-sky);
+    color: var(--hot-pink);
+}
+
+#btnFormulario:active{
+    transform: translateY(4px) translateX(4px);
+    box-shadow: rgba(43,58,64, 0.7) 0px 0px 0px;
+    background-color: var(--hot-pink);
+    color: var(--winter-sky);
+    margin-left: 50%;
+    transform: translateX(-46%);    
+}
+
+
 #columna{
     font-size: larger;
     padding-bottom: 20px;
@@ -490,7 +568,7 @@ a:link, a:visited, a:active {
     background-color: var(--hot-pink);
     color: var(--winter-sky);
     margin-left: 5%;
-    transform: translateX(-10%);    
+    transform: translateX(-46%);    
 }
 
 #botonesPerfil{
@@ -498,89 +576,6 @@ a:link, a:visited, a:active {
   display: flex;
   justify-content: center;
 }
-
-
-.form-usuario{    
-    font-family: 'Pacifico', cursive;
-    font-size: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-left: 80px;   
-}
-    
-.form_group{
-    position: relative;
-    padding: 15px 0 0;
-    width: 75%;
-}
-    
-.form_field{
-    font-family: 'Pacifico', cursive;
-    width: 100%;
-    border:0;
-    border-bottom: 2px solid var(--outer-space-crayola);
-    outline: 0;
-    font-size: 1.3rem;
-    color: #fff;
-    padding: 7px 0;
-    background: transparent;
-    transition: border-color 0.2s;    
-}
-    
-.form_field::placeholder{
-    color: transparent;
-}
-    
-.form_label{
-    position: absolute;
-    top: 0;
-    display: block;
-    transition:0.2s;
-    font-size: 1rem;
-    color: var(--outer-space-crayola);
-}
-    
-.form_field:placeholder-shown ~ .form_label{
-    font-size: 1.3rem;
-    cursor: text;
-    top:20px;
-}
-
-.form_field:focus{
-    padding-bottom: 6px;
-    font-weight: 700;
-    border-width: 3px;
-    border-image: linear-gradient(to right, var(--azure), var(--winter-sky));
-    border-image-slice: 1;
-} 
-    
-.form_field:focus ~ .form_label{
-    position: absolute;
-    top: 0;
-    display: block;
-    transition: 0.2s;
-    font-size: 1rem;
-    color: var(--blue-violet);
-    font-weight: 700;
-}
-
-.condiciones-clave{
-    font-family: 'Righteous', cursive;
-    font-size: 14px;
-    margin-top: 5px;
-    color: var(--outer-space-crayola);    
-}
-  
-#label-usuario{
-    font-size: 22px;
-    color: var(--outer-space-crayola);    
-}
-
-.recuadro{
-    height: fit-content;
-}
-
 
 .form-text, .form-check{
     color: var(--outer-space-crayola);
@@ -698,4 +693,24 @@ input[type="date"]{
     box-shadow: rgba(43,58,64, 0.7) 4px 4px 0px;
     border-radius: 6px;
 }
-
+/*BOTON QUERY VOTAR*/
+#btnQueryVotar{
+    background-color: var(--orange-pantone);
+    box-shadow: rgba(43,58,64, 0.7) 4px 4px 0px;
+    border-radius: 8px;
+    transition: transform 200ms, box-shadow 200ms;
+    width: 300px;
+    height: 100px;
+    font-family: 'Pacifico', cursive;
+    font-size: 60px;
+    color: var(--dutch-white);
+    margin: 0.5em;
+    text-align: center;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    button {
+        cursor: pointer;
+    }
+}
