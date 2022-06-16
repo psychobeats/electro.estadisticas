@@ -693,4 +693,24 @@ input[type="date"]{
     box-shadow: rgba(43,58,64, 0.7) 4px 4px 0px;
     border-radius: 6px;
 }
-
+/*BOTON QUERY VOTAR*/
+#btnQueryVotar{
+    background-color: var(--orange-pantone);
+    box-shadow: rgba(43,58,64, 0.7) 4px 4px 0px;
+    border-radius: 8px;
+    transition: transform 200ms, box-shadow 200ms;
+    width: 300px;
+    height: 100px;
+    font-family: 'Pacifico', cursive;
+    font-size: 60px;
+    color: var(--dutch-white);
+    margin: 0.5em;
+    text-align: center;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    button {
+        cursor: pointer;
+    }
+}
