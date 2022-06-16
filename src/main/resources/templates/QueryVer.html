@@ -11,57 +11,91 @@
   <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
   <link rel="icon" type="icon/png" sizes=""href="/img/favicon.png">
   <link rel="stylesheet" href="/style.css">
-  <title>QUERY A VOTAR</title>
+  <title>VER RESULTADOS</title>
 </head>
 
 <body>
+    
+       <nav class="nav">
+        <a class="navbar-brand" id="nav-logo" th:if="${session.usuariosession!=null}" href="/loginExitoso">
+             <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
+           </a>
+        <a class="navbar-brand" id="nav-logo" th:if="${session.usuariosession==null}" href="/">
+             <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
+           </a>
+         
+         <a class="nav-link"  th:if = "${session.usuariosession==null}" href="/usuario/registro">Registro</a>
+         <a class="nav-link" th:if = "${session.usuariosession==null}" href="/login">Log In</a>
+         <a class="nav-link" th:if = "${session.usuariosession==null}" href="/preguntasFrecuentes">Preguntas Frecuentes</a>
+         
+         <a class="nav-link"  th:if = "${session.usuariosession!=null}"th:href="@{/usuario/perfil/(id=${session.usuariosession.id})}">Mi cuenta</a>
+         <a class="nav-link" th:if = "${session.usuariosession!=null}" th:href="@{/usuario/misQuerys/(idUsuario=${session.usuariosession.id})}">Mis Query's</a>
+         <a class="nav-link" th:if = "${session.usuariosession!=null}" href="/preguntasFrecuentesIn">Preguntas Frecuentes</a> 
+     
+     </nav>
     <p th:if="${mensaje != null}" th:text="${mensaje}" style="color:red;"></p>
-    <table th:if="${mensaje == null}">
-        <tr>
-        <th>
-            Título de la Query
-        </th>
-        <th th:text="${encuesta.opcion1}">
+    <p th:if="${mensaje == null}"></p>
+    <h3 id="hh2"> Título de la Query </h3>    
+      
+    <h2 id="hh1" th:text="${encuesta.titulo}"></h2>    
+    <h3 id="hh2"> Total de votantes </h3>
+    
+    <h2 id="hh2" th:value = ${resultados.totalVotos}></h2>
+    <div class="container" id="container1">
+        <div class="box">
+            <h1 id="resultado1" th:text="${resultados.porcentajeOpcion1}">
             Opción1
-        </th>
-        <th th:text="${encuesta.opcion2}">
-            Opción2
-        </th>    
-        <th>
-            PorcentajeMujeres
-        </th>
-        <th>
-            PorcentajeHombres
-        </th>
-        <th>
-            PorcentajeOtros
-        </th>
-        </tr>
-        
-        <tr>
-        <th th:text="${encuesta.titulo}">
-            Título de la Query
-        </th>
-        <th th:text="${resultados.porcentajeOpcion1}">
+        </h1> 
+             <h3 id="opciones1" th:text="${encuesta.opcion1}">
             Opción1
-        </th>
-        <th th:text="${resultados.porcentajeOpcion2}">
-            Opción2
-        </th>    
-        <th th:text="${resultados.porcentajeMujeres}">
-            PorcentajeMujeres
-        </th>
-        <th th:text="${resultados.porcentajeHombres}">
-            PorcentajeHombres
-        </th>
-        <th th:text="${resultados.porcentajeOtros}">
-            PorcentajeOtros
-        </th>
-        </tr>
+    </h3>
             
-    </table>
-  
-  
+        </div>
+        <div class="box">
+    
+            /*imagenes*/
+        
+        </div>
+        <div class="box">
+            <h1 id="resultado2" th:text="${resultados.porcentajeOpcion2}">
+            Opción2
+        </h1>
+             <h3 id="opciones1" th:text="${encuesta.opcion2}">
+            Opción2
+        </h3>
+            
+        </div>
+
+    </div>
+    
+        <div class="container" id="container2">
+        <div class="box">
+             <h3 id="resultado2" th:text="${resultados.porcentajeMujeres}">
+            Porcentaje Mujeres </h3>
+            <h1 id="opciones1" > Porcentaje Mujeres </h1> 
+            
+            
+        </div>
+        <div class="box">
+    
+             <h3 id="resultado1" th:text="${resultados.porcentajeMujeres}">
+            Porcentaje Hombres </h3>
+            <h1 id="opciones1" > Porcentaje Hombres </h1> 
+            
+        
+        </div>
+        <div class="box">
+             <h3 id="resultado3" th:text="${resultados.porcentajeOtros}">
+            Porcentaje Otros </h3>
+            <h1 id="opciones1"> Porcentaje Otros</h1>
+            
+            
+        </div>
+
+    </div>
+    
+    
+       
 </body>
 
 </html>
