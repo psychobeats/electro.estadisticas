@@ -18,10 +18,10 @@
     
        <nav class="nav">
         <a class="navbar-brand" id="nav-logo" th:if="${session.usuariosession!=null}" href="/loginExitoso">
-             <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
+             <img src="/img/logopequenio.png" width="160">
            </a>
         <a class="navbar-brand" id="nav-logo" th:if="${session.usuariosession==null}" href="/">
-             <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
+             <img src="/img/logopequenio.png" width="160">
            </a>
          
          <a class="nav-link"  th:if = "${session.usuariosession==null}" href="/usuario/registro">Registro</a>
@@ -56,8 +56,8 @@
         </div>
         <div class="box">
     
-            /*imagenes*/
-        
+            <img th:if="${resultados.porcentajeOpcion1>resultados.porcentajeOpcion2}" src="/img/isoLOGO A.png" width="140">
+            <img th:if="${resultados.porcentajeOpcion1<resultados.porcentajeOpcion2}" src="/img/isoLOGO B.png" width="140">    
         </div>
         <div class="box">
             <h1 id="resultado2" th:text="${resultados.porcentajeOpcion2}">
