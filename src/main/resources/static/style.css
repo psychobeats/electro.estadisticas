@@ -67,6 +67,11 @@ body{
     text-align: center;
 }
 
+#container3{
+    display: inline;
+   
+}
+
 #opciones1{
     color: var(--blue-violet);
     text-shadow: 2px 2px 2px var(--amber);
@@ -716,4 +721,19 @@ input[type="date"]{
     button {
         cursor: pointer;
     }
+}
+
+#btnQueryVotar:hover{
+    background-color:var(--winter-sky);
+    color: var(--hot-pink);
+}
+
+#btnQueryVotar:active{
+    transform: translateY(4px) translateX(4px);
+    box-shadow: rgba(43,58,64, 0.7) 0px 0px 0px;
+    background-color: var(--hot-pink);
+    color: var(--winter-sky);
+    margin-left: 5%;
+    margin-left: 50%;
+    transform: translateX(-46%);    
 }
