@@ -25,14 +25,13 @@
      <!--<a class="nav-link" href="">Mis Query's</a>-->
      <a class="nav-link" href="/preguntasFrecuentesIn">Preguntas Frecuentes</a>
      <a class="nav-link" href="/encuesta/listar">Querys</a>
-     <a class="nav-link" href="/logout">Cerrar Sesión</a>
  </nav>
 
-<h1 id="hh1">Mis Query's</h1>
-<p th:if="${error!=null}" th:text="${error}" style="color: white;"></p>
+    <h1 id="hh1">Mis Query's</h1>
+    <p th:if="${error!=null}" th:text="${error}" style="color: white;"></p>
 <!--Este es el comentario a ver si funciona todo-->
 
-<table th:if="${error==null}" class="table text-center">
+<table th:if="${error==null}" class="table text-center" id="table-ranking">
     <thead class="fw-bold">
        <tr>
        <th scope="col">Query </th>
@@ -42,7 +41,7 @@
     </tr>
     </thead>
             
-    <tbody class="fw-bold">
+    <tbody class="fw-bold" >
         
         <tr th:each="encuesta:${encuestas}">
             
@@ -87,9 +86,10 @@
     </tbody>        
     </table>
 
+
    <br><br>
-   <form th:action="@{/encuesta/crearEnc}">
-   
+           
+ <form th:action="@{/encuesta/crearEnc}">
     <input type="hidden" name="id" th:value="${session.usuariosession.id}">    
     <button class="btn btn-primary" role="button" id="btnIndex">Crear Query</button>
 </form>

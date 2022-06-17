@@ -43,7 +43,8 @@
     <div class="form_group">
       <input id="input-usuario" class="form_field" name= "claveValidar" type="password" th:value="${claveValidar}" placeholder="Confirmar Clave">
       <label class="form_label">Confirmar Clave: </label>
-      </div>      
+      </div>
+    <br>
         
      <div id="botonesEditarUsuario">       
     <button class="btn btn-primary" id="btnIndex" type="submit">Guardar</button>
@@ -51,8 +52,8 @@
     
     </form>
     <form action="/usuario/perfil">
-       <input type="hidden" name="id" th:value="${session.usuariosession.id}">
-      <button class="btn btn-primary" id="btnIndex" type="submit">Cancelar</button>
+        <input type="hidden" name="id" th:value="${session.usuariosession.id}">
+        <button class="btn btn-primary" id="btnIndex" type="submit" style="position: absolute; margin-left: 25%; margin-top: -5.6%;">Cancelar</button>
     </form>
     </div>
   </div>
