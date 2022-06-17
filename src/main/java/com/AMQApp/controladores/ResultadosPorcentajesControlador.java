@@ -30,14 +30,14 @@ public class ResultadosPorcentajesControlador {
         if (encuesta.getVotos() == null || encuesta.getVotos().isEmpty()) {
             modelo.put("mensaje", "Todavía no movieron esta Query :(");
             modelo.addAttribute("encuesta", encuesta);
-            return "QueryVer.html";
+            return "graficoResultados.html";
         } else {
             try{
             resultadosPorcentajesServicio.calcularPorcentajes(idEncuesta);
             ResultadosPorcentajes resultados = encuesta.getResultados();
             modelo.addAttribute("resultados" , resultados);
             modelo.addAttribute("encuesta", encuesta);
-            return "QueryVer.html";
+            return "graficoResultados.html";
             }catch(ErrorServicio e){
                 modelo.put("error", e.getMessage());
                 return "Error";

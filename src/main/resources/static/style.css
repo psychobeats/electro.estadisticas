@@ -66,11 +66,19 @@ body{
 
 #container1{
     display: flex;
-    margin-left: 30%
+    margin-left: 27%;
+    text-align: center;
 }
 #container2{
     display: flex;
-    margin-left: 15%
+    margin-left: 5%;
+    margin-top: 3%;
+    text-align: center;
+}
+
+#container3{
+    display: inline;
+   
 }
 
   #container4 {
@@ -728,4 +736,19 @@ input[type="date"]{
     button {
         cursor: pointer;
     }
+}
+
+#btnQueryVotar:hover{
+    background-color:var(--winter-sky);
+    color: var(--hot-pink);
+}
+
+#btnQueryVotar:active{
+    transform: translateY(4px) translateX(4px);
+    box-shadow: rgba(43,58,64, 0.7) 0px 0px 0px;
+    background-color: var(--hot-pink);
+    color: var(--winter-sky);
+    margin-left: 5%;
+    margin-left: 50%;
+    transform: translateX(-46%);    
 }
