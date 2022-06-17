@@ -10,6 +10,10 @@
   TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <link rel="stylesheet" href="/style.css">
   <link rel="icon" type="icon/png" sizes=""href="/img/favicon.png">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+
   <title>Query's</title>
 
 
@@ -37,9 +41,9 @@
  
 <section>
     <br>
-  <div class="container">
-      <div class="row align-items-center">
-  <table class="table" id="table-ranking">
+        <div>
+     <!-- <div class="row align-items-center"> -->
+  <table class="table table-borderless" id="table-ranking">
     <thead>
         <tr>
             <th scope="col">Título de la encuesta</th>
@@ -49,10 +53,10 @@
             <th>Chusmear Querys :)</th>
         </tr>
     </thead>
-    <tbody>
+      <tbody>
         
         
-        <p th:if="${error != null}" th:text="${error}" style="color:red;"></p> 
+        <p th:if="${error != null}" th:text="${error}" style="color:red;" id="formulario"></p> 
         <tr th:each="encuesta: ${encuestas}">
          
             <td scope="row" th:text="${encuesta.titulo}">   
@@ -70,14 +74,14 @@
                 <label th:if="${encuesta.alta == false}" >Query dada de baja</label>
             </td>
             <td>
-                <a class="btn btn-info" role="button" th:href="@{/resultados/visualizacion(idEncuesta=${encuesta.id})}" style="color: white;">Ver Resultados</a>
+              <a id="btnPerfil" class="btn btn-info" role="button" th:href="@{/resultados/visualizacion(idEncuesta=${encuesta.id})}" style=" position: absolute; margin-left: 100px; width: 200px; font-size: 22px; margin-top: 5px; margin-top: 1px;">Ver Resultados</a>
             </td>
         </tr>
         
     </tbody>
 </table>
       </div>
-  </div>
+ <!-- </div> --> 
 </section>
 <div th:fragment="footer">
   <footer class="pie-pagina">

@@ -55,6 +55,15 @@ body{
    
 }
 
+#cuerpoTablaQuerys{
+    color: var(--blue-violet);
+    text-shadow: 2px 2px 2px var(--amber);
+    font-size: 25px;
+    font-family: 'Righteous', cursive;
+    text-align: left;
+    
+}
+
 #container1{
     display: flex;
     margin-left: 30%
@@ -63,6 +72,12 @@ body{
     display: flex;
     margin-left: 15%
 }
+
+  #container4 {
+    display: flex;
+    justify-content: center;
+}
+
 
 #opciones1{
     color: var(--blue-violet);
@@ -463,7 +478,7 @@ a:link, a:visited, a:active {
     box-shadow: rgba(43,58,64, 0.7) 0px 0px 0px;
     background-color: var(--hot-pink);
     color: var(--winter-sky);
-    margin-left: 50%;
+    margin-left: 80%;
     transform: translateX(-46%);    
 }
 
