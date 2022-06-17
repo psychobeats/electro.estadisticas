@@ -77,7 +77,7 @@ body{
 }
 
 #container3{
-    display: inline;
+    display: inline-block;
    
 }
 

@@ -30,9 +30,9 @@
   <p th:if="${error != null}" th:text="${error}" style="color:red;" id="formulario"></p>
   <h1 id="hh1" th:text="${encuesta.titulo}">Titulo</h1>
   <div class="box" id="container3">
-   <a id="btnQueryVotar" type="button" class="btn btn-success" name = "opcion1" th:href="@{/encuesta/votar(idEncuesta=${encuesta.id},idUsuario=${session.usuariosession.id},opcion=${encuesta.opcion1})}" th:text="${encuesta.opcion1}"></a>
+      <a id="btnQueryVotar" type="button" class="btn btn-success" name = "opcion1" th:href="@{/encuesta/votar(idEncuesta=${encuesta.id},idUsuario=${session.usuariosession.id},opcion=${encuesta.opcion1})}" th:text="${encuesta.opcion1}" style="position: absolute; margin-left:37%; margin-top: -2%;"></a>
   <br>
-  <a id="btnQueryVotar" type="button" class="btn btn-success" name = "opcion2" th:href="@{/encuesta/votar/(idEncuesta=${encuesta.id},idUsuario=${session.usuariosession.id},opcion=${encuesta.opcion2})}" th:text="${encuesta.opcion2}"></a>
+  <a id="btnQueryVotar" type="button" class="btn btn-success" name = "opcion2" th:href="@{/encuesta/votar/(idEncuesta=${encuesta.id},idUsuario=${session.usuariosession.id},opcion=${encuesta.opcion2})}" th:text="${encuesta.opcion2}" style="position: absolute; margin-left: 62%; margin-top: -3.4%;"></a>
   <!--<button type="radio" name = "opcion1" th:value="${encuesta.opcion1}"> Opción 1 </button> 
   <input type="radio" name = "opcion2" th:value="${encuesta.opcion2}"> Opción 2-->
   </div>
