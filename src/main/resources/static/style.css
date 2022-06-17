@@ -57,11 +57,14 @@ body{
 
 #container1{
     display: flex;
-    margin-left: 30%
+    margin-left: 27%;
+    text-align: center;
 }
 #container2{
     display: flex;
-    margin-left: 15%
+    margin-left: 5%;
+    margin-top: 3%;
+    text-align: center;
 }
 
 #opciones1{
