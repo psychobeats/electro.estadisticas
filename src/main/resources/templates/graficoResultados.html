@@ -16,8 +16,9 @@
     <title>Grafico Resultados</title>
 </head>
 
-<body th:attr="onload=|result('${resultados.totalOpcion1}','${resultados.totalOpcion2}','${encuesta.opcion1}','${encuesta.opcion2}')|">
-        <nav class="nav">
+<body th:if="${mensaje == null}" th:attr="onload=|result('${resultados.totalOpcion1}','${resultados.totalOpcion2}','${encuesta.opcion1}','${encuesta.opcion2}')|">
+    
+    <nav class="nav">
         <a class="navbar-brand" id="nav-logo" th:if="${session.usuariosession!=null}" href="/loginExitoso">
              <img src="/img/logopequenio.png" width="160">
            </a>
@@ -34,13 +35,14 @@
          <a class="nav-link" th:if = "${session.usuariosession!=null}" href="/preguntasFrecuentesIn">Preguntas Frecuentes</a> 
      
      </nav>
-    <p th:if="${mensaje == null}"></p>
+    
     <h3 id="hh2"> Título de la Query </h3>    
       
     <h2 id="hh1" th:text="${encuesta.titulo}"></h2>    
+    
     <p th:if="${mensaje != null}" th:text="${mensaje}" style="color:red;"></p>
     
-   
+   <div th:if="${mensaje == null}">
     <div class="container" id="container1">
         <div class="box">
             <h1 id="resultado1" th:text="${resultados.porcentajeOpcion1}">
@@ -68,7 +70,7 @@
 
     </div>
     
-    <div th:if="${mensaje == null}">
+    
     <h3 id="hh2"> Total de votantes </h3>
     
     <h2 id="hh2" th:text = ${resultados.totalVotos}></h2>
@@ -161,5 +163,58 @@
     
 </div>
 </body>
+    
+    
+    
+    <body th:if="${mensaje != null}">
+    
+    <nav class="nav">
+        <a class="navbar-brand" id="nav-logo" th:if="${session.usuariosession!=null}" href="/loginExitoso">
+             <img src="/img/logopequenio.png" width="160">
+           </a>
+        <a class="navbar-brand" id="nav-logo" th:if="${session.usuariosession==null}" href="/">
+             <img src="/img/logopequenio.png" width="160">
+           </a>
+         
+         <a class="nav-link"  th:if = "${session.usuariosession==null}" href="/usuario/registro">Registro</a>
+         <a class="nav-link" th:if = "${session.usuariosession==null}" href="/login">Log In</a>
+         <a class="nav-link" th:if = "${session.usuariosession==null}" href="/preguntasFrecuentes">Preguntas Frecuentes</a>
+         
+         <a class="nav-link"  th:if = "${session.usuariosession!=null}"th:href="@{/usuario/perfil/(id=${session.usuariosession.id})}">Mi cuenta</a>
+         <a class="nav-link" th:if = "${session.usuariosession!=null}" th:href="@{/usuario/misQuerys/(idUsuario=${session.usuariosession.id})}">Mis Query's</a>
+         <a class="nav-link" th:if = "${session.usuariosession!=null}" href="/preguntasFrecuentesIn">Preguntas Frecuentes</a> 
+     
+     </nav>
+    
+    <h3 id="hh2"> Título de la Query </h3>    
+      
+    <h2 id="hh1" th:text="${encuesta.titulo}"></h2>    
+    
+    <p th:if="${mensaje != null}" th:text="${mensaje}" style="color:red;" id="formulario"></p>
+    
+    
+<div th:fragment="footer">
+  <footer class="pie-pagina">
+    <div class="grupo-1">
+      <div class="box">
+        <figure>
+          <a>
+              <img src="/img/logopequenio.png" width="160"
+              class="imagen-footer">
+          </a>
+        </figure>
+        <br>
+        <div class="grupo-2">
+          <a> &copy;2022 A MOVER LA QUERY!</a>
+          <br>
+          <a>Todos los Derechos Reservados</a>
+
+        </div>
+      </div>
+  </footer>
+    
+</div>
+</body>
+
 
 </html>
