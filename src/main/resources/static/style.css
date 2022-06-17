@@ -312,38 +312,7 @@ svg {
     text-shadow: 2px 2px 2px var(--amber);
 }
 
-.nav {
-    background: linear-gradient(90deg, rgba(64,37,82,1) 0%, rgba(255,239,195,1) 100%);
-    display: flex;
-    color: var(--winter-sky);
-}
 
-#nav-logo{
-    text-align: left;
-    margin-right: 53%;
-    padding-top: 5px;  
-}
-
-.nav-link {
-    text-align: right;
-    font-size: 17px;
-    margin-left: 0;
-    padding: 20px;
-    font-family: 'Pacifico', cursive;
-    text-decoration: none;    
-}
-
-.nav-link:link{
-    color: var(--blue-violet);
-}
-
-.nav-link:hover{
-    color:var(--orange-pantone);
-}
-
-.nav-link:active{
-    color:var(--winter-sky);
-}
 
 #logo{
     display: flex;
