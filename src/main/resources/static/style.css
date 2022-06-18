@@ -137,7 +137,7 @@ svg {
     
     #nav-logo{
         text-align: left;
-        margin-right: 55%;
+        margin-right: 52%;
         padding-top: 5px;  
     }
     
@@ -410,6 +410,8 @@ a:link, a:visited, a:active {
 #btnIndex:hover{
     background-color:var(--winter-sky);
     color: var(--hot-pink);
+    transform: translateY(1px) translateX(1px);
+    transform: translateX(-48%);
 }
 
 #btnIndex:active{
@@ -455,6 +457,8 @@ a:link, a:visited, a:active {
 #btnFormulario:hover{
     background-color:var(--winter-sky);
     color: var(--hot-pink);
+    transform: translateY(1px) translateX(1px);
+    transform: translateX(-48%);
 }
 
 #btnFormulario:active{
@@ -499,6 +503,8 @@ a:link, a:visited, a:active {
 #btnRegular:hover{
     background-color:var(--winter-sky);
     color: var(--hot-pink);
+    transform: translateY(1px) translateX(1px);
+    transform: translateX(-48%);
 }
 
 #btnRegular:active{
@@ -527,6 +533,8 @@ a:link, a:visited, a:active {
 #btnMiddle:hover{
     background-color:var(--winter-sky);
     color: var(--hot-pink);
+    transform: translateY(1px) translateX(1px);
+    transform: translateX(-48%);
 }
 
 #btnMiddle:active{
@@ -544,8 +552,8 @@ a:link, a:visited, a:active {
     box-shadow: rgba(43,58,64, 0.7) 4px 4px 0px;
     border-radius: 8px;
     transition: transform 200ms, box-shadow 200ms;
-    width: 100px;
-    height: 50px;
+    width: 110px;
+    height: 55px;
     font-family: 'Pacifico', cursive;
     font-size: 14px;
     color: var(--dutch-white);
@@ -559,6 +567,8 @@ a:link, a:visited, a:active {
 #btnPerfil:hover{
     background-color:var(--winter-sky);
     color: var(--hot-pink);
+    transform: translateY(1px) translateX(1px);
+    transform: translateX(-48%);
 }
 
 #btnPerfil:active{
@@ -567,7 +577,7 @@ a:link, a:visited, a:active {
     background-color: var(--hot-pink);
     color: var(--winter-sky);
     margin-left: 5%;
-    transform: translateX(-46%);    
+    transform: translateX(-46%);  /*CORREGIR PEQUEÑO DESPLAZAMIENTO AL PRESIONAR EL BOTON EN EL PERFIL*/  
 }
 
 #botonesPerfil{
@@ -577,7 +587,7 @@ a:link, a:visited, a:active {
 }
 
 .form-text, .form-check{
-    color: var(--outer-space-crayola);
+    color: var(--outer-space-crayola); 
     margin-bottom: 10px;
 }
 
