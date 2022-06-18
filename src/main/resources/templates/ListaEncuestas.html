@@ -54,14 +54,14 @@
     <br>
         <div>
      <!-- <div class="row align-items-center"> -->
-  <table class="table table-borderless" id="table-ranking">
+     <table class="table table-borderless" id="table-ranking" style="width:1200px; height: auto">
     <thead>
         <tr>
-            <th scope="col">Título de la Query</th>
-            <th scope="col">Opción 1</th>
-            <th scope="col">Opción 2</th>
-            <th th:if="${session.usuariosession != null}" scope="col">Votar</th>
-            <th>Chusmear Querys :)</th>
+            <th scope="col" id="titles-table">Título de la Query</th>
+            <th scope="col" id="titles-table">Opción 1</th>
+            <th scope="col" id="titles-table">Opción 2</th>
+            <th th:if="${session.usuariosession != null}" scope="col" id="titles-table" >Votar</th>
+            <th id="titles-table">Chusmear Querys :)</th>
         </tr>
     </thead>
       <tbody>
@@ -81,11 +81,11 @@
             </td>
             <td th:if="${session.usuariosession != null}">
                 <input type="hidden" name="usuarioId" th:value="${session.usuariosession.id}">
-                <a th:if="${encuesta.alta == true}" class="btn btn-info" role="button" th:href="@{/encuesta/votacion(idEncuesta=${encuesta.id}, idUsuario=${session.usuariosession.id})}" style="color: white;">Votar</a>
+                <button  id="btnMiddle" th:if="${encuesta.alta == true}" class="btn btn-info" role="button" th:href="@{/encuesta/votacion(idEncuesta=${encuesta.id}, idUsuario=${session.usuariosession.id})}" style=" position: absolute; margin-left: 60px; width: 110px; font-size: 18px; text-align: center; margin-top: 5px; margin-top: 1px;">Votar</button>
                 <label th:if="${encuesta.alta == false}" >Query dada de baja</label>
             </td>
             <td>
-              <a id="btnPerfil" class="btn btn-info" role="button" th:href="@{/resultados/visualizacion(idEncuesta=${encuesta.id})}" style=" position: absolute; margin-left: 100px; width: 200px; font-size: 22px; margin-top: 5px; margin-top: 1px;">Ver Resultados</a>
+              <button id="btnMiddle" class="btn btn-info" role="button" th:href="@{/resultados/visualizacion(idEncuesta=${encuesta.id})}" style=" position: absolute; margin-left: 100px; width: 200px; font-size: 18px; margin-top: 5px; margin-top: 1px;">Ver Resultados</button>
             </td>
         </tr>
         

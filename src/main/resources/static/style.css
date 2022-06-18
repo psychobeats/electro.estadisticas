@@ -147,7 +147,8 @@ svg {
         margin-left: 0;
         padding: 19px;
         font-family: 'Pacifico', cursive;
-        text-decoration: none;    
+        text-decoration: none; 
+        color: var(--blue-violet);
     }
     
     .nav-link:link{
@@ -429,10 +430,17 @@ a:link, a:visited, a:active {
     box-shadow: rgba(43,58,64, 0.7) 4px 4px 0px;
     border-radius: 20px;
     margin: 0px auto; 
-    padding: 35px; 
+    padding: 30px; 
     font-family: 'Pacifico', cursive;
-    font-size: 25px;
+    font-size: 22px;
     border-spacing: 100px 18px;
+    color: var(--blue-violet);
+    text-shadow: 2px 2px 2px var(--atomic-tangerine);
+    margin-bottom: 80px;
+}
+#titles-table{
+    font-family: 'Pacifico', cursive;
+    font-size: 22px;
     color: var(--winter-sky);
     text-shadow: 2px 2px 2px var(--atomic-tangerine);
     margin-bottom: 80px;
@@ -474,7 +482,10 @@ a:link, a:visited, a:active {
 #columna{
     font-size: larger;
     padding-bottom: 20px;
+    
 }
+
+
 
 #query-ranking:link{    
     color:var(--blue-violet);
