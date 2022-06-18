@@ -485,7 +485,9 @@ a:link, a:visited, a:active {
     
 }
 
-
+#query-ranking{    
+    color:var(--blue-violet);
+}
 
 #query-ranking:link{    
     color:var(--blue-violet);
