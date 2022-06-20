@@ -184,14 +184,20 @@ public class UsuarioServicio implements UserDetailsService{
         List<Usuario> usuarios = usuarioRepositorio.findAll();
         List<String> alias = new ArrayList<String>();
         
-        if(usuarios.isEmpty()||usuarios==null){
-            throw new ErrorServicio("No hay usuarios registrados :S");
-        }else{
+        if(usuarios.isEmpty()==false){
             for (Usuario usuario : usuarios) {
                 alias.add(usuario.getAlias());
             }
-            return alias;
         }
+        return alias;
+//        if(usuarios.isEmpty()||usuarios==null){
+//            throw new ErrorServicio("No hay usuarios registrados :S");
+//        }else{
+//            for (Usuario usuario : usuarios) {
+//                alias.add(usuario.getAlias());
+//            }
+//            return alias;
+//        }
     }
     
     
@@ -199,14 +205,21 @@ public class UsuarioServicio implements UserDetailsService{
         List<Usuario> usuarios = usuarioRepositorio.findAll();
         List<String> mails = new ArrayList<String>();
         
-        if(usuarios.isEmpty()||usuarios==null){
-            throw new ErrorServicio("No hay usuarios registrados :S");
-        }else{
+        if(usuarios.isEmpty()==false){
             for (Usuario usuario : usuarios) {
                 mails.add(usuario.getEmail());
             }
-            return mails;
         }
+        return mails;
+        
+//        if(usuarios.isEmpty()||usuarios==null){
+//            throw new ErrorServicio("No hay usuarios registrados :S");
+//        }else{
+//            for (Usuario usuario : usuarios) {
+//                mails.add(usuario.getEmail());
+//            }
+//            return mails;
+//        }
     }
     
     
@@ -214,19 +227,23 @@ public class UsuarioServicio implements UserDetailsService{
         if(alias==null||alias.isEmpty()){
             throw new ErrorServicio("Debe indicar un alias");
         }
+        
         List<String> aliasLista = listarAlias();
         if (aliasLista.contains(alias)) {
             throw new ErrorServicio("Este alias ya fue usado :(");
         }
         
+        
         System.out.println("LAS VALIDACIONES ALIAS CORRECTAS");
         if(email==null||email.isEmpty()){
             throw new ErrorServicio("Debe indicar un email");
         }
+        
         List<String> mailsLista = listarMails();
         if (mailsLista.contains(email)) {
             throw new ErrorServicio("Este Email ya fue usado :(");
         }
+        
         if(nacimiento==null|| nacimiento.isEmpty()){
             throw new ErrorServicio("Debe indicar su fecha de nacimiento");
         }
@@ -247,9 +264,14 @@ public class UsuarioServicio implements UserDetailsService{
         if (!clave.equals(claveValidar)) {
             throw new ErrorServicio("Las claves no coinciden");
         }
+        
         System.out.println("LAS VALIDACIONES CLAVE_VALIDAR CORRECTAS");
+        
+        
+        
     }
     
+
     
     public void validar2(String alias, String nacimiento, String id) throws ErrorServicio{
         if(alias==null||alias.isEmpty()){
