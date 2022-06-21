@@ -9,35 +9,60 @@
 <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
 
 <title>Query a votar</title>
-<link rel="icon" type="icon/png" sizes=""href="/assets/favicon.png">
+<link rel="icon" type="icon/png" sizes=""href="/img/favicon.png">
 </head>
 
 <body>
     
   <nav class="nav">
     <a class="navbar-brand" id="nav-logo"  href="/loginExitoso">
-         <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
+         <img src="/img/logopequenio.png" width="160">
        </a>
      
      <a class="nav-link"  th:href="@{/usuario/perfil/(id=${session.usuariosession.id})}">Mi cuenta</a>
      <a class="nav-link" th:href="@{/usuario/misQuerys/(idUsuario=${session.usuariosession.id})}">Mis Query's</a>
-     <a class="nav-link" href="/preguntasFrecuentesIn">Preguntas Frecuentes</a> 
      <a class="nav-link" href="/encuesta/listar">Querys</a>
-         <a class="nav-link" href="/logout">Cerrar Sesión</a>
+         
  </nav>
 
   <br>
-          <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
-  <h1 th:text="${encuesta.titulo}">Titulo</h1>
-  <a class="btn btn-success" name = "opcion1" th:href="@{/encuesta/votar(idEncuesta=${encuesta.id},idUsuario=${session.usuariosession.id},opcion=${encuesta.opcion1})}" th:text="${encuesta.opcion1}"></a>
-  <a class="btn btn-success" name = "opcion2" th:href="@{/encuesta/votar/(idEncuesta=${encuesta.id},idUsuario=${session.usuariosession.id},opcion=${encuesta.opcion2})}" th:text="${encuesta.opcion2}"></a>
+  <p th:if="${error != null}" th:text="${error}" style="color:red;" id="formulario"></p>
+  <h1 id="hh1" th:text="${encuesta.titulo}">Titulo</h1>
+  <div class="box" id="container3">
+      <a id="btnQueryVotar" type="button" class="btn btn-success" name = "opcion1" th:href="@{/encuesta/votar(idEncuesta=${encuesta.id},idUsuario=${session.usuariosession.id},opcion=${encuesta.opcion1})}" th:text="${encuesta.opcion1}" style="position: absolute; margin-left:37%; margin-top: -2%;"></a>
+  <br>
+  <a id="btnQueryVotar" type="button" class="btn btn-success" name = "opcion2" th:href="@{/encuesta/votar/(idEncuesta=${encuesta.id},idUsuario=${session.usuariosession.id},opcion=${encuesta.opcion2})}" th:text="${encuesta.opcion2}" style="position: absolute; margin-left: 62%; margin-top: -3.4%;"></a>
   <!--<button type="radio" name = "opcion1" th:value="${encuesta.opcion1}"> Opción 1 </button> 
   <input type="radio" name = "opcion2" th:value="${encuesta.opcion2}"> Opción 2-->
+  </div>
   
   <br>
   <!--<button type="button" class="btn btn-link">A MOVER LA QUERY!</button>-->
 <br>
   
+    
+    <div th:fragment="footer">
+  <footer class="pie-pagina">
+    <div class="grupo-1">
+      <div class="box">
+        <figure>
+          <a>
+            <img src="/img/logopequenio.png" width="160"
+              class="imagen-footer">
+          </a>
+        </figure>
+        <br>
+        <div class="grupo-2">
+          <a> &copy;2022 A MOVER LA QUERY!</a>
+          <br>
+          <a>Todos los Derechos Reservados</a>
+
+        </div>
+      </div>
+  </footer>
+</div>
+    
+    
 </body>
 
 </html>

@@ -9,16 +9,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
-
+  <link rel="icon" type="icon/png" sizes=""href="/img/favicon.png">
   <link rel="stylesheet" href="/style.css">
-  <title>EDITAR USUARIO</title>
+  <title>CAMBIAR CONTRASEÑA</title>
 </head>
 
 <body>
 
   <nav class="nav">
     <a class="navbar-brand" id="nav-logo"  href="/loginExitoso">
-         <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160">
+         <img src="/img/logopequenio.png" width="160">
        </a>
      
      <a class="nav-link"  href="/usuario/perfil">Mi cuenta</a>
@@ -28,9 +28,9 @@
      <a class="nav-link" href="/logout">Cerrar Sesión</a> -->
  </nav>
 
-  <h1 id="hh1" th:text="${usuario.alias + ': Edita tu perfil'}"> ¡Cambio de Contraseña! </h1>
   
   <div id="formulario">
+      <h1 id="hh1" th:text="${usuario.alias + ': Cambiar Contraseña'}"> ¡Cambio de Contraseña! </h1>
   <form class="form-usuario" action="/usuario/cambiarClave" method="POST" enctype="multipart/form-data">
     <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
     <input type="hidden" name="id" th:value="${session.usuariosession.id}">
@@ -43,7 +43,8 @@
     <div class="form_group">
       <input id="input-usuario" class="form_field" name= "claveValidar" type="password" th:value="${claveValidar}" placeholder="Confirmar Clave">
       <label class="form_label">Confirmar Clave: </label>
-      </div>      
+      </div>
+    <br>
         
      <div id="botonesEditarUsuario">       
     <button class="btn btn-primary" id="btnIndex" type="submit">Guardar</button>
@@ -51,8 +52,8 @@
     
     </form>
     <form action="/usuario/perfil">
-       <input type="hidden" name="id" th:value="${session.usuariosession.id}">
-      <button class="btn btn-primary" id="btnIndex" type="submit">Cancelar</button>
+        <input type="hidden" name="id" th:value="${session.usuariosession.id}">
+        <button class="btn btn-primary" id="btnIndex" type="submit" style="position: absolute; margin-left: 25%; margin-top: -5.6%;">Cancelar</button>
     </form>
     </div>
   </div>
@@ -63,7 +64,7 @@
       <div class="box">
         <figure>
           <a>
-            <img src="https://drive.google.com/uc?export=download&id=1NCoNyhyGOZLjZlD187jCdu9aYntNhV68" width="160"
+            <img src="/img/logopequenio.png" width="160"
               class="imagen-footer">
           </a>
         </figure>
