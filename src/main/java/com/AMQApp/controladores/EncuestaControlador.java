@@ -110,7 +110,7 @@ public class EncuestaControlador {
                 modelo.put("encuestas", encuestas);
                 return "ListaEncuestas.html";
             }else if (validarEncuesta) {
-                modelo.put("error", "No podés votar tu propia encuesta >:(");
+                modelo.put("error", "No podés votar tu propia Query :(");
                 List<Encuesta> encuestas = encuestaServicio.listaDeEncuestas();
                 modelo.put("encuestas", encuestas);
                 return "ListaEncuestas.html";
