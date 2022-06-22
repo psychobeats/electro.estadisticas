@@ -81,12 +81,12 @@
             </td>
             <td th:if="${session.usuariosession != null}">
                 <input type="hidden" name="usuarioId" th:value="${session.usuariosession.id}">
-                    <a th:if="${encuesta.alta == true}" th:href="@{/encuesta/votacion(idEncuesta=${encuesta.id}, idUsuario=${session.usuariosession.id})}"><button  id="btnMiddle" class="btn btn-info" role="button"  style=" position: absolute; margin-left: 60px; width: 110px; font-size: 18px; text-align: center; margin-top: 5px; margin-top: 1px;">Votar</button>
+                    <a th:if="${encuesta.alta == true}" th:href="@{/encuesta/votacion(idEncuesta=${encuesta.id}, idUsuario=${session.usuariosession.id})}"><button  id="btnMiddle" class="btn btn-info" role="button"  style=" position: absolute; margin-left: 60px; width: 100px; font-size: 18px; text-align: center; margin-top: 5px; margin-top: 1px;">Votar</button>
                     </a>    
                     <label th:if="${encuesta.alta == false}" >Query dada de baja</label>
             </td>
             <td>
-                <a th:href="@{/resultados/visualizacion(idEncuesta=${encuesta.id})}"><button id="btnMiddle" class="btn btn-info" role="button" style=" position: absolute; margin-left: 100px; width: 200px; font-size: 18px; margin-top: 5px; margin-top: 1px;">Ver Resultados</button>
+                <a th:href="@{/resultados/visualizacion(idEncuesta=${encuesta.id})}"><button id="btnMiddle" class="btn btn-info" role="button" style=" position: absolute; margin-left: 100px; width: 150px; font-size: 18px; margin-top: 5px; margin-top: 1px;">Ver Resultados</button>
                 </a>
             </td>
         </tr>
