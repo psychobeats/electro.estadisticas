@@ -54,12 +54,16 @@
 
 <div><!--Ranking-->
     <h1 id="hh1"> TOP 5 QUERY'S MÁS VOTADAS: </h1>
-    <p th:if="${error!=null}" th:text="${error}"></p>
-    <table class="table" id="table-ranking">
+    
+    <div id="formulario">
+      <p id="parrafoIndex" th:if="${error!=null}" th:text="${error}">Error </p>
+    </div>
+    
+    <table th:if="${error==null}" class="table" id="table-ranking">
       <thead id="head-ranking">
        <tr>
        <th scope="col" id="titles-table"> Puesto </th>
-       <th scope="col" id="titles-table"> Query </th>
+       <th scope="col"id="titles-table"> Query </th>
        </tr>
       </thead>
       
@@ -71,6 +75,7 @@
         </tr>
       </tbody>
     </table>
+    
   </div>
   
     <a href="/encuesta/listar"><button class="btn btn-primary" role="button" id="btnIndex"> Más Querys! </button>

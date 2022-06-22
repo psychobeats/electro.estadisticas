@@ -28,7 +28,10 @@
  </nav>
 
     <h1 id="hh1">Mis Query's</h1>
-    <p th:if="${error!=null}" th:text="${error}" style="color: white;"></p>
+    
+    <div id="formulario">
+      <p id="parrafoIndex" th:if="${error!=null}" th:text="${error}">Error </p>
+    </div>
 <!--Este es el comentario a ver si funciona todo-->
 
 <table th:if="${error==null}" class="table text-center" id="table-ranking">

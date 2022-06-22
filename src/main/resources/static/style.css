@@ -722,9 +722,9 @@ input[type="date"]{
     border-radius: 8px;
     transition: transform 200ms, box-shadow 200ms;
     width: 300px;
-    height: 100px;
+    height: em;
     font-family: 'Pacifico', cursive;
-    font-size: 60px;
+    font-size: 3vw;
     color: var(--dutch-white);
     margin: 0.5em;
     text-align: center;
