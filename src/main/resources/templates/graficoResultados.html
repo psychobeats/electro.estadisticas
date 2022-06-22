@@ -59,6 +59,7 @@
         <div class="box">
     
             <img th:if="${resultados.porcentajeOpcion1>resultados.porcentajeOpcion2}" src="/img/isoLOGO A.png" width="140">
+            <img th:if="${resultados.porcentajeOpcion1==resultados.porcentajeOpcion2}" src="/img/isoLOGO C.png" width="140">
             <img th:if="${resultados.porcentajeOpcion1<resultados.porcentajeOpcion2}" src="/img/isoLOGO B.png" width="140">    
         </div>
         <div class="box">
