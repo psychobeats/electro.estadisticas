@@ -47,9 +47,9 @@ public class EncuestaServicio {
     public Encuesta crearEncuesta(String titulo, String opcion1, String opcion2, String caducidad) throws ErrorServicio, ParseException {
        Encuesta e1 = new Encuesta();
        validar(titulo, opcion1, opcion2);
-            e1.setTitulo(titulo);
-            e1.setOpcion1(opcion1);
-            e1.setOpcion2(opcion2);
+            e1.setTitulo(titulo.toLowerCase());
+            e1.setOpcion1(opcion1.toLowerCase());
+            e1.setOpcion2(opcion2.toLowerCase());
             Date inicio = new Date();
             e1.setInicio(inicio);
             
@@ -168,7 +168,7 @@ public class EncuestaServicio {
     {
         List<Encuesta> encuestas = encuestaRepositorio.findAll();
         if (encuestas.isEmpty() || encuestas == null) {
-            throw new ErrorServicio("No se pudo cargar el List de encuestas desde el repositorio");
+            throw new ErrorServicio("Aún no hay Querys creadas en el sitio :(");
         }        
         bajaPorCaducidad(encuestas);
 
