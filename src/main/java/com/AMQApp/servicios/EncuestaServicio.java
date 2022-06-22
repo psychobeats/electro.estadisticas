@@ -179,7 +179,7 @@ public class EncuestaServicio {
         List<Encuesta> encuestasOrdenadasPorVotos = encuestaRepositorio.ordenarPorVotos();
         List<Encuesta> encuestasTopFive = new ArrayList();
         if(encuestasOrdenadasPorVotos.isEmpty() || encuestasOrdenadasPorVotos == null){
-            throw new ErrorServicio("Aún no hay Querys :(");
+            throw new ErrorServicio("Aún no hay Querys creadas en el sitio :(");
         } else if ( encuestasOrdenadasPorVotos.size() < 5 ){
             for(int i = 0; i< encuestasOrdenadasPorVotos.size(); i++){
             encuestasTopFive.add(encuestasOrdenadasPorVotos.get(i));

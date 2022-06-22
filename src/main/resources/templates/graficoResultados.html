@@ -40,7 +40,10 @@
       
     <h2 id="hh1" th:text="${encuesta.titulo}"></h2>    
     
-    <p th:if="${mensaje != null}" th:text="${mensaje}" style="color:red;"></p>
+    
+    <div id="formulario">
+      <p id="parrafoIndex" th:if="${mensaje!=null}" th:text="${mensaje}">mensaje </p>
+    </div>
     
    <div th:if="${mensaje == null}">
     <div class="container" id="container1">
