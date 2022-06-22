@@ -32,18 +32,19 @@
     <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
     <input type="hidden" name="usuarioId" th:value="${session.usuariosession.id}">    
     <div class="form_group">
-      <input type="input" class="form_field" name="titulo" th:value="${titulo}" placeholder="Ingresá tú pregunta">
+      <input type="input" maxlength="30" class="form_field" name="titulo" th:value="${titulo}" placeholder="Ingresá tú pregunta">
       <label for="Ingresá tú pregunta" class="form_label">Ingresá tú pregunta</label>
+      <label class="condiciones-clave">MÁX: 30 CARACTERES</label>
     </div>
     <div class="form_group">
-        <input type="input" maxlength="30" class="form_field" name="opcion1" th:value="${opcion1}" placeholder="Opción 1">
+        <input type="input" maxlength="15" class="form_field" name="opcion1" th:value="${opcion1}" placeholder="Opción 1">
       <label for="Opción 1" class="form_label">Opción 1</label>
-      <label class="condiciones-clave">MÁX: 30 CARACTERES</label>
+      <label class="condiciones-clave">MÁX: 15 CARACTERES</label>
     </div>  
     <div class="form_group">
-        <input type="input" maxlength="30" class="form_field" name="opcion2" th:value="${opcion2}" placeholder="Opción 2">
+        <input type="input" maxlength="15" class="form_field" name="opcion2" th:value="${opcion2}" placeholder="Opción 2">
         <label for="Opción 2" class="form_label">Opción 2</label>
-        <label class="condiciones-clave">MÁX: 30 CARACTERES</label>
+        <label class="condiciones-clave">MÁX: 15 CARACTERES</label>
     </div>
 
     <div class="form_group">
